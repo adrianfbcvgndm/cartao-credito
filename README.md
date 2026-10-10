@@ -5,5 +5,7 @@ Pagamento de faturas por cartão via Mercado Pago, separado do Resumo de Pagamen
 Telas: Visão geral, Recuperar pagamentos, Auditoria MP, Débito automático e Credenciais.
 Página pública do cliente: `pagamento.php?id=...` (link curto `/cartao?id=...`). Webhook: `webhook_mp.php`.
 
+Link curto e webhook público: pasta `publico/cartao/` (vai em `/var/www/cartao`).
+
 Instalação: veja `instalar/LEIA.txt`.
 Não vão para o GitHub: `rp_config_local.php` e `.rp_autokey` (senha do banco, segredo do webhook e chave interna de cada servidor).

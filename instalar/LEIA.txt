@@ -4,3 +4,8 @@ Addon cartao_credito (separado do Resumo_Pagamentos em 09/10/2026)
 3. Copiar instalar/* para /tmp/cc_deploy e rodar: PHPB=<php> bash /tmp/cc_deploy/aplica.sh
    (faz backup em /root/bk_separa_cartao_<data>, troca pagamento/webhook/autopay_publico do Resumo por atalhos,
     tira Recuperar/Auditoria/Cartão do Resumo, ajusta /var/www/cartao, crontab do autopay e o menu)
+
+Link curto do cliente e webhook público: a pasta publico/cartao/ vai em /var/www/cartao
+(index.php = /cartao?id=... redireciona para a página de pagamento; webhook_mp.php = endereço
+estável que fica cadastrado no Mercado Pago). O aplica.sh instala sozinho se o servidor não tiver
+(copie também publico/ para /tmp/cc_deploy/). O Apache precisa servir /var/www/cartao em /cartao.

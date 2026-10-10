@@ -12,6 +12,8 @@ for f in auditoria_mp.php recuperar_pagamentos.php cfg_autopay.php autopay_helpe
 cp /tmp/cc_deploy/stub_pg.php pagamento.php; cp /tmp/cc_deploy/stub_pg.php autopay_publico.php; cp /tmp/cc_deploy/stub_wh.php webhook_mp.php
 chown www-data:www-data pagamento.php autopay_publico.php webhook_mp.php
 python3 /tmp/cc_deploy/edita_rp.py $R
+# link curto público (/cartao?id=...) e atalho estável do webhook: se o servidor ainda não tem, instala do repo
+if [ ! -f /var/www/cartao/index.php ] && [ -d /tmp/cc_deploy/publico/cartao ]; then mkdir -p /var/www/cartao && cp -a /tmp/cc_deploy/publico/cartao/. /var/www/cartao/ && chown www-data:www-data /var/www/cartao/webhook_mp.php; fi
 if [ -f /var/www/cartao/index.php ]; then sed -i 's#/admin/addons/Resumo_Pagamentos/pagamento.php#/admin/addons/cartao_credito/pagamento.php#' /var/www/cartao/index.php; fi
 if [ -f /var/www/cartao/webhook_mp.php ]; then sed -i 's#addons/Resumo_Pagamentos/webhook_mp.php#addons/cartao_credito/webhook_mp.php#' /var/www/cartao/webhook_mp.php; fi
 if crontab -l 2>/dev/null | grep -q Resumo_Pagamentos/cron_autopay.php; then crontab -l | sed 's#Resumo_Pagamentos/cron_autopay.php#cartao_credito/cron_autopay.php#' | crontab -; fi
