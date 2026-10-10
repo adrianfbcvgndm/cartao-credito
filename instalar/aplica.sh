@@ -1,5 +1,5 @@
 set -e
-R=/opt/mk-auth/admin/addons/Resumo_Pagamentos; D=/opt/mk-auth/admin/addons/cartao_credito; B=/root/bk_separa_cartao_20261009
+R=/opt/mk-auth/admin/addons/Resumo_Pagamentos; D=/opt/mk-auth/admin/addons/cartao_credito; B=/root/bk_separa_cartao_$(date +%Y%m%d_%H%M)
 PHPB=${PHPB:-php}
 mkdir -p $B/movidos $B/www_cartao
 cd $R
