@@ -12,6 +12,18 @@ Telas do addon (menu **Financeiro > 💳 Cartão de Crédito**):
 | Débito automático | Clientes com cobrança automática no cartão |
 | Credenciais | Chaves do Mercado Pago e mensagens enviadas ao cliente |
 
+## Como fica instalado
+
+*(prints do MK-Auth de teste)*
+
+**Visão geral** (Financeiro > 💳 Cartão de Crédito):
+
+![Visão geral](docs/prints/cc_visao.jpg)
+
+**Credenciais**: onde se cola o Access Token e a Public Key do Mercado Pago (passo 2 de "Depois de instalar"):
+
+![Credenciais](docs/prints/cc_credenciais.jpg)
+
 ## O que tem no repositório
 
 | Caminho | Vai para | O que é |
