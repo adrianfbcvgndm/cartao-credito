@@ -1,0 +1,67 @@
+/* pagamento_4a.css — modelo 4A escolhido pelo Rafael (02/10/2026): topo grafite, cartão escuro sobreposto,
+   bandeira reconhecida, campos válidos ficam verdes com ✓, botão verde. Só VISUAL — por cima do pagamento.css. */
+body.pg4a{background:linear-gradient(180deg,#11161d 0,#11161d 330px,#eef1f4 330px)!important;min-height:100vh}
+.pg4a .tn-scope,.pg4a .pg-public{background:transparent!important}
+.pg4a .pg-shell{max-width:480px!important;margin:0 auto!important;padding:16px 14px 30px!important}
+/* topo */
+.pg4a .pg-topbar{background:transparent!important;border:0!important;box-shadow:none!important;padding:4px 2px 10px!important}
+.pg4a .pg-brand-logo,.pg4a .pg-brand-fallback{display:none!important}
+.pg4a .pg-brand-name{color:#fff!important;font-weight:800!important;font-size:18px!important;white-space:nowrap}
+.pg4a .pg-brand-name b{color:#4ade80}
+.pg4a .pg-brand-host{color:rgba(255,255,255,.7)!important;font-weight:600!important}
+.pg4a .pg-secure-badge{background:rgba(255,255,255,.08)!important;color:#bbf7d0!important;border:1px solid rgba(255,255,255,.12)!important}
+/* layout: uma coluna sempre (o resumo vai no topo escuro) */
+.pg4a .pg-layout{display:block!important}
+.pg4a .pg-aside{margin:0 0 12px!important;position:static!important}
+.pg4a .pg-fatura-sum{background:transparent!important;border:0!important;box-shadow:none!important;padding:4px 2px!important;color:#fff!important}
+.pg4a .pg-fatura-sum *{color:inherit}
+.pg4a .pg-fatura-label{color:rgba(255,255,255,.65)!important}
+.pg4a .pg-fatura-cliente{font-size:20px!important;font-weight:800!important}
+.pg4a .pg-fatura-id{display:none!important}
+.pg4a .pg-fatura-valor{font-size:30px!important;font-weight:800!important;color:#fff!important}
+.pg4a .pg-fatura-venc{border-top:1px solid rgba(255,255,255,.12)!important;color:rgba(255,255,255,.75)!important}
+.pg4a .pg-fatura-chip.late{background:rgba(248,113,113,.18)!important;color:#fca5a5!important;border-color:transparent!important}
+/* abas */
+.pg4a .pg-tabs{background:rgba(255,255,255,.07)!important;border:0!important;border-radius:12px!important;padding:5px!important;gap:6px!important;margin-bottom:14px!important}
+.pg4a .pg-tab{background:transparent!important;border:0!important;color:#cbd2d9!important;box-shadow:none!important;min-height:0!important;padding:9px!important;flex-direction:row!important;gap:6px!important}
+.pg4a .pg-tab.active{background:#fff!important;color:#111827!important}
+.pg4a .pg-tab .icon svg{width:16px!important;height:16px!important}
+.pg4a .pg-tab:after,.pg4a .pg-tab:before{display:none!important}
+/* painel branco + cartão grafite sobreposto */
+.pg4a .pg-panel{background:#fff!important;border-radius:18px!important;box-shadow:0 8px 30px rgba(15,23,42,.10)!important;border:0!important;padding:18px!important}
+.pg4a .pg-card-stage{margin:-6px 0 16px!important}
+.pg4a .pg-card-front{background:linear-gradient(135deg,#3b4756,#1a2029 60%,#0b0f14)!important;border:1px solid rgba(255,255,255,.08)!important;box-shadow:0 18px 40px rgba(0,0,0,.35)!important}
+.pg4a .pg-card-back{background:linear-gradient(135deg,#2c3540,#11161d)!important}
+.pg4a .pg-card-front:before,.pg4a .pg-card-front:after{opacity:.25}
+.pg4a .pg-card-brand{font-weight:800;letter-spacing:1px}
+.pg4a .pg-card-front[data-brand="mastercard"] .pg-card-brand{font-size:0!important;width:52px;height:32px;background:radial-gradient(circle at 18px 16px,#eb001b 12px,transparent 12.5px),radial-gradient(circle at 34px 16px,rgba(247,158,27,.92) 12px,transparent 12.5px)}
+/* campos */
+.pg4a .pg-field-label{font-weight:600!important;text-transform:none!important;letter-spacing:0!important;color:#1f2933!important;font-size:12px!important}
+.pg4a .pg-input,.pg4a .pg-select{background:#f5f7fa!important;border:1px solid #e4e7eb!important;border-radius:10px!important}
+.pg4a .pg-input.pg-ok{border-color:#86efac!important;background-color:#f0fdf4!important;padding-right:38px!important;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2316a34a' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'><path d='M5 12.5l4.2 4.2L19 7'/></svg>")!important;
+  background-repeat:no-repeat!important;background-position:right 12px center!important;background-size:18px 18px!important}
+.pg4a .pg-input-with-icon .pg-input.pg-ok{background-position:right 70px center!important}
+/* parcelas, resumo, autopay */
+.pg4a .pg-parcela-pill{border:1px solid #e4e7eb!important;background:#fff!important;box-shadow:none!important}
+.pg4a .pg-parcela-pill.selected{border:2px solid #111827!important;background:#f8fafc!important}
+.pg4a .pg-summary-box{background:transparent!important;border:0!important;padding:4px 0!important}
+.pg4a .pg-summary-row.total{border-top:1px solid #eef1f4!important}
+.pg4a .pg-autopay-box{background:#f0fdf4!important;border:1px solid #bbf7d0!important;border-radius:12px!important}
+.pg4a .pg-autopay-title{color:#166534!important}
+/* botão */
+.pg4a .pg-btn-pagar{background:linear-gradient(90deg,#16a34a,#15803d)!important;color:#fff!important;border:0!important;border-radius:12px!important;box-shadow:0 8px 20px rgba(22,163,74,.25)!important}
+.pg4a .pg-btn-pagar:hover{filter:brightness(1.05)}
+/* ajustes */
+.pg4a .pg-fatura-row,.pg4a .pg-fatura-row>div{background:transparent!important;box-shadow:none!important;border:0!important}
+.pg4a .pg-fatura-sum:before,.pg4a .pg-fatura-sum:after,.pg4a .pg-fatura-row:before,.pg4a .pg-fatura-row:after{display:none!important}
+.pg4a .pg-fatura-cliente{font-size:18px!important;line-height:1.25!important}
+.pg4a .pg-card-preview{height:auto!important;aspect-ratio:1.6;max-width:360px;margin:0 auto}
+.pg4a .pg-card-face{height:100%!important}
+.pg4a .pg-card-num{font-size:19px!important;letter-spacing:2px!important;white-space:nowrap!important}
+.pg4a .pg-card-front[data-brand^="master"] .pg-card-brand{font-size:0!important;width:52px;height:32px;background:radial-gradient(circle at 18px 16px,#eb001b 12px,transparent 12.5px),radial-gradient(circle at 34px 16px,rgba(247,158,27,.92) 12px,transparent 12.5px)}
+/* aba PIX (Bolix) — 03/10/2026 */
+.pg4a .pg-pixqr{text-align:center}
+.pg4a .pg-pixqr-img{display:block;width:240px;height:240px;margin:14px auto;border:1px solid #e4e7eb;border-radius:14px;padding:8px;background:#fff;image-rendering:pixelated}
+.pg4a .pg-pixqr-cc{display:flex;gap:6px;margin:4px 0 10px}.pg4a .pg-pixqr-cc input{flex:1;min-width:0;border:1px solid #d9dee5;border-radius:10px;padding:10px;font-size:12px;color:#52606d;background:#f5f7fa}
+.pg4a .pg-pixqr-cc button{border:0;border-radius:10px;padding:10px 14px;font-weight:800;background:linear-gradient(90deg,#16a34a,#15803d);color:#fff;cursor:pointer}

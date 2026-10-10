@@ -1,0 +1,28 @@
+/* ============================================================
+   FORMS / INPUTS
+   ============================================================ */
+.tn-scope .tn-fg{display:flex;flex-direction:column;gap:5px}
+.tn-scope .tn-fg.grow{flex:1;min-width:160px}
+.tn-scope .tn-fl{
+  font-size:10px;color:var(--tn-muted);
+  text-transform:uppercase;letter-spacing:.5px;
+  font-weight:500;
+}
+.tn-scope .tn-input,
+.tn-scope input.tn-input,
+.tn-scope select.tn-input{
+  background:var(--tn-bg3);
+  border:1px solid var(--tn-border2);
+  border-radius:6px;
+  color:var(--tn-text);
+  font-family:inherit;font-size:13px;
+  padding:8px 11px;outline:none;
+  transition:border-color .15s, box-shadow .15s;
+  width:100%;
+}
+.tn-scope .tn-input:focus{
+  border-color:var(--tn-accent);
+  box-shadow:0 0 0 3px rgba(59,130,246,.1);
+}
+.tn-scope select.tn-input{cursor:pointer}
+.tn-scope select.tn-input option{background:var(--tn-bg2);color:var(--tn-text)}

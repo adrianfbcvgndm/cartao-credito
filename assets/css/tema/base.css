@@ -1,0 +1,7 @@
+/* ============================================================
+   BASE / RESET
+   ============================================================ */
+.tn-scope *,.tn-scope *::before,.tn-scope *::after{box-sizing:border-box}
+.tn-scope a{color:var(--tn-accent);text-decoration:none}
+.tn-scope a:hover{text-decoration:underline}
+

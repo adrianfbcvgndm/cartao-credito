@@ -1,0 +1,128 @@
+/* ============================================================
+   RP ENTERPRISE · BOTÕES
+   Variantes: primary, secondary (padrão), outline, ghost,
+   danger, success, warning. Estados: hover, loading, disabled.
+   Classes legadas tn-btn* mapeadas aqui.
+   ============================================================ */
+
+.tn-scope .tn-btn,
+.tn-scope .ds-btn{
+  --btn-bg:var(--ds-surface);
+  --btn-color:var(--ds-text);
+  --btn-border:var(--ds-border);
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  height:36px;padding:0 15px;
+  border-radius:9px;
+  border:1px solid var(--btn-border);
+  background:var(--btn-bg);
+  color:var(--btn-color);
+  font-family:var(--ds-font);font-size:13px;font-weight:600;letter-spacing:.005em;
+  line-height:1;white-space:nowrap;
+  cursor:pointer;user-select:none;text-decoration:none;
+  position:relative;overflow:hidden;
+  box-shadow:var(--ds-shadow-xs);
+  transition:background var(--ds-fast) var(--ds-ease),
+             border-color var(--ds-fast) var(--ds-ease),
+             color var(--ds-fast) var(--ds-ease),
+             box-shadow var(--ds-fast) var(--ds-ease),
+             transform var(--ds-fast) var(--ds-ease);
+}
+.tn-scope .tn-btn svg.lucide,.tn-scope .ds-btn svg.lucide{width:15px;height:15px}
+.tn-scope .tn-btn:hover,.tn-scope .ds-btn:hover{
+  background:var(--ds-surface-2);border-color:var(--ds-border-strong);
+  box-shadow:var(--ds-shadow-sm);color:var(--btn-color);
+}
+.tn-scope .tn-btn:active,.tn-scope .ds-btn:active{transform:translateY(1px);box-shadow:none}
+
+/* PRIMARY */
+.tn-scope .tn-btn-primary,.tn-scope .ds-btn-primary{
+  --btn-bg:var(--ds-primary);--btn-color:#fff;--btn-border:transparent;
+  box-shadow:0 1px 2px rgba(244,112,15,.35),inset 0 1px 0 rgba(255,255,255,.12);
+}
+.tn-scope .tn-btn-primary:hover,.tn-scope .ds-btn-primary:hover{
+  background:var(--ds-primary-hover);border-color:transparent;color:#fff;
+  box-shadow:0 4px 12px rgba(244,112,15,.4);
+}
+
+/* SUCCESS */
+.tn-scope .tn-btn-green,.tn-scope .ds-btn-success{
+  --btn-bg:#16A34A;--btn-color:#fff;--btn-border:transparent;
+}
+.tn-scope .tn-btn-green:hover,.tn-scope .ds-btn-success:hover{
+  background:#15803D;color:#fff;border-color:transparent;
+  box-shadow:0 4px 12px rgba(34,197,94,.35);
+}
+
+/* DANGER */
+.tn-scope .tn-btn-red,.tn-scope .tn-btn-danger,.tn-scope .ds-btn-danger{
+  --btn-bg:var(--ds-danger);--btn-color:#fff;--btn-border:transparent;
+}
+.tn-scope .tn-btn-red:hover,.tn-scope .tn-btn-danger:hover,.tn-scope .ds-btn-danger:hover{
+  background:#DC2626;color:#fff;border-color:transparent;
+  box-shadow:0 4px 12px rgba(239,68,68,.35);
+}
+
+/* WARNING */
+.tn-scope .tn-btn-amber,.tn-scope .ds-btn-warning{
+  --btn-bg:var(--ds-warning);--btn-color:#78350F;--btn-border:transparent;
+}
+.tn-scope .tn-btn-amber:hover,.tn-scope .ds-btn-warning:hover{
+  background:#D97706;color:#451A03;border-color:transparent;
+  box-shadow:0 4px 12px rgba(245,158,11,.35);
+}
+
+/* OUTLINE */
+.tn-scope .tn-btn-outline,.tn-scope .ds-btn-outline{
+  --btn-bg:transparent;--btn-color:var(--ds-primary);--btn-border:var(--ds-primary);
+  box-shadow:none;
+}
+.tn-scope .tn-btn-outline:hover,.tn-scope .ds-btn-outline:hover{
+  background:var(--ds-primary-soft);color:var(--ds-primary-hover);border-color:var(--ds-primary-hover);
+}
+
+/* GHOST */
+.tn-scope .tn-btn-ghost,.tn-scope .ds-btn-ghost{
+  --btn-bg:transparent;--btn-color:var(--ds-text-2);--btn-border:transparent;
+  box-shadow:none;
+}
+.tn-scope .tn-btn-ghost:hover,.tn-scope .ds-btn-ghost:hover{
+  background:var(--ds-surface-3);color:var(--ds-text);border-color:transparent;box-shadow:none;
+}
+
+/* Tamanhos */
+.tn-scope .ds-btn-sm{height:30px;padding:0 11px;font-size:12px;border-radius:8px}
+.tn-scope .ds-btn-sm svg.lucide{width:13px;height:13px}
+.tn-scope .ds-btn-lg{height:44px;padding:0 22px;font-size:14px;border-radius:11px}
+.tn-scope .ds-btn-block{width:100%}
+
+/* Disabled elegante */
+.tn-scope .tn-btn:disabled,.tn-scope .ds-btn:disabled,
+.tn-scope .tn-btn.disabled,.tn-scope .ds-btn.disabled{
+  opacity:.5;cursor:not-allowed;pointer-events:none;box-shadow:none;filter:saturate(.6);
+}
+
+/* Loading */
+.tn-scope .ds-btn-loading{color:transparent!important;pointer-events:none}
+.tn-scope .ds-btn-loading::after{
+  content:'';position:absolute;left:50%;top:50%;width:15px;height:15px;
+  margin:-8px 0 0 -8px;border-radius:50%;
+  border:2px solid rgba(255,255,255,.35);border-top-color:#fff;
+  animation:ds-spin .7s linear infinite;
+}
+.tn-scope .tn-btn-outline.ds-btn-loading::after,
+.tn-scope .tn-btn.ds-btn-loading:not([class*='primary']):not([class*='red']):not([class*='green']):not([class*='amber'])::after{
+  border-color:var(--ds-border-strong);border-top-color:var(--ds-primary);
+}
+
+/* Ripple (aplicado via ds.js) */
+.tn-scope .ds-ripple{
+  position:absolute;border-radius:50%;pointer-events:none;
+  background:currentColor;opacity:.18;transform:scale(0);
+  animation:ds-ripple .55s var(--ds-ease) forwards;
+}
+
+/* Grupo de botões */
+.tn-scope .ds-btn-group{display:inline-flex}
+.tn-scope .ds-btn-group .tn-btn,.tn-scope .ds-btn-group .ds-btn{border-radius:0;margin-left:-1px}
+.tn-scope .ds-btn-group .tn-btn:first-child,.tn-scope .ds-btn-group .ds-btn:first-child{border-radius:9px 0 0 9px;margin-left:0}
+.tn-scope .ds-btn-group .tn-btn:last-child,.tn-scope .ds-btn-group .ds-btn:last-child{border-radius:0 9px 9px 0}

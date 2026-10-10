@@ -1,0 +1,93 @@
+/* ============================================================
+   RP ENTERPRISE · PÁGINA: ENVIO EM MASSA
+   Estilos específicos de envio_massa.php.
+   Componentes genéricos vivem em ds.css.
+   ============================================================ */
+
+/* ---------- LAYOUT DUAS COLUNAS (composição + destinatários) ---------- */
+.tn-scope .em-layout{
+  display:grid;grid-template-columns:minmax(360px,5fr) minmax(380px,6fr);
+  gap:18px;align-items:start;
+}
+@media (max-width:1120px){.tn-scope .em-layout{grid-template-columns:1fr}}
+
+/* ---------- FILTROS ---------- */
+.tn-scope .em-filter-row{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));
+  gap:14px;align-items:end;
+}
+.tn-scope .em-filter-row .tn-fg{margin-bottom:0}
+
+/* ---------- CARDS DE TIPO DE MENSAGEM ---------- */
+.tn-scope .em-tipo-grid{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:10px;margin-top:8px;
+}
+.tn-scope .em-tipo-card{
+  cursor:pointer;
+  border:1.5px solid var(--ds-border);
+  border-radius:var(--ds-radius);
+  padding:13px 15px;
+  display:flex;align-items:flex-start;gap:11px;
+  background:var(--ds-surface);
+  transition:border-color var(--ds-fast),background var(--ds-fast),box-shadow var(--ds-fast);
+}
+.tn-scope .em-tipo-card:hover{border-color:var(--ds-primary);box-shadow:var(--ds-shadow-sm)}
+.tn-scope .em-tipo-card input[type=radio]{position:absolute;opacity:0;width:0;height:0}
+.tn-scope .em-tipo-card:has(input:checked){
+  border-color:var(--ds-primary);
+  background:var(--ds-primary-soft);
+  box-shadow:0 0 0 3px var(--ds-primary-ring);
+}
+.tn-scope .em-tipo-card .ico{
+  width:34px;height:34px;flex-shrink:0;border-radius:9px;
+  background:var(--ds-surface-3);color:var(--ds-text-2);
+  display:flex;align-items:center;justify-content:center;
+}
+.tn-scope .em-tipo-card:has(input:checked) .ico{background:var(--ds-primary);color:#fff}
+.tn-scope .em-tipo-card .ico svg.lucide{width:16px;height:16px}
+.tn-scope .em-tipo-content{flex:1;min-width:0}
+.tn-scope .em-tipo-content .lbl{font-weight:600;color:var(--ds-text);font-size:13px}
+.tn-scope .em-tipo-content .desc{font-size:11.5px;color:var(--ds-text-3);margin-top:2px;line-height:1.4}
+
+/* ---------- BARRA DE AÇÕES DE ENVIO ---------- */
+.tn-scope .em-send-bar{
+  display:flex;gap:8px;flex-wrap:wrap;align-items:center;width:100%;
+}
+.tn-scope .em-send-note{
+  margin-left:auto;font-size:11.5px;color:var(--ds-text-3);
+  display:inline-flex;align-items:center;gap:5px;
+}
+.tn-scope .em-send-note svg.lucide{width:13px;height:13px;color:var(--ds-warning-text)}
+
+/* ---------- PROGRESSO DO DISPARO ---------- */
+.tn-scope .em-progress{
+  padding:14px 16px;margin-top:14px;
+  background:var(--ds-surface-2);
+  border:1px solid var(--ds-border);border-radius:var(--ds-radius);
+}
+.tn-scope .em-progress-meta{
+  display:flex;justify-content:space-between;
+  font-size:12.5px;color:var(--ds-text-2);margin-bottom:7px;
+}
+.tn-scope .em-progress-meta b{color:var(--ds-text);font-variant-numeric:tabular-nums}
+.tn-scope .tn-progress{
+  height:8px;border-radius:var(--ds-radius-full);
+  background:var(--ds-surface-3);overflow:hidden;margin-bottom:9px;
+}
+.tn-scope .tn-progress-fill{
+  display:block;height:100%;border-radius:inherit;
+  background:var(--ds-primary);
+  transition:width var(--ds-normal) var(--ds-ease);
+}
+.tn-scope .tn-progress-fill.green{background:var(--ds-success)}
+.tn-scope .em-progress-stats{display:flex;gap:16px;font-size:11.5px;flex-wrap:wrap}
+.tn-scope .em-progress-stats .ok{color:var(--ds-success-text)}
+.tn-scope .em-progress-stats .err{color:var(--ds-danger-text)}
+.tn-scope .em-progress-stats .cur{color:var(--ds-text-3)}
+
+/* ---------- OBSERVAÇÃO DE TRUNCAGEM ---------- */
+.tn-scope .em-trunc-note{
+  padding:10px 18px;font-size:11.5px;color:var(--ds-text-3);
+  text-align:center;border-top:1px solid var(--ds-border);
+}

@@ -1,0 +1,114 @@
+/* ============================================================
+   RP ENTERPRISE · TABELAS
+   Cabeçalho fixo, hover, zebra opcional, células numéricas,
+   linha de ações, ordenação e wrapper com scroll.
+   Legado: tn-table, tn-table-scroll.
+   ============================================================ */
+
+.tn-scope .tn-table-scroll,.tn-scope .ds-table-wrap{
+  overflow:auto;
+  border:1px solid var(--ds-border);
+  border-radius:var(--ds-radius);
+  background:var(--ds-surface);
+  box-shadow:var(--ds-shadow-xs);
+  max-height:70vh;
+}
+.tn-scope .tn-section-body .tn-table-scroll{border:0;border-radius:0;box-shadow:none}
+
+.tn-scope .tn-table,.tn-scope .ds-table{
+  width:100%;border-collapse:separate;border-spacing:0;
+  font-size:13px;
+}
+.tn-scope .tn-table th,.tn-scope .ds-table th{
+  position:sticky;top:0;z-index:5;
+  background:var(--ds-surface-2);
+  color:var(--ds-text-2);
+  font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;
+  text-align:left;
+  padding:11px 14px;
+  border-bottom:1px solid var(--ds-border);
+  white-space:nowrap;
+  backdrop-filter:blur(6px);
+}
+.tn-scope .tn-table td,.tn-scope .ds-table td{
+  padding:11px 14px;
+  border-bottom:1px solid var(--ds-border);
+  color:var(--ds-text);
+  vertical-align:middle;
+}
+.tn-scope .tn-table tbody tr:last-child td,.tn-scope .ds-table tbody tr:last-child td{border-bottom:0}
+.tn-scope .tn-table tbody tr,.tn-scope .ds-table tbody tr{
+  transition:background var(--ds-fast) var(--ds-ease);
+}
+.tn-scope .tn-table tbody tr:hover,.tn-scope .ds-table tbody tr:hover{background:var(--ds-primary-soft)}
+.tn-scope .ds-table.zebra tbody tr:nth-child(even){background:var(--ds-surface-2)}
+.tn-scope .ds-table.zebra tbody tr:hover{background:var(--ds-primary-soft)}
+
+/* Células numéricas / monetárias */
+.tn-scope .tn-table td.num,.tn-scope .ds-table td.num,
+.tn-scope .tn-table th.num,.tn-scope .ds-table th.num{
+  text-align:right;font-variant-numeric:tabular-nums;
+}
+.tn-scope .tn-table .tn-money{font-weight:600}
+
+/* Coluna de ações */
+.tn-scope .tn-table td.actions,.tn-scope .ds-table td.actions{
+  text-align:right;white-space:nowrap;
+}
+.tn-scope .ds-row-actions{
+  display:inline-flex;gap:4px;opacity:.55;
+  transition:opacity var(--ds-fast);
+}
+.tn-scope tr:hover .ds-row-actions{opacity:1}
+
+/* Cabeçalho ordenável */
+.tn-scope th.sortable{cursor:pointer;user-select:none}
+.tn-scope th.sortable:hover{color:var(--ds-primary)}
+.tn-scope th.sortable::after{content:'↕';margin-left:5px;opacity:.4;font-size:10px}
+.tn-scope th.sortable.asc::after{content:'↑';opacity:1;color:var(--ds-primary)}
+.tn-scope th.sortable.desc::after{content:'↓';opacity:1;color:var(--ds-primary)}
+
+/* Rodapé de totais */
+.tn-scope .tn-table tfoot td,.tn-scope .ds-table tfoot td{
+  position:sticky;bottom:0;
+  background:var(--ds-surface-2);
+  font-weight:700;border-top:2px solid var(--ds-border-strong);border-bottom:0;
+}
+
+/* ---------- PAGINAÇÃO ---------- */
+.tn-scope .ds-pagination{
+  display:flex;align-items:center;gap:5px;justify-content:flex-end;
+  padding:12px 14px;flex-wrap:wrap;
+}
+.tn-scope .ds-pagination .ds-page-info{margin-right:auto;font-size:12.5px;color:var(--ds-text-2)}
+.tn-scope .ds-pagination a,.tn-scope .ds-pagination button,.tn-scope .ds-pagination span.pg{
+  min-width:32px;height:32px;padding:0 9px;
+  display:inline-flex;align-items:center;justify-content:center;
+  border:1px solid var(--ds-border);border-radius:8px;
+  background:var(--ds-surface);color:var(--ds-text-2);
+  font-size:12.5px;font-weight:600;font-family:var(--ds-font);cursor:pointer;
+  transition:all var(--ds-fast) var(--ds-ease);
+}
+.tn-scope .ds-pagination a:hover,.tn-scope .ds-pagination button:hover{
+  border-color:var(--ds-primary);color:var(--ds-primary);
+}
+.tn-scope .ds-pagination .active{
+  background:var(--ds-primary);border-color:var(--ds-primary);color:#fff;
+}
+
+/* Responsivo: tabela vira cartões */
+@media (max-width:640px){
+  .tn-scope .ds-table-responsive thead{display:none}
+  .tn-scope .ds-table-responsive tbody tr{
+    display:block;padding:10px 12px;border-bottom:1px solid var(--ds-border);
+  }
+  .tn-scope .ds-table-responsive tbody td{
+    display:flex;justify-content:space-between;gap:12px;
+    border:0;padding:5px 0;text-align:right;
+  }
+  .tn-scope .ds-table-responsive tbody td::before{
+    content:attr(data-label);
+    font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.05em;
+    color:var(--ds-text-3);text-align:left;
+  }
+}

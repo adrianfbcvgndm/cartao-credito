@@ -1,0 +1,253 @@
+/* ============================================================
+   RP ENTERPRISE · PÁGINA: PLANILHA FINANCEIRA
+   Estilos específicos do fragmento planilha_financeira.php.
+   Complementa o DS (ds.css) — tudo escopado em .tn-scope.
+   ============================================================ */
+
+/* ---------- Alinhamento de células legado (.r / .c / .mono) ---------- */
+.tn-scope .tn-table th.r,.tn-scope .tn-table td.r{text-align:right;font-variant-numeric:tabular-nums}
+.tn-scope .tn-table th.c,.tn-scope .tn-table td.c{text-align:center}
+.tn-scope .tn-table td.muted{color:var(--ds-text-2)}
+.tn-scope .tn-money.pos{color:var(--ds-success-text)}
+.tn-scope .tn-money.neg{color:var(--ds-danger-text)}
+.tn-scope .pf-cell-out{color:var(--ds-danger-text)}
+.tn-scope .pf-row-saida td{background:var(--ds-danger-soft)}
+
+/* ---------- Painel de configurações (toggle .show) ---------- */
+.tn-scope .pf-config-panel{display:none;margin-bottom:18px;animation:ds-fade-up var(--ds-normal) var(--ds-ease) both}
+.tn-scope .pf-config-panel.show{display:block}
+.tn-scope .pf-panel-title{
+  margin:0 0 14px;font-size:14px;font-weight:600;color:var(--ds-text);
+  display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;
+}
+.tn-scope .pf-panel-title svg.lucide{width:16px;height:16px;color:var(--ds-primary)}
+.tn-scope .pf-panel-sep{margin:18px 0;border:none;border-top:1px solid var(--ds-border)}
+.tn-scope .pf-cards-box{margin-top:16px;padding-top:14px;border-top:1px solid var(--ds-border)}
+.tn-scope .pf-check-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:8px}
+.tn-scope .pf-check-item{
+  display:flex;align-items:center;gap:8px;
+  background:var(--ds-surface-2);border:1px solid var(--ds-border);
+  border-radius:8px;padding:8px 10px;cursor:pointer;font-size:12px;color:var(--ds-text);
+  transition:border-color var(--ds-fast),background var(--ds-fast);
+}
+.tn-scope .pf-check-item:hover{border-color:var(--ds-primary-ring);background:var(--ds-primary-soft)}
+.tn-scope .pf-cat-list{display:flex;flex-wrap:wrap;gap:8px}
+.tn-scope .pf-cat-tag{cursor:pointer;border:1px solid transparent}
+
+/* ---------- Mini cards por forma de pagamento ---------- */
+.tn-scope .pf-mini-pay-row{
+  display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+  margin-bottom:16px;font-size:inherit;justify-content:stretch;align-items:stretch;
+}
+.tn-scope .pf-mini-pay-row .pf-mini-pay{
+  background:var(--ds-surface);border:1px solid var(--ds-border);
+  border-radius:var(--ds-radius-sm);padding:10px 14px;margin:0;
+  box-shadow:var(--ds-shadow-xs);
+  display:flex;flex-direction:column;gap:3px;
+  transition:box-shadow var(--ds-normal),transform var(--ds-normal);
+}
+.tn-scope .pf-mini-pay-row .pf-mini-pay:hover{box-shadow:var(--ds-shadow-md);transform:translateY(-2px)}
+.tn-scope .pf-mini-pay .lbl{
+  font-size:10.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
+  display:flex;align-items:center;justify-content:space-between;gap:8px;
+}
+.tn-scope .pf-mini-pay .qty{font-weight:500;color:var(--ds-text-3);text-transform:none;letter-spacing:0}
+.tn-scope .pf-mini-pay .val{
+  font-size:15.5px;font-weight:700;color:var(--ds-text);
+  font-variant-numeric:tabular-nums;letter-spacing:-.02em;
+}
+
+/* ---------- Grade de gráficos ---------- */
+.tn-scope .tn-chart-grid{display:grid;gap:14px;grid-template-columns:1fr 2fr;margin-bottom:18px}
+@media (max-width:900px){.tn-scope .tn-chart-grid{grid-template-columns:1fr}}
+.tn-scope .tn-chart-card{
+  background:var(--ds-surface);border:1px solid var(--ds-border);
+  border-radius:var(--ds-radius);box-shadow:var(--ds-shadow-xs);padding:18px 20px;
+}
+.tn-scope .tn-chart-title{
+  font-size:13.5px;font-weight:600;color:var(--ds-text);margin-bottom:12px;
+  display:flex;align-items:center;gap:8px;
+}
+.tn-scope .tn-chart-title svg.lucide{width:15px;height:15px;color:var(--ds-primary)}
+.tn-scope .tn-chart-wrap{position:relative;height:230px}
+
+/* ---------- Barra de exportação ---------- */
+.tn-scope .pf-export-bar{
+  display:flex;gap:10px;align-items:center;flex-wrap:wrap;
+  background:var(--ds-surface);border:1px solid var(--ds-border);
+  border-radius:var(--ds-radius-sm);padding:10px 14px;margin:0 0 16px;
+}
+.tn-scope .pf-export-bar .ttl{
+  font-size:12px;font-weight:600;color:var(--ds-text-2);
+  display:flex;align-items:center;gap:7px;
+}
+.tn-scope .pf-export-bar .ttl svg.lucide{width:14px;height:14px;color:var(--ds-primary)}
+.tn-scope .pf-export-bar .acts{display:flex;gap:8px;margin-left:auto;flex-wrap:wrap}
+
+/* ---------- Bloco “repetir despesa” + top gastos ---------- */
+.tn-scope .pf-quick-box{
+  padding:14px 16px;background:var(--ds-primary-soft);
+  border-bottom:1px solid var(--ds-border);
+}
+.tn-scope .pf-kicker{
+  font-size:11px;color:var(--ds-text-2);text-transform:uppercase;
+  font-weight:700;margin-bottom:6px;letter-spacing:.06em;
+  display:flex;align-items:center;gap:6px;
+}
+.tn-scope .pf-kicker svg.lucide{width:12px;height:12px;color:var(--ds-primary)}
+.tn-scope .pf-quick-list{display:flex;gap:6px;flex-wrap:wrap}
+.tn-scope .pf-quick-btn{
+  background:var(--ds-surface);border:1px solid var(--ds-border);color:var(--ds-primary);
+  padding:6px 12px;border-radius:var(--ds-radius-full);cursor:pointer;
+  font-family:var(--ds-font);font-size:12px;font-weight:600;
+  display:inline-flex;align-items:center;gap:6px;
+  box-shadow:var(--ds-shadow-xs);
+  transition:all var(--ds-fast) var(--ds-ease);
+}
+.tn-scope .pf-quick-btn:hover{border-color:var(--ds-primary);background:var(--ds-primary-soft);transform:translateY(-1px)}
+.tn-scope .pf-quick-btn svg.lucide{width:12px;height:12px}
+.tn-scope .pf-quick-btn .amt{opacity:.65;font-weight:500}
+.tn-scope .pf-quick-help{color:var(--ds-text-3);font-size:10.5px;display:block;margin-top:5px}
+.tn-scope .pf-topstats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:8px}
+.tn-scope .pf-stat-mini{
+  background:var(--ds-surface);padding:9px 12px;border-radius:var(--ds-radius-sm);
+  border:1px solid var(--ds-border);border-left:3px solid var(--ds-danger);
+  font-size:12px;box-shadow:var(--ds-shadow-xs);
+}
+.tn-scope .pf-stat-mini b{display:block;font-weight:600;color:var(--ds-text);margin-bottom:2px;font-size:12px}
+.tn-scope .pf-stat-mini .tot{color:var(--ds-danger-text);font-weight:700;font-size:14px;font-variant-numeric:tabular-nums}
+.tn-scope .pf-stat-mini small{color:var(--ds-text-3);font-size:10px;display:block}
+
+/* ---------- Formulários rápidos das abas ---------- */
+.tn-scope .pf-form-row.with-add{
+  background:var(--ds-surface-2);border:1px solid var(--ds-border);
+  border-radius:var(--ds-radius-sm);padding:14px 16px;align-items:end;
+}
+.tn-scope .pf-form-row .tn-fg{margin-bottom:0}
+.tn-scope .pf-form-row .add-btn{align-self:end;height:40px}
+.tn-scope .pf-form-saida{background:var(--ds-danger-soft);border-color:rgba(239,68,68,.25);margin-top:10px}
+.tn-scope .pf-hint{
+  padding:10px 16px;font-size:11.5px;color:var(--ds-text-3);
+  border-bottom:1px solid var(--ds-border);
+  display:flex;align-items:center;gap:6px;
+}
+.tn-scope .pf-hint svg.lucide{width:12px;height:12px;flex-shrink:0}
+.tn-scope .pf-note{
+  font-size:11.5px;color:var(--ds-text-2);margin:8px 0 6px;padding:0 4px;line-height:1.55;
+}
+.tn-scope .pf-dup-confirm{
+  grid-column:span 4;background:var(--ds-warning-soft);
+  border:1px solid rgba(245,158,11,.3);padding:9px 12px;border-radius:8px;
+}
+.tn-scope .pf-dup-confirm label{
+  display:flex;align-items:center;gap:8px;cursor:pointer;
+  font-size:13px;color:var(--ds-warning-text);font-weight:500;margin:0;
+}
+.tn-scope .pf-span-2{grid-column:span 2}
+.tn-scope .pf-span-4{grid-column:span 4}
+
+/* ---------- Faixa de resumo (entradas) ---------- */
+.tn-scope .pf-sum-strip{
+  padding:13px 16px;display:flex;gap:18px;flex-wrap:wrap;
+  border-bottom:1px solid var(--ds-border);background:var(--ds-surface-2);
+}
+.tn-scope .pf-sum-strip .item{font-size:12px;color:var(--ds-text-2)}
+.tn-scope .pf-sum-strip strong{font-family:var(--ds-mono);font-size:12.5px;color:var(--ds-text)}
+.tn-scope .pf-sum-strip .neg strong{color:var(--ds-danger-text)}
+.tn-scope .pf-sum-strip .pos strong{color:var(--ds-success-text)}
+
+/* ---------- Linha pendente ---------- */
+.tn-scope .pf-row-pendente td{background:var(--ds-warning-soft)}
+.tn-scope .pf-row-pendente td:first-child{box-shadow:inset 3px 0 0 var(--ds-warning)}
+.tn-scope .pf-row-pendente:hover td{background:rgba(245,158,11,.2)}
+
+/* ---------- Filtros de tabela ---------- */
+.tn-scope .pf-filtro{
+  background:var(--ds-surface-2);
+  border:1px solid var(--ds-border);
+  border-radius:var(--ds-radius-sm);
+  padding:12px 14px;margin-bottom:12px;
+}
+.tn-scope .pf-filtro-row{display:flex;gap:10px;align-items:flex-end;flex-wrap:wrap}
+.tn-scope .pf-filtro-campo{display:flex;flex-direction:column;gap:4px;min-width:0}
+.tn-scope .pf-filtro-campo label{
+  font-size:10px;color:var(--ds-text-3);text-transform:uppercase;
+  font-weight:700;letter-spacing:.05em;
+}
+.tn-scope .pf-filtro-campo input,
+.tn-scope .pf-filtro-campo select{
+  height:34px;padding:0 10px;
+  border:1px solid var(--ds-border);border-radius:8px;
+  background:var(--ds-surface);color:var(--ds-text);
+  font-family:var(--ds-font);font-size:12.5px;
+  transition:border-color var(--ds-fast),box-shadow var(--ds-fast);
+}
+.tn-scope .pf-filtro-campo input:focus,
+.tn-scope .pf-filtro-campo select:focus{
+  border-color:var(--ds-primary);box-shadow:0 0 0 3px var(--ds-primary-ring);outline:none;
+}
+.tn-scope .pf-filtro-busca{flex:1;min-width:200px;position:relative}
+.tn-scope .pf-filtro-busca input{width:100%;padding-left:32px}
+.tn-scope .pf-filtro-ico{
+  position:absolute;left:10px;bottom:9px;color:var(--ds-text-3);
+  display:inline-flex;pointer-events:none;
+}
+.tn-scope .pf-filtro-ico svg.lucide{width:14px;height:14px}
+.tn-scope .pf-filtro-limpar{
+  height:34px;width:34px;padding:0;
+  border:1px solid var(--ds-border);border-radius:8px;
+  background:var(--ds-surface);color:var(--ds-text-2);
+  display:inline-flex;align-items:center;justify-content:center;
+  cursor:pointer;transition:all var(--ds-fast) var(--ds-ease);
+}
+.tn-scope .pf-filtro-limpar svg.lucide{width:14px;height:14px}
+.tn-scope .pf-filtro-limpar:hover{background:var(--ds-danger);color:#fff;border-color:var(--ds-danger)}
+.tn-scope .pf-filtro-resultado{margin-top:8px;font-size:12px;color:var(--ds-text-2);display:none}
+.tn-scope .pf-filtro-resultado.ativo{display:block}
+.tn-scope .pf-filtro-resultado strong{color:var(--ds-text)}
+.tn-scope .pf-linha.pf-oculta{display:none!important}
+.tn-scope tr.pf-global td{background:var(--ds-primary-soft)}
+@media (max-width:768px){
+  .tn-scope .pf-filtro-row{flex-direction:column;align-items:stretch}
+  .tn-scope .pf-filtro-campo{width:100%}
+  .tn-scope .pf-filtro-campo input,.tn-scope .pf-filtro-campo select{width:100%!important}
+}
+
+/* ---------- Miudezas ---------- */
+.tn-scope .ds-page-actions select.tn-input{min-width:130px}
+.tn-scope .ds-page-actions input[type=number].tn-input{width:90px}
+.tn-scope .pf-w-sm{width:90px}
+.tn-scope .pf-inline-form{display:inline}
+.tn-scope .pf-actions.inline{display:inline-flex}
+.tn-scope .pf-empty-cell{text-align:center;padding:26px 14px!important;color:var(--ds-text-3)}
+.tn-scope .pf-icon-btn.green{background:var(--ds-success-soft);color:var(--ds-success-text);border-color:transparent}
+.tn-scope .pf-icon-btn.green:hover{background:var(--ds-success);color:#fff}
+.tn-scope .pf-icon-btn.red:hover{background:var(--ds-danger);color:#fff;border-color:var(--ds-danger)}
+.tn-scope .pf-icon-btn.wide{width:auto;padding:0 10px;gap:5px;font-size:12px;font-weight:600}
+.tn-scope .pf-icon-btn svg.lucide{width:14px;height:14px}
+.tn-scope .pf-locked{
+  display:inline-flex;align-items:center;justify-content:center;
+  width:26px;height:26px;color:var(--ds-text-3);
+  opacity:1;pointer-events:auto;filter:none;
+}
+.tn-scope .pf-locked svg.lucide{width:13px;height:13px}
+.tn-scope .pf-modal-actions.plain{border-top:none;padding-top:14px}
+.tn-scope .pf-actions-right{margin-left:auto;display:flex;gap:8px}
+.tn-scope .pf-tab-btn svg.lucide{width:14px;height:14px}
+
+/* ---------- Modais (campos .field) ---------- */
+.tn-scope .pf-modal h3{
+  margin:0 0 14px;font-size:15.5px;font-weight:600;color:var(--ds-text);
+  display:flex;align-items:center;gap:8px;
+}
+.tn-scope .pf-modal h3 svg.lucide{width:17px;height:17px;color:var(--ds-primary)}
+.tn-scope .pf-modal .field{display:flex;flex-direction:column;gap:6px;margin-bottom:13px}
+.tn-scope .pf-modal .field label{font-size:12.5px;font-weight:600;color:var(--ds-text)}
+.tn-scope .pf-modal .field input[type=color]{
+  width:80px;height:40px;padding:3px;cursor:pointer;
+  border:1px solid var(--ds-border);border-radius:8px;background:var(--ds-surface);
+}
+.tn-scope .pf-modal .field.inline{flex-direction:row;align-items:center;gap:10px}
+.tn-scope .pf-modal .field.inline label{margin:0}
+.tn-scope .pf-modal p{color:var(--ds-text-2);font-size:13px;margin:0 0 16px;line-height:1.5}
+.tn-scope .pf-modal p strong{color:var(--ds-text)}

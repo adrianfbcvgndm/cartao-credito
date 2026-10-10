@@ -1,0 +1,138 @@
+/* ============================================================
+   DASHBOARD FINANCEIRO  (aba ?tab=dashboard)
+   ------------------------------------------------------------
+   Antes ficava embutido em <style> dentro do dashboard.php.
+   Movido para módulo. Mesmos nomes de classe de antes — só o
+   visual foi polido e agora usa os tokens do design system
+   (--tn-card / --tn-card-sub passaram a existir no variables.css).
+   ============================================================ */
+
+.tn-scope .dash-page { padding: 0 4px; }
+
+.tn-scope .dash-header {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-bottom: 18px; flex-wrap: wrap; gap: 12px;
+}
+.tn-scope .dash-header h1 {
+    font-size: 20px; margin: 0; color: var(--tn-text);
+    font-weight: 600; letter-spacing: -.3px;
+    display: flex; align-items: center; gap: 8px;
+}
+.tn-scope .dash-header .sub { font-size: 13px; color: var(--tn-muted2); margin-top: 3px; }
+
+/* ---- Grade de KPIs ---- */
+.tn-scope .dash-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 12px; margin-bottom: 18px;
+}
+.tn-scope .dash-kpi {
+    background: var(--tn-card);
+    border: 1px solid var(--tn-border);
+    border-radius: 10px;
+    padding: 16px 18px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: var(--tn-shadow);
+    transition: transform .15s ease, box-shadow .15s ease;
+}
+.tn-scope .dash-kpi:hover { transform: translateY(-2px); box-shadow: var(--tn-shadow-lg); }
+.tn-scope .dash-kpi .kpi-icon {
+    position: absolute; top: 14px; right: 14px;
+    font-size: 22px; opacity: .22; line-height: 1;
+}
+.tn-scope .dash-kpi .kpi-label {
+    font-size: 10px; color: var(--tn-muted);
+    text-transform: uppercase; letter-spacing: .7px;
+    font-weight: 600; margin-bottom: 8px;
+    padding-right: 26px;
+}
+.tn-scope .dash-kpi .kpi-value {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 22px; font-weight: 600;
+    color: var(--tn-text); line-height: 1.2;
+    font-variant-numeric: tabular-nums;
+}
+.tn-scope .dash-kpi .kpi-value .currency { font-size: 13px; opacity: .6; margin-right: 2px; }
+.tn-scope .dash-kpi .kpi-var {
+    font-size: 12px; margin-top: 8px; font-weight: 600;
+    display: flex; align-items: center; gap: 4px; flex-wrap: wrap;
+}
+.tn-scope .dash-kpi .kpi-var .vs { color: var(--tn-muted); font-weight: 400; font-size: 11px; margin-left: 4px; }
+
+/* faixa colorida à esquerda de cada KPI */
+.tn-scope .dash-kpi.kpi-receita { border-left: 4px solid var(--tn-green); }
+.tn-scope .dash-kpi.kpi-despesa { border-left: 4px solid var(--tn-red); }
+.tn-scope .dash-kpi.kpi-lucro   { border-left: 4px solid var(--tn-accent); }
+.tn-scope .dash-kpi.kpi-margem  { border-left: 4px solid var(--tn-purple); }
+.tn-scope .dash-kpi.kpi-inad    { border-left: 4px solid var(--tn-amber); }
+.tn-scope .dash-kpi.kpi-reserva { border-left: 4px solid var(--tn-teal); }
+.tn-scope .dash-kpi.kpi-caixa   { border-left: 4px solid #84cc16; }
+.tn-scope .dash-kpi.kpi-ticket  { border-left: 4px solid var(--tn-pink); }
+
+/* ---- Linhas de gráficos/cards ---- */
+.tn-scope .dash-row {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 14px; margin-bottom: 18px;
+}
+@media (max-width: 900px) { .tn-scope .dash-row { grid-template-columns: 1fr; } }
+
+.tn-scope .dash-card {
+    background: var(--tn-card);
+    border: 1px solid var(--tn-border);
+    border-radius: 10px; padding: 16px 18px;
+    box-shadow: var(--tn-shadow);
+}
+.tn-scope .dash-card h3 {
+    font-size: 13px; margin: 0 0 14px 0;
+    color: var(--tn-text); font-weight: 600;
+    display: flex; align-items: center; gap: 7px;
+}
+.tn-scope .dash-card .chart-wrap { height: 280px; position: relative; }
+
+/* ---- Top 5 despesas ---- */
+.tn-scope .dash-top-list { list-style: none; padding: 0; margin: 0; }
+.tn-scope .dash-top-list li {
+    display: flex; align-items: center; gap: 10px;
+    padding: 9px 0; border-bottom: 1px solid var(--tn-border);
+    font-size: 13px;
+}
+.tn-scope .dash-top-list li:last-child { border-bottom: none; }
+.tn-scope .dash-top-list .rank {
+    background: var(--tn-card-sub);
+    width: 24px; height: 24px; flex: 0 0 24px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 700; font-size: 11px;
+    color: var(--tn-muted2);
+}
+.tn-scope .dash-top-list .nome {
+    flex: 1; overflow: hidden;
+    text-overflow: ellipsis; white-space: nowrap;
+    color: var(--tn-text);
+}
+.tn-scope .dash-top-list .valor {
+    font-family: 'IBM Plex Mono', monospace;
+    font-weight: 600; color: var(--tn-red);
+    font-variant-numeric: tabular-nums;
+}
+.tn-scope .dash-top-list .tipo-badge {
+    font-size: 10px; padding: 2px 7px; border-radius: 4px;
+    background: var(--tn-card-sub); color: var(--tn-muted2);
+    text-transform: uppercase; letter-spacing: .4px;
+}
+
+/* ---- Seletor de período ---- */
+.tn-scope .dash-period-pick {
+    display: flex; gap: 8px; align-items: center;
+}
+.tn-scope .dash-period-pick input[type="month"] {
+    padding: 7px 11px; border: 1px solid var(--tn-border2);
+    border-radius: 6px; background: var(--tn-bg3);
+    color: var(--tn-text); font-size: 13px; font-family: inherit;
+}
+.tn-scope .dash-period-pick input[type="month"]:focus {
+    outline: none; border-color: var(--tn-accent);
+    box-shadow: 0 0 0 3px rgba(59,130,246,.1);
+}

@@ -1,0 +1,167 @@
+/* ============================================================
+   RP ENTERPRISE · MAPA DE CLASSES LEGADAS
+   Reestiliza classes específicas de páginas antigas para o novo
+   DS enquanto o markup é migrado. Garante que NENHUMA tela
+   mantenha o visual antigo, mesmo antes do redesign fino.
+   ============================================================ */
+
+/* ---------- DASHBOARD (dash-*, kpi-*) ---------- */
+.tn-scope .dash-page{padding:0}
+.tn-scope .dash-header{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;margin-bottom:18px}
+.tn-scope .dash-grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));margin-bottom:18px}
+.tn-scope .dash-row{display:grid;gap:16px;grid-template-columns:1.6fr 1fr;margin-bottom:16px}
+@media (max-width:1000px){.tn-scope .dash-row{grid-template-columns:1fr}}
+.tn-scope .dash-card{
+  background:var(--ds-surface);border:1px solid var(--ds-border);
+  border-radius:var(--ds-radius);box-shadow:var(--ds-shadow-xs);padding:20px;
+  transition:box-shadow var(--ds-normal),transform var(--ds-normal);
+}
+.tn-scope .dash-card:hover{box-shadow:var(--ds-shadow-md)}
+.tn-scope .dash-card .ttl{font-size:13.5px;font-weight:600;color:var(--ds-text);display:flex;align-items:center;gap:8px;margin-bottom:14px}
+.tn-scope .chart-wrap{position:relative;min-height:220px}
+.tn-scope .dash-top-list{list-style:none;margin:0;padding:0}
+.tn-scope .dash-top-list li{display:flex;align-items:center;gap:10px;padding:9px 0;border-bottom:1px solid var(--ds-border);font-size:13px}
+.tn-scope .dash-top-list li:last-child{border-bottom:0}
+.tn-scope .dash-top-list .rank{
+  width:24px;height:24px;flex-shrink:0;border-radius:7px;
+  background:var(--ds-surface-3);color:var(--ds-text-2);
+  font-size:11.5px;font-weight:700;display:flex;align-items:center;justify-content:center;
+}
+.tn-scope .dash-top-list li:nth-child(1) .rank{background:var(--ds-warning-soft);color:var(--ds-warning-text)}
+.tn-scope .dash-top-list .nome{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.tn-scope .dash-top-list .val{font-weight:600;font-variant-numeric:tabular-nums}
+.tn-scope .dash-period-pick{display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+
+/* ---------- PLANILHA FINANCEIRA (pf-*) ---------- */
+.tn-scope .pf-tabs-bar{
+  display:flex;gap:2px;border-bottom:1px solid var(--ds-border);
+  margin-bottom:16px;overflow-x:auto;
+}
+.tn-scope .pf-tab-btn{
+  display:inline-flex;align-items:center;gap:7px;
+  padding:10px 15px;margin-bottom:-1px;
+  border:0;border-bottom:2px solid transparent;background:transparent;
+  color:var(--ds-text-2);font-family:var(--ds-font);font-size:13px;font-weight:500;
+  cursor:pointer;white-space:nowrap;border-radius:8px 8px 0 0;
+  transition:color var(--ds-fast),background var(--ds-fast),border-color var(--ds-fast);
+}
+.tn-scope .pf-tab-btn:hover{color:var(--ds-text);background:var(--ds-surface-2)}
+.tn-scope .pf-tab-btn.active{color:var(--ds-primary);border-bottom-color:var(--ds-primary);font-weight:600}
+.tn-scope .pf-tab-content{display:none}
+.tn-scope .pf-tab-content.active{display:block;animation:ds-fade-up var(--ds-normal) var(--ds-ease) both}
+.tn-scope .pf-icon-btn{
+  width:30px;height:30px;padding:0;border:1px solid var(--ds-border);border-radius:8px;
+  background:var(--ds-surface);color:var(--ds-text-2);cursor:pointer;
+  display:inline-flex;align-items:center;justify-content:center;font-size:13px;
+  transition:all var(--ds-fast) var(--ds-ease);
+}
+.tn-scope .pf-icon-btn:hover{border-color:var(--ds-primary);color:var(--ds-primary);background:var(--ds-primary-soft)}
+.tn-scope .pf-filtro-campo{display:flex;flex-direction:column;gap:5px;min-width:130px}
+.tn-scope .pf-form-row{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));margin-bottom:12px}
+.tn-scope .pf-actions{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.tn-scope .pf-export-bar{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin:12px 0}
+.tn-scope .pf-cat-tag,.tn-scope .pf-fp-tag,.tn-scope .tipo-badge,.tn-scope .auto-tag{
+  display:inline-flex;align-items:center;gap:5px;height:21px;padding:0 8px;
+  border-radius:var(--ds-radius-full);font-size:10.5px;font-weight:600;
+  background:var(--ds-surface-3);color:var(--ds-text-2);white-space:nowrap;
+}
+.tn-scope .pf-total-row td{background:var(--ds-surface-2);font-weight:700}
+.tn-scope .pf-locked{opacity:.55;pointer-events:none;filter:saturate(.5)}
+.tn-scope .pf-config-grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+.tn-scope .pf-config-panel{
+  background:var(--ds-surface);border:1px solid var(--ds-border);
+  border-radius:var(--ds-radius);padding:18px;box-shadow:var(--ds-shadow-xs);
+}
+/* modal legado da planilha ganha o visual do modal novo */
+.tn-scope .pf-modal-ovl{
+  position:fixed;inset:0;z-index:900;background:rgba(15,23,42,.45);
+  backdrop-filter:blur(6px);display:none;align-items:center;justify-content:center;padding:24px;
+}
+.tn-scope .pf-modal-ovl.show,.tn-scope .pf-modal-ovl[style*="flex"]{display:flex}
+.tn-scope .pf-modal{
+  width:100%;max-width:560px;max-height:calc(100vh - 64px);overflow-y:auto;
+  background:var(--ds-surface);border:1px solid var(--ds-border);
+  border-radius:var(--ds-radius-lg);box-shadow:var(--ds-shadow-xl);
+  padding:22px;animation:ds-scale-in var(--ds-normal) var(--ds-ease) both;
+}
+.tn-scope .pf-modal-actions{display:flex;justify-content:flex-end;gap:9px;margin-top:18px;padding-top:14px;border-top:1px solid var(--ds-border)}
+.tn-scope .pf-mini-pay{background:var(--ds-surface-2);border:1px solid var(--ds-border);border-radius:10px;padding:10px 12px;margin:6px 0}
+.tn-scope .pf-mini-pay-row{display:flex;align-items:center;justify-content:space-between;gap:10px;font-size:12.5px}
+
+/* ---------- CONFIGURAÇÕES (cfg-*) ---------- */
+.tn-scope .cfg-grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+.tn-scope .cfg-actions{display:flex;gap:9px;align-items:center;flex-wrap:wrap;margin-top:16px}
+.tn-scope .cfg-textarea{
+  width:100%;min-height:110px;padding:11px 13px;resize:vertical;
+  border:1px solid var(--ds-border);border-radius:10px;
+  background:var(--ds-surface);color:var(--ds-text);
+  font-family:var(--ds-mono);font-size:12.5px;line-height:1.55;
+  transition:border-color var(--ds-fast),box-shadow var(--ds-fast);
+}
+.tn-scope .cfg-textarea:focus{border-color:var(--ds-primary);box-shadow:0 0 0 3px var(--ds-primary-ring);outline:none}
+.tn-scope .cfg-vars{display:flex;gap:6px;flex-wrap:wrap;margin:8px 0}
+.tn-scope .cfg-vars code{
+  background:var(--ds-primary-soft);color:var(--ds-primary);
+  padding:2px 8px;border-radius:6px;font-size:11.5px;cursor:pointer;
+  transition:background var(--ds-fast);
+}
+.tn-scope .cfg-vars code:hover{background:var(--ds-primary);color:#fff}
+.tn-scope .cfg-mp-sub{margin-left:14px;padding-left:14px;border-left:2px solid var(--ds-border)}
+
+/* ---------- GERENCIAMENTO DE CLIENTES (gc-*) ---------- */
+.tn-scope .gc-action-card{
+  display:flex;flex-direction:column;align-items:center;gap:8px;
+  background:var(--ds-surface);border:1px solid var(--ds-border);
+  border-radius:var(--ds-radius);padding:18px 14px;text-align:center;
+  cursor:pointer;box-shadow:var(--ds-shadow-xs);
+  transition:transform var(--ds-normal),box-shadow var(--ds-normal),border-color var(--ds-normal);
+}
+.tn-scope .gc-action-card:hover{transform:translateY(-3px);box-shadow:var(--ds-shadow-md);border-color:var(--ds-primary-ring)}
+.tn-scope .gc-action-ico{
+  width:44px;height:44px;border-radius:11px;
+  background:var(--ds-primary-soft);color:var(--ds-primary);
+  display:flex;align-items:center;justify-content:center;font-size:19px;
+}
+.tn-scope .gc-action-lbl{font-size:12.5px;font-weight:600;color:var(--ds-text)}
+
+/* ---------- FATURAS DO CLIENTE (fc-*) ---------- */
+.tn-scope .fc-tab{
+  display:inline-flex;align-items:center;gap:7px;padding:9px 14px;
+  border:0;border-bottom:2px solid transparent;background:transparent;
+  color:var(--ds-text-2);font-family:var(--ds-font);font-size:13px;font-weight:500;
+  cursor:pointer;border-radius:8px 8px 0 0;
+  transition:color var(--ds-fast),background var(--ds-fast),border-color var(--ds-fast);
+}
+.tn-scope .fc-tab:hover{color:var(--ds-text);background:var(--ds-surface-2)}
+.tn-scope .fc-tab.active{color:var(--ds-primary);border-bottom-color:var(--ds-primary);font-weight:600}
+
+/* ---------- UTILITÁRIOS DE COR LEGADOS ---------- */
+.tn-scope .green{color:var(--ds-success-text)}
+.tn-scope .red{color:var(--ds-danger-text)}
+.tn-scope .amber,.tn-scope .yellow{color:var(--ds-warning-text)}
+.tn-scope .blue{color:var(--ds-info-text)}
+.tn-scope td .currency,.tn-scope .valor{font-variant-numeric:tabular-nums;font-weight:600}
+
+/* Esconde a navbar antiga caso alguma página ainda a renderize */
+.tn-scope .tn-nav-bar{display:none!important}
+
+/* ---------- Cards de forma de pagamento clicáveis (Planilha) ---------- */
+.tn-scope .pf-mini-clickavel{
+  cursor:pointer;user-select:none;
+  transition:transform var(--ds-fast) var(--ds-ease),box-shadow var(--ds-fast) var(--ds-ease),border-color var(--ds-fast) var(--ds-ease);
+}
+.tn-scope .pf-mini-clickavel:hover{
+  transform:translateY(-2px);
+  box-shadow:var(--ds-shadow-md);
+  border-color:var(--ds-primary-ring);
+}
+.tn-scope .pf-mini-clickavel:focus-visible{outline:2px solid var(--ds-primary);outline-offset:2px}
+.tn-scope .pf-mini-pay.active{
+  border-color:var(--ds-primary);
+  box-shadow:0 0 0 3px var(--ds-primary-ring),var(--ds-shadow-sm);
+}
+.tn-scope .pf-filtro-fp{
+  display:flex;align-items:center;gap:10px;flex-wrap:wrap;
+  margin:0 0 12px;
+  animation:ds-fade-up var(--ds-normal) var(--ds-ease) both;
+}

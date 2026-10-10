@@ -1,0 +1,70 @@
+/* ============================================================
+   RP ENTERPRISE · TOASTS
+   Canto superior direito, slide-in, auto-close com barra de
+   progresso, variantes semânticas. Criados via ds-toast.js.
+   ============================================================ */
+
+.ds-toast-region{
+  position:fixed;top:16px;right:16px;z-index:1000;
+  display:flex;flex-direction:column;gap:10px;
+  width:min(360px,calc(100vw - 32px));
+  pointer-events:none;
+  font-family:'Inter',-apple-system,sans-serif;
+}
+.ds-toast{
+  pointer-events:auto;
+  display:flex;align-items:flex-start;gap:11px;
+  background:var(--ds-surface,#fff);
+  border:1px solid var(--ds-border,#E5E7EB);
+  border-radius:12px;
+  box-shadow:0 12px 32px rgba(15,23,42,.14),0 4px 8px rgba(15,23,42,.06);
+  padding:13px 14px;
+  position:relative;overflow:hidden;
+  animation:ds-toast-in .3s cubic-bezier(.21,1.02,.73,1) both;
+}
+html[data-rp-theme="dark"] .ds-toast{
+  background:#161F31;border-color:rgba(148,163,184,.16);color:#F1F5F9;
+}
+.ds-toast.closing{animation:ds-toast-out .25s ease both}
+
+.ds-toast .ds-toast-ico{
+  width:30px;height:30px;flex-shrink:0;border-radius:8px;
+  display:flex;align-items:center;justify-content:center;
+}
+.ds-toast .ds-toast-ico svg{width:16px;height:16px}
+.ds-toast-success .ds-toast-ico{background:rgba(34,197,94,.13);color:#15803D}
+.ds-toast-danger  .ds-toast-ico{background:rgba(239,68,68,.12);color:#B91C1C}
+.ds-toast-warning .ds-toast-ico{background:rgba(245,158,11,.14);color:#B45309}
+.ds-toast-info    .ds-toast-ico{background:rgba(14,165,233,.13);color:#0369A1}
+html[data-rp-theme="dark"] .ds-toast-success .ds-toast-ico{color:#4ADE80}
+html[data-rp-theme="dark"] .ds-toast-danger  .ds-toast-ico{color:#F87171}
+html[data-rp-theme="dark"] .ds-toast-warning .ds-toast-ico{color:#FBBF24}
+html[data-rp-theme="dark"] .ds-toast-info    .ds-toast-ico{color:#38BDF8}
+
+.ds-toast .ds-toast-body{flex:1;min-width:0;font-size:13px;line-height:1.45}
+.ds-toast .ds-toast-body b{display:block;font-weight:600;font-size:13px}
+.ds-toast .ds-toast-body span{color:#6B7280;font-size:12.5px}
+html[data-rp-theme="dark"] .ds-toast .ds-toast-body span{color:#94A3B8}
+
+.ds-toast .ds-toast-close{
+  width:24px;height:24px;flex-shrink:0;border:0;border-radius:6px;
+  background:transparent;color:#9CA3AF;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+}
+.ds-toast .ds-toast-close:hover{background:rgba(15,23,42,.06);color:#111827}
+html[data-rp-theme="dark"] .ds-toast .ds-toast-close:hover{background:rgba(148,163,184,.15);color:#F1F5F9}
+
+/* Barra de progresso do auto-close */
+.ds-toast .ds-toast-progress{
+  position:absolute;left:0;bottom:0;height:2.5px;width:100%;
+  transform-origin:left;
+  animation:ds-toast-progress linear forwards;
+}
+.ds-toast-success .ds-toast-progress{background:#22C55E}
+.ds-toast-danger  .ds-toast-progress{background:#EF4444}
+.ds-toast-warning .ds-toast-progress{background:#F59E0B}
+.ds-toast-info    .ds-toast-progress{background:#0EA5E9}
+
+@keyframes ds-toast-in{from{opacity:0;transform:translateX(24px) scale(.97)}to{opacity:1;transform:none}}
+@keyframes ds-toast-out{from{opacity:1;transform:none}to{opacity:0;transform:translateX(24px) scale(.97)}}
+@keyframes ds-toast-progress{from{transform:scaleX(1)}to{transform:scaleX(0)}}

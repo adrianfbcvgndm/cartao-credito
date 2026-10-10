@@ -1,0 +1,33 @@
+/* ============================================================
+   TABELAS
+   ============================================================ */
+.tn-scope .tn-table-wrap{overflow:hidden}
+.tn-scope .tn-table-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
+.tn-scope .tn-table{width:100%;border-collapse:collapse;font-size:13px}
+.tn-scope .tn-table thead th{
+  background:var(--tn-bg3);
+  padding:10px 14px;text-align:left;
+  font-weight:500;font-size:10px;
+  color:var(--tn-muted);
+  text-transform:uppercase;letter-spacing:.5px;
+  border-bottom:1px solid var(--tn-border2);
+  white-space:nowrap;
+}
+.tn-scope .tn-table th.r,.tn-scope .tn-table td.r{text-align:right}
+.tn-scope .tn-table th.c,.tn-scope .tn-table td.c{text-align:center}
+.tn-scope .tn-table tbody tr{
+  border-bottom:1px solid var(--tn-border);
+  transition:background .1s;
+}
+.tn-scope .tn-table tbody tr:last-child{border-bottom:none}
+.tn-scope .tn-table tbody tr:hover{background:var(--tn-bg3)}
+.tn-scope .tn-table td{padding:10px 14px;color:var(--tn-text);vertical-align:middle}
+.tn-scope .tn-table td.mono{font-family:'IBM Plex Mono',monospace}
+.tn-scope .tn-table td.muted{color:var(--tn-muted2)}
+.tn-scope .tn-table tbody tr.hl-red{border-left:3px solid var(--tn-red)}
+.tn-scope .tn-table tbody tr.hl-amber{border-left:3px solid var(--tn-amber)}
+.tn-scope .tn-table tbody tr.hl-green{border-left:3px solid var(--tn-green)}
+
+.tn-scope .tn-money{font-family:'IBM Plex Mono',monospace;font-weight:500}
+.tn-scope .tn-money.pos{color:var(--tn-green)}
+.tn-scope .tn-money.neg{color:var(--tn-red)}

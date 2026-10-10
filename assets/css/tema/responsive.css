@@ -1,0 +1,17 @@
+/* ============================================================
+   FADE / PRINT / RESPONSIVO
+   ============================================================ */
+.tn-scope .tn-fade-in{animation:tnFadeIn .35s ease forwards}
+@keyframes tnFadeIn{
+  from{opacity:0;transform:translateY(8px)}
+  to{opacity:1;transform:translateY(0)}
+}
+@media print{
+  .tn-nav-bar{display:none!important}
+  .tn-scope{background:#fff!important;color:#000!important}
+}
+@media(max-width:700px){
+  .tn-scope{padding:14px 12px;margin:8px;border-radius:0}
+  .tn-nav-link{padding:7px 11px;font-size:12px}
+  .tn-scope .tn-page-title{flex-direction:column;align-items:stretch}
+}

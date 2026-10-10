@@ -1,0 +1,153 @@
+/* ============================================================
+   RP ENTERPRISE · FORMULÁRIOS
+   Inputs com ícone, selects, textarea, switch, checkbox, radio,
+   validação, ajuda e fieldsets. Classes legadas: tn-input,
+   tn-fg (form-group), tn-fl (form-label), pg-field, pg-input.
+   ============================================================ */
+
+/* ---------- GRUPO / RÓTULO ---------- */
+.tn-scope .tn-fg,.tn-scope .ds-field,.tn-scope .pg-field{
+  display:flex;flex-direction:column;gap:6px;margin-bottom:14px;min-width:0;
+}
+.tn-scope .tn-fl,.tn-scope .ds-label,.tn-scope .pg-field-label,.tn-scope .lbl{
+  font-size:12.5px;font-weight:600;color:var(--ds-text);
+  display:flex;align-items:center;gap:6px;letter-spacing:.01em;
+}
+.tn-scope .tn-fl .req,.tn-scope .ds-label .req{color:var(--ds-danger)}
+.tn-scope .ds-help{font-size:11.5px;color:var(--ds-text-3);line-height:1.45}
+
+/* ---------- INPUT / SELECT / TEXTAREA ---------- */
+.tn-scope .tn-input,
+.tn-scope .ds-input,
+.tn-scope .pg-input,
+.tn-scope input.tn-input,
+.tn-scope select.tn-input,
+.tn-scope textarea.tn-input{
+  width:100%;height:40px;
+  padding:0 13px;
+  border:1px solid var(--ds-border);
+  border-radius:10px;
+  background:var(--ds-surface);
+  color:var(--ds-text);
+  font-family:var(--ds-font);font-size:13.5px;
+  box-shadow:var(--ds-shadow-xs);
+  transition:border-color var(--ds-fast) var(--ds-ease),box-shadow var(--ds-fast) var(--ds-ease);
+  appearance:none;-webkit-appearance:none;
+}
+.tn-scope textarea.tn-input,.tn-scope textarea.ds-input,.tn-scope textarea.pg-input{
+  height:auto;min-height:96px;padding:11px 13px;resize:vertical;line-height:1.5;
+}
+.tn-scope .tn-input::placeholder,.tn-scope .ds-input::placeholder{color:var(--ds-text-3)}
+.tn-scope .tn-input:hover,.tn-scope .ds-input:hover,.tn-scope .pg-input:hover{border-color:var(--ds-border-strong)}
+.tn-scope .tn-input:focus,.tn-scope .ds-input:focus,.tn-scope .pg-input:focus{
+  border-color:var(--ds-primary);
+  box-shadow:0 0 0 3px var(--ds-primary-ring);
+  outline:none;
+}
+.tn-scope .tn-input:disabled,.tn-scope .ds-input:disabled{
+  background:var(--ds-surface-3);color:var(--ds-text-3);cursor:not-allowed;box-shadow:none;
+}
+
+/* Select com seta customizada */
+.tn-scope select.tn-input,.tn-scope select.ds-input,.tn-scope select.pg-input{
+  background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%236B7280' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;background-position:right 12px center;
+  padding-right:36px;cursor:pointer;
+}
+
+/* Input com ícone à esquerda */
+.tn-scope .ds-input-icon{position:relative}
+.tn-scope .ds-input-icon>svg.lucide{
+  position:absolute;left:12px;top:50%;transform:translateY(-50%);
+  width:15px;height:15px;color:var(--ds-text-3);pointer-events:none;
+}
+.tn-scope .ds-input-icon .tn-input,.tn-scope .ds-input-icon .ds-input{padding-left:36px}
+
+/* Validação */
+.tn-scope .is-invalid .tn-input,.tn-scope .tn-input.is-invalid,.tn-scope .ds-input.is-invalid{
+  border-color:var(--ds-danger);box-shadow:0 0 0 3px var(--ds-danger-soft);
+}
+.tn-scope .is-valid .tn-input,.tn-scope .tn-input.is-valid,.tn-scope .ds-input.is-valid{
+  border-color:var(--ds-success);box-shadow:0 0 0 3px var(--ds-success-soft);
+}
+.tn-scope .ds-error-msg{font-size:11.5px;color:var(--ds-danger-text);display:flex;align-items:center;gap:5px}
+.tn-scope .ds-error-msg svg.lucide{width:12px;height:12px}
+
+/* Linha de campos */
+.tn-scope .ds-form-row{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}
+
+/* ---------- SWITCH ---------- */
+.tn-scope .ds-switch{
+  position:relative;display:inline-flex;align-items:center;gap:10px;
+  cursor:pointer;user-select:none;font-size:13px;font-weight:500;color:var(--ds-text);
+}
+.tn-scope .ds-switch input{position:absolute;opacity:0;width:0;height:0}
+.tn-scope .ds-switch .ds-switch-track{
+  width:40px;height:22px;flex-shrink:0;
+  border-radius:var(--ds-radius-full);
+  background:var(--ds-border-strong);
+  position:relative;
+  transition:background var(--ds-normal) var(--ds-ease);
+}
+.tn-scope .ds-switch .ds-switch-track::after{
+  content:'';position:absolute;top:2px;left:2px;width:18px;height:18px;
+  border-radius:50%;background:#fff;
+  box-shadow:0 1px 3px rgba(15,23,42,.3);
+  transition:transform var(--ds-normal) var(--ds-ease);
+}
+.tn-scope .ds-switch input:checked+.ds-switch-track{background:var(--ds-primary)}
+.tn-scope .ds-switch input:checked+.ds-switch-track::after{transform:translateX(18px)}
+.tn-scope .ds-switch input:focus-visible+.ds-switch-track{box-shadow:0 0 0 3px var(--ds-primary-ring)}
+.tn-scope .ds-switch input:disabled+.ds-switch-track{opacity:.5;cursor:not-allowed}
+
+/* ---------- CHECKBOX / RADIO ---------- */
+.tn-scope input[type=checkbox].ds-check,
+.tn-scope .tn-scope input[type=checkbox],
+.tn-scope input[type=radio].ds-radio{
+  appearance:none;-webkit-appearance:none;
+  width:18px;height:18px;flex-shrink:0;
+  border:1.5px solid var(--ds-border-strong);
+  border-radius:5px;background:var(--ds-surface);
+  cursor:pointer;position:relative;vertical-align:-4px;
+  transition:background var(--ds-fast),border-color var(--ds-fast),box-shadow var(--ds-fast);
+}
+.tn-scope input[type=radio].ds-radio{border-radius:50%}
+.tn-scope input[type=checkbox].ds-check:hover,
+.tn-scope input[type=radio].ds-radio:hover{border-color:var(--ds-primary)}
+.tn-scope input[type=checkbox].ds-check:checked,
+.tn-scope input[type=radio].ds-radio:checked{background:var(--ds-primary);border-color:var(--ds-primary)}
+.tn-scope input[type=checkbox].ds-check:checked::after{
+  content:'';position:absolute;left:5px;top:1.5px;width:5px;height:9px;
+  border:solid #fff;border-width:0 2px 2px 0;transform:rotate(45deg);
+}
+.tn-scope input[type=radio].ds-radio:checked::after{
+  content:'';position:absolute;inset:4px;border-radius:50%;background:#fff;
+}
+.tn-scope input[type=checkbox].ds-check:focus-visible,
+.tn-scope input[type=radio].ds-radio:focus-visible{box-shadow:0 0 0 3px var(--ds-primary-ring);outline:none}
+.tn-scope .ds-check-label{
+  display:inline-flex;align-items:center;gap:9px;cursor:pointer;
+  font-size:13px;color:var(--ds-text);font-weight:500;
+}
+
+/* ---------- FIELDSET / CARTÃO DE FORMULÁRIO ---------- */
+.tn-scope .ds-form-section{
+  background:var(--ds-surface);
+  border:1px solid var(--ds-border);
+  border-radius:var(--ds-radius);
+  box-shadow:var(--ds-shadow-xs);
+  margin-bottom:18px;overflow:hidden;
+}
+.tn-scope .ds-form-section>.ds-form-section-head{
+  padding:15px 20px;border-bottom:1px solid var(--ds-border);
+  display:flex;align-items:center;gap:10px;
+}
+.tn-scope .ds-form-section>.ds-form-section-head svg.lucide{color:var(--ds-primary)}
+.tn-scope .ds-form-section>.ds-form-section-head b{font-size:14px;font-weight:600}
+.tn-scope .ds-form-section>.ds-form-section-head small{display:block;font-weight:400;color:var(--ds-text-2);font-size:12px;margin-top:1px}
+.tn-scope .ds-form-section>.ds-form-section-body{padding:20px}
+.tn-scope .ds-form-section>.ds-form-section-foot{
+  padding:13px 20px;border-top:1px solid var(--ds-border);
+  background:var(--ds-surface-2);
+  display:flex;justify-content:flex-end;gap:8px;
+}

@@ -1,0 +1,32 @@
+/* ============================================================
+   BOTOES
+   ============================================================ */
+.tn-scope .tn-btn{
+  display:inline-flex;align-items:center;gap:6px;
+  padding:7px 14px;border-radius:6px;
+  border:1px solid var(--tn-border2);
+  background:transparent;color:var(--tn-text);
+  font-family:inherit;font-size:13px;
+  cursor:pointer;transition:all .15s;
+  white-space:nowrap;text-decoration:none;
+  font-weight:500;
+}
+.tn-scope .tn-btn:hover{background:var(--tn-bg3);text-decoration:none}
+.tn-scope .tn-btn:disabled{opacity:.4;cursor:not-allowed}
+.tn-scope .tn-btn-primary{background:var(--tn-accent);border-color:var(--tn-accent);color:#fff}
+.tn-scope .tn-btn-primary:hover{background:var(--tn-accent2);border-color:var(--tn-accent2);color:#fff}
+.tn-scope .tn-btn-green{background:rgba(34,197,94,.15);border-color:rgba(34,197,94,.3);color:var(--tn-green)}
+.tn-scope .tn-btn-amber{background:rgba(245,158,11,.15);border-color:rgba(245,158,11,.3);color:var(--tn-amber)}
+.tn-scope .tn-btn-red{background:rgba(239,68,68,.15);border-color:rgba(239,68,68,.3);color:var(--tn-red)}
+.tn-scope .tn-btn-outline{
+  background:transparent;
+  border:1px solid var(--tn-border2);
+  color:var(--tn-muted2);
+  padding:5px 11px;border-radius:6px;
+  font-size:12px;font-weight:500;
+  cursor:pointer;transition:all .15s;
+  display:inline-flex;align-items:center;gap:5px;
+  text-decoration:none;
+}
+.tn-scope .tn-btn-outline:hover{color:var(--tn-text);border-color:var(--tn-accent);text-decoration:none}
+.tn-scope .tn-btn-outline.active{background:var(--tn-accent);color:#fff;border-color:var(--tn-accent)}

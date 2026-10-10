@@ -1,0 +1,116 @@
+/* ============================================================
+   RP · MENU NO TOPO (estilo painel RxMax)  · v20260922
+   Escopado em .tn-scope.rp-topmode — substitui a sidebar por
+   uma barra branca no topo com grupos em menu suspenso.
+   ============================================================ */
+
+/* ---- neutraliza o layout de sidebar do DS ---- */
+.tn-scope.rp-topmode.ds-app{display:block;background:var(--ds-bg)}
+.tn-scope.rp-topmode .ds-main{margin:0 !important;width:100% !important;min-height:auto}
+.tn-scope.rp-topmode .ds-content{padding:22px clamp(14px,3vw,34px) 46px;max-width:1320px;margin:0 auto;width:100%}
+
+/* ---- barra principal ---- */
+.rp-tm{position:sticky;top:0;z-index:50;background:var(--ds-surface);
+  border-bottom:1px solid var(--ds-border);box-shadow:var(--ds-shadow-xs)}
+.rp-tm-in{display:flex;align-items:center;gap:16px;max-width:1320px;margin:0 auto;
+  padding:10px clamp(14px,3vw,34px)}
+
+/* ---- marca ---- */
+.rp-tm-brand{display:flex;align-items:center;gap:11px;text-decoration:none;flex:0 0 auto}
+.rp-tm-logo{width:38px;height:38px;border-radius:10px;background:var(--ds-text);color:#fff;
+  display:flex;align-items:center;justify-content:center;overflow:hidden;font-weight:800;font-size:15px}
+.rp-tm-logo img{width:100%;height:100%;object-fit:cover}
+.rp-tm-bt b{display:block;font-size:14.5px;font-weight:800;color:var(--ds-text);line-height:1.15;letter-spacing:-.2px}
+.rp-tm-bt small{display:block;font-size:12px;color:var(--ds-text-3);line-height:1.2}
+
+/* ---- navegação (grupos) ---- */
+.rp-tm-nav{display:flex;align-items:center;gap:2px;margin-left:6px}
+.rp-tm-grp{position:relative}
+.rp-tm-gbtn{position:relative;display:inline-flex;align-items:center;gap:5px;border:0;background:transparent;
+  cursor:pointer;font-family:var(--ds-font);font-size:13.5px;font-weight:600;color:var(--ds-text-2);
+  padding:9px 13px;border-radius:10px;transition:background var(--ds-fast),color var(--ds-fast)}
+.rp-tm-gbtn i{width:15px;height:15px}
+.rp-tm-grp:hover .rp-tm-gbtn,.rp-tm-grp:focus-within .rp-tm-gbtn{background:var(--ds-surface-2);color:var(--ds-text)}
+.rp-tm-grp.on .rp-tm-gbtn{color:var(--ds-primary)}
+.rp-tm-grp.on .rp-tm-gbtn::after{content:"";position:absolute;left:13px;right:13px;bottom:-11px;
+  height:2.5px;border-radius:3px;background:var(--ds-primary)}
+
+/* ---- dropdown do grupo ---- */
+.rp-tm-drop{position:absolute;top:calc(100% + 8px);left:0;min-width:238px;background:var(--ds-surface);
+  border:1px solid var(--ds-border);border-radius:14px;box-shadow:var(--ds-shadow-lg);
+  padding:7px;display:none;flex-direction:column;gap:2px;z-index:50}
+.rp-tm-grp:hover .rp-tm-drop,.rp-tm-grp:focus-within .rp-tm-drop{display:flex}
+.rp-tm-i{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ds-text-2);
+  font-size:13.5px;font-weight:600;padding:9px 11px;border-radius:10px;transition:all var(--ds-fast)}
+.rp-tm-i i{width:16px;height:16px;color:var(--ds-text-3);flex:0 0 auto}
+.rp-tm-i:hover{background:var(--ds-surface-2);color:var(--ds-text)}
+.rp-tm-i.active{background:var(--ds-primary-soft);color:var(--ds-primary)}
+.rp-tm-i.active i{color:var(--ds-primary)}
+
+/* ---- ações à direita ---- */
+.rp-tm-act{margin-left:auto;display:flex;align-items:center;gap:6px}
+
+/* ---- botão hambúrguer (mobile) ---- */
+.rp-tm-burger{display:none;border:0;background:transparent;color:var(--ds-text);cursor:pointer;
+  padding:8px;border-radius:9px}
+.rp-tm-burger i{width:20px;height:20px}
+
+/* ---- sub-barra de contexto ---- */
+.rp-tm-sub{max-width:1320px;margin:0 auto;padding:8px clamp(14px,3vw,34px);
+  display:flex;align-items:center;gap:12px;flex-wrap:wrap;border-top:1px solid var(--ds-border)}
+.rp-tm-cur{display:inline-flex;align-items:center;gap:7px;font-size:14px;font-weight:800;color:var(--ds-text)}
+.rp-tm-cur i{width:17px;height:17px;color:var(--ds-primary)}
+.rp-tm-desc{font-size:12.5px;color:var(--ds-text-3)}
+.rp-tm-ver{margin-left:auto;display:inline-flex;align-items:center;gap:5px;font-size:11.5px;color:var(--ds-text-3)}
+.rp-tm-ver i{width:12px;height:12px}
+
+/* ---- responsivo ---- */
+@media (max-width:860px){
+  .rp-tm-burger{display:inline-flex;order:3;margin-left:auto}
+  .rp-tm-act{order:2;margin-left:0}
+  .rp-tm-nav{display:none;position:absolute;top:100%;left:0;right:0;background:var(--ds-surface);
+    border-bottom:1px solid var(--ds-border);box-shadow:var(--ds-shadow-lg);
+    flex-direction:column;align-items:stretch;gap:0;padding:8px;margin:0;z-index:60}
+  .rp-tm.open .rp-tm-nav{display:flex}
+  .rp-tm-grp.on .rp-tm-gbtn::after{display:none}
+  .rp-tm-gbtn{width:100%;justify-content:space-between}
+  .rp-tm-drop{position:static;display:flex;box-shadow:none;border:0;border-radius:0;padding:2px 0 6px 12px;min-width:0}
+  .rp-tm-bt small{display:none}
+  .rp-tm-desc{display:none}
+}
+@media print{
+  .rp-tm,.rp-tm-act,.rp-tm-burger{display:none !important}
+}
+
+/* ============================================================
+   KPI em CARDS — Modelo 5 (fundo suave colorido)
+   ============================================================ */
+.tn-scope.rp-topmode .ds-metrics{
+  background:transparent;border:0;border-radius:0;box-shadow:none;overflow:visible;
+  gap:14px;grid-template-columns:repeat(4,1fr);margin-bottom:22px;
+}
+.tn-scope.rp-topmode .ds-metric-cell{
+  --_ac:var(--ac,var(--ds-primary));
+  background:color-mix(in srgb, var(--_ac) 10%, var(--ds-surface));
+  border:1px solid color-mix(in srgb, var(--_ac) 22%, var(--ds-border)) !important;
+  border-radius:var(--ds-radius-lg);
+  box-shadow:var(--ds-shadow-xs);
+  padding:16px 18px 17px;position:relative;overflow:hidden;
+  transition:box-shadow var(--ds-fast),transform var(--ds-fast);
+}
+.tn-scope.rp-topmode .ds-metric-cell:hover{box-shadow:var(--ds-shadow-md);transform:translateY(-1px)}
+.tn-scope.rp-topmode .ds-metric-cell .lbl{color:color-mix(in srgb, var(--_ac) 60%, var(--ds-text-3))}
+.tn-scope.rp-topmode .ds-metric-cell .lbl::before{display:none}
+.tn-scope.rp-topmode .ds-metric-cell .val{font-size:25px;margin-top:8px;color:var(--_ac)}
+.tn-scope.rp-topmode .ds-metric-cell .val.rp-neg{color:var(--ds-danger-text)}
+.tn-scope.rp-topmode .ds-metric-cell .sub{color:color-mix(in srgb, var(--_ac) 48%, var(--ds-text-2))}
+/* barrinha de progresso (card Margem) */
+.tn-scope.rp-topmode .rp-mini-bar{margin-top:11px;height:7px;border-radius:6px;overflow:hidden;
+  background:color-mix(in srgb, var(--_ac) 16%, var(--ds-surface-2))}
+.tn-scope.rp-topmode .rp-mini-bar i{display:block;height:100%;border-radius:6px;background:var(--_ac)}
+@media (max-width:1100px){
+  .tn-scope.rp-topmode .ds-metrics{grid-template-columns:repeat(2,1fr)}
+}
+@media (max-width:560px){
+  .tn-scope.rp-topmode .ds-metrics{grid-template-columns:1fr}
+}

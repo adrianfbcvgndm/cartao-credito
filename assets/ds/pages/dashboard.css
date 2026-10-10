@@ -1,0 +1,40 @@
+/* ============================================================
+   RP ENTERPRISE · PÁGINA: DASHBOARD FINANCEIRO
+   Linhas de gráficos, card de pendentes (span 2), formulário
+   do período e modal de ajuste do caixa. Escopado em .tn-scope.
+   ============================================================ */
+
+/* Linhas de painéis de gráfico */
+.tn-scope .rp-dash-row{display:grid;gap:16px;grid-template-columns:1.6fr 1fr;margin-bottom:16px}
+.tn-scope .rp-dash-row.eq{grid-template-columns:1fr 1fr}
+@media (max-width:1000px){
+  .tn-scope .rp-dash-row,.tn-scope .rp-dash-row.eq{grid-template-columns:1fr}
+}
+
+/* KPI: card de pendentes ocupa duas colunas */
+.tn-scope .rp-span-2{grid-column:span 2}
+@media (max-width:560px){.tn-scope .rp-span-2{grid-column:auto}}
+
+/* Valor negativo em destaque */
+.tn-scope .tn-stat-value.rp-neg{color:var(--ds-danger-text)}
+
+/* Sub do card "Caixa atual" (info + botão de ajuste) */
+.tn-scope .rp-caixa-sub{justify-content:space-between;flex-wrap:wrap;row-gap:6px}
+.tn-scope .tn-stat-sub svg.lucide{width:12px;height:12px}
+.tn-scope .tn-stat-sub a{color:var(--ds-warning-text);font-weight:600}
+
+/* Seletor de período no cabeçalho */
+.tn-scope .rp-period-form{display:flex;gap:9px;align-items:center}
+.tn-scope .rp-period-form .tn-fl{margin:0;white-space:nowrap}
+.tn-scope .rp-period-form .tn-input{width:auto;min-width:150px}
+
+/* Modal de ajuste do caixa */
+.tn-scope .rp-caixa-form{display:flex;flex-direction:column;min-height:0;flex:1}
+.tn-scope .rp-caixa-form .ds-modal-foot .rp-foot-left{margin-right:auto}
+.tn-scope .rp-caixa-intro{margin:0 0 14px}
+.tn-scope .rp-caixa-auto{
+  display:flex;flex-direction:column;gap:7px;
+  padding:13px 15px;margin-bottom:16px;
+  border:1px solid var(--ds-border);border-radius:10px;
+  background:var(--ds-surface-2);
+}

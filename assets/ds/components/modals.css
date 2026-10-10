@@ -1,0 +1,76 @@
+/* ============================================================
+   RP ENTERPRISE · MODAIS
+   Backdrop com blur, animação scale+fade, header/footer
+   organizados, tamanhos sm/md/lg.
+   ============================================================ */
+
+.tn-scope .ds-modal-backdrop,
+.ds-modal-backdrop.tn-scope-modal{
+  position:fixed;inset:0;z-index:900;
+  background:rgba(15,23,42,.45);
+  backdrop-filter:blur(6px);
+  -webkit-backdrop-filter:blur(6px);
+  display:flex;align-items:center;justify-content:center;
+  padding:24px;
+  opacity:0;pointer-events:none;
+  transition:opacity var(--ds-normal,.25s) ease;
+}
+.tn-scope .ds-modal-backdrop.open,
+.ds-modal-backdrop.tn-scope-modal.open{opacity:1;pointer-events:auto}
+
+.tn-scope .ds-modal,
+.ds-modal-backdrop .ds-modal{
+  width:100%;max-width:520px;max-height:calc(100vh - 64px);
+  background:var(--ds-surface,#fff);
+  border:1px solid var(--ds-border,#E5E7EB);
+  border-radius:var(--ds-radius-lg,16px);
+  box-shadow:var(--ds-shadow-xl,0 24px 64px rgba(15,23,42,.2));
+  display:flex;flex-direction:column;
+  transform:translateY(12px) scale(.97);
+  transition:transform var(--ds-normal,.25s) cubic-bezier(.4,0,.2,1);
+  overflow:hidden;
+}
+.tn-scope .ds-modal-backdrop.open .ds-modal,
+.ds-modal-backdrop.open .ds-modal{transform:none}
+.tn-scope .ds-modal.sm{max-width:400px}
+.tn-scope .ds-modal.lg{max-width:760px}
+.tn-scope .ds-modal.xl{max-width:1000px}
+
+.tn-scope .ds-modal-head{
+  display:flex;align-items:center;gap:12px;
+  padding:18px 22px;
+  border-bottom:1px solid var(--ds-border);
+}
+.tn-scope .ds-modal-head .ds-modal-ico{
+  width:38px;height:38px;flex-shrink:0;border-radius:10px;
+  background:var(--ds-primary-soft);color:var(--ds-primary);
+  display:flex;align-items:center;justify-content:center;
+}
+.tn-scope .ds-modal-head .ds-modal-ico.danger{background:var(--ds-danger-soft);color:var(--ds-danger-text)}
+.tn-scope .ds-modal-head .ds-modal-ico.warning{background:var(--ds-warning-soft);color:var(--ds-warning-text)}
+.tn-scope .ds-modal-head .ds-modal-ico.success{background:var(--ds-success-soft);color:var(--ds-success-text)}
+.tn-scope .ds-modal-title{flex:1;min-width:0}
+.tn-scope .ds-modal-title b{display:block;font-size:15px;font-weight:600;color:var(--ds-text)}
+.tn-scope .ds-modal-title small{display:block;font-size:12px;color:var(--ds-text-2);margin-top:1px}
+.tn-scope .ds-modal-close{
+  width:30px;height:30px;flex-shrink:0;border:0;border-radius:8px;
+  background:transparent;color:var(--ds-text-2);cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  transition:background var(--ds-fast),color var(--ds-fast);
+}
+.tn-scope .ds-modal-close:hover{background:var(--ds-surface-3);color:var(--ds-text)}
+
+.tn-scope .ds-modal-body{padding:20px 22px;overflow-y:auto;font-size:13.5px;color:var(--ds-text)}
+
+.tn-scope .ds-modal-foot{
+  display:flex;align-items:center;justify-content:flex-end;gap:9px;
+  padding:15px 22px;
+  border-top:1px solid var(--ds-border);
+  background:var(--ds-surface-2);
+}
+.tn-scope .ds-modal-foot .tn-btn,.tn-scope .ds-modal-foot .ds-btn{height:40px;padding:0 20px}
+
+@media (max-width:560px){
+  .tn-scope .ds-modal-backdrop{padding:0;align-items:flex-end}
+  .tn-scope .ds-modal{max-width:100%;border-radius:16px 16px 0 0;max-height:92vh}
+}

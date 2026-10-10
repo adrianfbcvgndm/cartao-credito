@@ -1,0 +1,79 @@
+/* ============================================================
+   RP ENTERPRISE · LAYOUT (App Shell)
+   Sidebar fixa à esquerda + coluna principal (header + conteúdo).
+   O topo do MK-AUTH permanece acima, intacto.
+   ============================================================ */
+
+.tn-scope.ds-app{
+  display:flex;
+  align-items:stretch;
+  min-height:calc(100vh - 120px);
+  margin:0;
+  padding:0;
+  max-width:none;
+  border-radius:0;
+  background:var(--ds-bg);
+  position:relative;
+}
+
+/* Coluna principal */
+.tn-scope .ds-main{
+  flex:1;
+  min-width:0;
+  display:flex;
+  flex-direction:column;
+  transition:margin var(--ds-normal) var(--ds-ease);
+}
+
+/* Área de conteúdo */
+.tn-scope .ds-content{
+  flex:1;
+  padding:24px 28px 48px;
+  max-width:1600px;
+  width:100%;
+  margin:0 auto;
+  animation:ds-fade-up var(--ds-slow) var(--ds-ease) both;
+}
+
+/* Cabeçalho de página */
+.tn-scope .ds-page-head{
+  display:flex;align-items:flex-start;justify-content:space-between;
+  gap:16px;flex-wrap:wrap;margin-bottom:22px;
+}
+.tn-scope .ds-page-head .ds-page-title{
+  font-size:22px;font-weight:700;letter-spacing:-.02em;color:var(--ds-text);
+  display:flex;align-items:center;gap:10px;
+}
+.tn-scope .ds-page-head .ds-page-title svg.lucide{width:24px;height:24px;color:var(--ds-primary)}
+.tn-scope .ds-page-head .ds-page-desc{font-size:13.5px;color:var(--ds-text-2);margin-top:4px;max-width:640px}
+.tn-scope .ds-page-actions{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+
+/* Grids utilitários */
+.tn-scope .ds-grid{display:grid;gap:16px}
+.tn-scope .ds-grid-2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.tn-scope .ds-grid-3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.tn-scope .ds-grid-4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.tn-scope .ds-grid-auto{grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+
+/* Toolbar de filtros */
+.tn-scope .ds-toolbar{
+  display:flex;align-items:center;gap:10px;flex-wrap:wrap;
+  background:var(--ds-surface);
+  border:1px solid var(--ds-border);
+  border-radius:var(--ds-radius);
+  padding:12px 14px;
+  margin-bottom:18px;
+  box-shadow:var(--ds-shadow-xs);
+}
+.tn-scope .ds-toolbar .ds-toolbar-spacer{flex:1}
+
+/* Divisor de seção com rótulo */
+.tn-scope .ds-divider{
+  display:flex;align-items:center;gap:12px;
+  margin:26px 0 14px;color:var(--ds-text-3);
+  font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;
+}
+.tn-scope .ds-divider::before,.tn-scope .ds-divider::after{
+  content:'';flex:1;height:1px;background:var(--ds-border);
+}
+.tn-scope .ds-divider:first-child{margin-top:0}

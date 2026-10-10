@@ -1,0 +1,63 @@
+/* ============================================================
+   RP ENTERPRISE · PÁGINA: SAÚDE DAS INTEGRAÇÕES
+   Cards de status de serviços (ok / aviso / erro) e ações.
+   Escopado em .tn-scope.
+   ============================================================ */
+
+.tn-scope .rp-saude-grid{margin-bottom:22px}
+
+/* Card de checagem: ds-info-card + fio de status à esquerda */
+.tn-scope .rp-check{position:relative;overflow:hidden}
+.tn-scope .rp-check::before{
+  content:'';position:absolute;left:0;top:0;bottom:0;width:3px;
+  background:var(--ds-success);
+}
+.tn-scope .rp-check.aviso::before{background:var(--ds-warning)}
+.tn-scope .rp-check.erro::before{background:var(--ds-danger)}
+
+.tn-scope .rp-check.ok .ds-info-ico{background:var(--ds-success-soft);color:var(--ds-success-text)}
+.tn-scope .rp-check.aviso .ds-info-ico{background:var(--ds-warning-soft);color:var(--ds-warning-text)}
+.tn-scope .rp-check.erro .ds-info-ico{background:var(--ds-danger-soft);color:var(--ds-danger-text)}
+
+.tn-scope .rp-check-body{flex:1;min-width:0}
+.tn-scope .rp-check-head{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.tn-scope .rp-check-head b{font-size:13.5px;font-weight:600;color:var(--ds-text)}
+.tn-scope .rp-check-body p{margin:4px 0 0;font-size:12.5px;font-weight:500;color:var(--ds-text-2)}
+.tn-scope .rp-check-body small{display:block;margin-top:2px;font-size:11.5px;color:var(--ds-text-3)}
+
+/* Ações rápidas */
+.tn-scope .rp-saude-actions{display:flex;gap:8px;flex-wrap:wrap}
+
+/* ---------- Painel resumo: barra + chips ---------- */
+.tn-scope .rp-saude-painel{
+  background:var(--ds-surface);border:1px solid var(--ds-border);
+  border-radius:var(--ds-radius);box-shadow:var(--ds-shadow-xs);
+  padding:16px 20px;margin-bottom:18px;
+}
+.tn-scope .rp-saude-head{display:flex;align-items:center;gap:9px;margin-bottom:11px}
+.tn-scope .rp-saude-head b{font-size:13.5px;color:var(--ds-text);display:flex;align-items:center;gap:8px}
+.tn-scope .rp-saude-head svg.lucide{color:var(--ds-primary)}
+.tn-scope .rp-saude-barra{display:flex;height:8px;border-radius:var(--ds-radius-full);overflow:hidden;gap:2px;margin-bottom:13px}
+.tn-scope .rp-saude-barra span{height:100%;border-radius:2px}
+.tn-scope .rp-saude-barra .ok{background:var(--ds-success)}
+.tn-scope .rp-saude-barra .aviso{background:var(--ds-warning)}
+.tn-scope .rp-saude-barra .erro{background:var(--ds-danger)}
+.tn-scope .rp-saude-chips{display:flex;gap:8px;flex-wrap:wrap}
+.tn-scope .rp-saude-chip{
+  display:inline-flex;align-items:center;gap:7px;height:31px;padding:0 13px;
+  border-radius:var(--ds-radius-full);border:1px solid var(--ds-border);
+  background:var(--ds-surface);color:var(--ds-text);
+  font-size:12.5px;font-weight:500;cursor:default;
+  transition:box-shadow var(--ds-fast),border-color var(--ds-fast);
+}
+.tn-scope .rp-saude-chip:hover{box-shadow:var(--ds-shadow-sm);border-color:var(--ds-border-strong)}
+.tn-scope .rp-saude-chip svg.lucide{width:14px;height:14px}
+.tn-scope .rp-saude-chip.ok svg.lucide{color:var(--ds-success-text)}
+.tn-scope .rp-saude-chip.aviso svg.lucide{color:var(--ds-warning-text)}
+.tn-scope .rp-saude-chip.erro svg.lucide{color:var(--ds-danger-text)}
+.tn-scope .rp-saude-chip::after{
+  content:'';width:7px;height:7px;border-radius:50%;margin-left:2px;
+}
+.tn-scope .rp-saude-chip.ok::after{background:var(--ds-success)}
+.tn-scope .rp-saude-chip.aviso::after{background:var(--ds-warning)}
+.tn-scope .rp-saude-chip.erro::after{background:var(--ds-danger)}

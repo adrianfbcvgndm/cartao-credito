@@ -1,0 +1,52 @@
+/* ============================================================
+   RP ENTERPRISE · ALERTAS
+   Success, warning, danger, info — com ícone, título e ação.
+   Legado: tn-alert (+ .green/.amber/.red/.blue/.warn variantes).
+   ============================================================ */
+
+.tn-scope .tn-alert,.tn-scope .ds-alert{
+  display:flex;align-items:flex-start;gap:12px;
+  padding:13px 16px;
+  border-radius:var(--ds-radius-sm);
+  border:1px solid var(--ds-info);
+  background:var(--ds-info-soft);
+  color:var(--ds-text);
+  font-size:13px;line-height:1.5;
+  margin-bottom:14px;
+  animation:ds-fade-up var(--ds-normal) var(--ds-ease) both;
+}
+.tn-scope .tn-alert svg.lucide,.tn-scope .ds-alert svg.lucide{
+  width:17px;height:17px;flex-shrink:0;margin-top:1px;color:var(--ds-info-text);
+}
+.tn-scope .ds-alert b,.tn-scope .tn-alert b{font-weight:600}
+.tn-scope .ds-alert .ds-alert-body{flex:1;min-width:0}
+.tn-scope .ds-alert .ds-alert-title{display:block;font-weight:600;font-size:13px;margin-bottom:2px}
+
+/* Variantes */
+.tn-scope .tn-alert.green,.tn-scope .tn-alert-green,.tn-scope .ds-alert-success{
+  border-color:var(--ds-success);background:var(--ds-success-soft);
+}
+.tn-scope .tn-alert.green svg.lucide,.tn-scope .ds-alert-success svg.lucide{color:var(--ds-success-text)}
+
+.tn-scope .tn-alert.amber,.tn-scope .tn-alert.warn,.tn-scope .tn-alert-amber,.tn-scope .ds-alert-warning{
+  border-color:var(--ds-warning);background:var(--ds-warning-soft);
+}
+.tn-scope .tn-alert.amber svg.lucide,.tn-scope .tn-alert.warn svg.lucide,.tn-scope .ds-alert-warning svg.lucide{color:var(--ds-warning-text)}
+
+.tn-scope .tn-alert.red,.tn-scope .tn-alert-red,.tn-scope .ds-alert-danger{
+  border-color:var(--ds-danger);background:var(--ds-danger-soft);
+}
+.tn-scope .tn-alert.red svg.lucide,.tn-scope .ds-alert-danger svg.lucide{color:var(--ds-danger-text)}
+
+/* borda apenas à esquerda (estilo premium) */
+.tn-scope .tn-alert,.tn-scope .ds-alert{border-width:1px;border-left-width:3px}
+
+/* Fechável */
+.tn-scope .ds-alert .ds-alert-close{
+  margin-left:auto;flex-shrink:0;
+  width:24px;height:24px;border:0;border-radius:6px;
+  background:transparent;color:var(--ds-text-2);cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  transition:background var(--ds-fast);
+}
+.tn-scope .ds-alert .ds-alert-close:hover{background:rgba(15,23,42,.07)}

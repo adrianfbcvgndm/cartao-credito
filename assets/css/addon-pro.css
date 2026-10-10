@@ -1,0 +1,752 @@
+/* ============================================================
+   Resumo Pagamentos - UI Profissional Unificada
+   Objetivo: padronizar visual do admin sem alterar lógica.
+   ============================================================ */
+:root {
+    --rp-bg: #f4f7fb;
+    --rp-surface: #ffffff;
+    --rp-surface-soft: #f8fafc;
+    --rp-border: #e5e7eb;
+    --rp-border-strong: #d8dee8;
+    --rp-text: #1e293b;
+    --rp-muted: #64748b;
+    --rp-primary: #2563eb;
+    --rp-primary-dark: #1d4ed8;
+    --rp-success: #16a34a;
+    --rp-danger: #dc2626;
+    --rp-warning: #f59e0b;
+    --rp-purple: #7c3aed;
+    --rp-radius: 16px;
+    --rp-radius-sm: 10px;
+    --rp-shadow: 0 10px 30px rgba(15, 23, 42, .08);
+    --rp-shadow-soft: 0 4px 14px rgba(15, 23, 42, .06);
+}
+
+body.has-navbar-fixed-top,
+body {
+    background: var(--rp-bg);
+}
+
+.addon-tabs-wrapper,
+.rp-container,
+.pf-container,
+.gc-container,
+.cfg-container {
+    max-width: 1440px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important;
+    color: var(--rp-text);
+    box-sizing: border-box;
+}
+
+/* Top navigation */
+.addon-tabs-wrapper {
+    margin-top: 14px !important;
+}
+.addon-tabs {
+    gap: 8px !important;
+    border-bottom: 0 !important;
+    padding: 8px !important;
+    background: rgba(255,255,255,.78) !important;
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--rp-border) !important;
+    border-radius: 18px !important;
+    box-shadow: var(--rp-shadow-soft);
+}
+.addon-tab {
+    top: 0 !important;
+    border: 0 !important;
+    border-radius: 13px !important;
+    padding: 12px 18px !important;
+    background: transparent !important;
+    color: var(--rp-muted) !important;
+    font-weight: 800 !important;
+    letter-spacing: .1px !important;
+}
+.addon-tab:hover {
+    background: var(--rp-surface-soft) !important;
+    color: var(--rp-text) !important;
+}
+.addon-tab.active {
+    color: #fff !important;
+    box-shadow: 0 8px 18px rgba(37,99,235,.22) !important;
+}
+.addon-tab.active.tab-resumo { background: linear-gradient(135deg, #ef4444, #b91c1c) !important; }
+.addon-tab.active.tab-financeiro { background: linear-gradient(135deg, #7c3aed, #4c1d95) !important; }
+.addon-tab.active.tab-clientes { background: linear-gradient(135deg, #2563eb, #1e40af) !important; }
+.addon-tab.active.tab-config { background: linear-gradient(135deg, #16a34a, #166534) !important; }
+
+/* Headers */
+.rp-header,
+.pf-header,
+.gc-header,
+.cfg-header {
+    background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%) !important;
+    border: 1px solid var(--rp-border) !important;
+    border-radius: 20px !important;
+    box-shadow: var(--rp-shadow) !important;
+    color: var(--rp-text) !important;
+}
+.rp-header h2,
+.pf-header-title h2,
+.gc-header-text h2,
+.cfg-header-text h2 {
+    color: var(--rp-text) !important;
+    font-weight: 900 !important;
+    letter-spacing: -.4px !important;
+}
+.rp-header-subtitle,
+.pf-header-title span,
+.gc-header-text p,
+.cfg-header-text p {
+    color: var(--rp-muted) !important;
+}
+
+/* Cards / Sections */
+.rp-card,
+.pf-sum-card,
+.gc-stat-card,
+.cfg-section,
+.rp-table-section,
+.rp-section,
+.pf-section,
+.gc-section,
+.gc-card,
+.cc-form-preview,
+.cc-panel {
+    background: var(--rp-surface) !important;
+    border: 1px solid var(--rp-border) !important;
+    border-radius: var(--rp-radius) !important;
+    box-shadow: var(--rp-shadow-soft) !important;
+}
+.rp-card,
+.pf-sum-card,
+.gc-stat-card {
+    transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+}
+.rp-card:hover,
+.pf-sum-card:hover,
+.gc-stat-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--rp-shadow) !important;
+    border-color: var(--rp-border-strong) !important;
+}
+
+/* Section headers */
+.rp-section-title,
+.pf-section-title,
+.gc-section-title,
+.cfg-section-header {
+    background: linear-gradient(135deg, #ffffff, #f8fafc) !important;
+    color: var(--rp-text) !important;
+    border-bottom: 1px solid var(--rp-border) !important;
+}
+
+/* Buttons */
+.rp-btn,
+.pf-btn,
+.gc-btn,
+.cfg-btn,
+.cc-copy-btn,
+.cc-pay-btn {
+    border: 0 !important;
+    border-radius: 12px !important;
+    font-weight: 800 !important;
+    box-shadow: 0 6px 14px rgba(15,23,42,.10);
+    transition: transform .18s ease, box-shadow .18s ease, opacity .18s ease;
+}
+.rp-btn:hover,
+.pf-btn:hover,
+.gc-btn:hover,
+.cfg-btn:hover,
+.cc-copy-btn:hover,
+.cc-pay-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 10px 22px rgba(15,23,42,.16);
+}
+.rp-btn-outline,
+.pf-btn.config-btn {
+    background: #fff !important;
+    color: var(--rp-text) !important;
+    border: 1px solid var(--rp-border) !important;
+    box-shadow: none !important;
+}
+
+/* Inputs */
+input[type="text"], input[type="number"], input[type="date"], input[type="time"], input[type="email"], select, textarea,
+.rp-filter-input,
+.pf-nav select, .pf-nav input,
+.gc-search-input,
+.cfg-form-group input,
+.cfg-form-group select,
+.cfg-form-group textarea {
+    border: 1px solid var(--rp-border) !important;
+    border-radius: 12px !important;
+    background: #fff !important;
+    color: var(--rp-text) !important;
+    box-shadow: none !important;
+}
+input:focus, select:focus, textarea:focus,
+.rp-filter-input:focus,
+.gc-search-input:focus,
+.cfg-form-group input:focus,
+.cfg-form-group select:focus,
+.cfg-form-group textarea:focus {
+    border-color: var(--rp-primary) !important;
+    box-shadow: 0 0 0 3px rgba(37,99,235,.14) !important;
+    outline: none !important;
+}
+
+/* Tables */
+table {
+    border-collapse: separate !important;
+    border-spacing: 0 !important;
+}
+.rp-table,
+.pf-table,
+.gc-table {
+    overflow: hidden;
+    border-radius: 14px !important;
+    border: 1px solid var(--rp-border) !important;
+}
+.rp-table th,
+.pf-table th,
+.gc-table th {
+    background: #f8fafc !important;
+    color: #334155 !important;
+    font-weight: 900 !important;
+    border-bottom: 1px solid var(--rp-border) !important;
+}
+.rp-table td,
+.pf-table td,
+.gc-table td {
+    border-bottom: 1px solid #eef2f7 !important;
+}
+.rp-table tr:hover td,
+.pf-table tr:hover td,
+.gc-table tr:hover td {
+    background: #f8fafc !important;
+}
+
+/* Badges */
+.rp-badge,
+.gc-badge,
+.pf-cat-tag,
+.auto-tag {
+    border-radius: 999px !important;
+    font-weight: 800 !important;
+}
+
+/* Config tabs */
+.cfg-subtabs {
+    background: rgba(255,255,255,.78);
+    border: 1px solid var(--rp-border) !important;
+    border-radius: 16px;
+    padding: 8px !important;
+    gap: 8px !important;
+    box-shadow: var(--rp-shadow-soft);
+}
+.cfg-subtab {
+    border: 0 !important;
+    border-radius: 12px !important;
+    top: 0 !important;
+    background: transparent !important;
+    font-weight: 800 !important;
+}
+.cfg-subtab:hover {
+    background: var(--rp-surface-soft) !important;
+}
+
+/* Payment preview polishing */
+.cc-preview-page {
+    background: #f8fafc !important;
+}
+.cc-nav,
+.cc-page-footer {
+    border-color: var(--rp-border) !important;
+}
+.cc-metodo-tab {
+    border-radius: 12px !important;
+}
+
+/* Scrollbars */
+* {
+    scrollbar-width: thin;
+    scrollbar-color: #cbd5e1 #f8fafc;
+}
+::-webkit-scrollbar { width: 9px; height: 9px; }
+::-webkit-scrollbar-track { background: #f8fafc; }
+::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 999px; }
+::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+
+@media (max-width: 768px) {
+    .addon-tabs-wrapper,
+    .rp-container,
+    .pf-container,
+    .gc-container,
+    .cfg-container {
+        padding-left: 10px !important;
+        padding-right: 10px !important;
+    }
+    .addon-tabs {
+        border-radius: 14px !important;
+    }
+    .addon-tab {
+        justify-content: center;
+        flex: 1 1 45%;
+        padding: 10px 12px !important;
+    }
+}
+
+
+/* ============================================================
+   Ajuste fino v2 - Configurações e consistência entre páginas
+   ============================================================ */
+
+/* Sub-abas da página Configurações */
+.cfg-subtabs,
+.cc-tabs,
+.cfg-tabs {
+    background: #ffffff !important;
+    border: 1px solid var(--rp-border) !important;
+    border-radius: 18px !important;
+    padding: 8px !important;
+    box-shadow: var(--rp-shadow-soft) !important;
+}
+
+.cfg-subtab,
+.cc-tab,
+.cfg-tab {
+    color: #475569 !important;
+    background: transparent !important;
+    border: 0 !important;
+    border-radius: 12px !important;
+    font-weight: 800 !important;
+}
+
+.cfg-subtab i,
+.cc-tab i,
+.cfg-tab i {
+    color: inherit !important;
+}
+
+.cfg-subtab:hover,
+.cc-tab:hover,
+.cfg-tab:hover {
+    background: #f1f5f9 !important;
+    color: #1e293b !important;
+}
+
+/* Corrige nome branco em aba ativa, exemplo Evotrix API */
+.cfg-subtab.active,
+.cc-tab.active,
+.cfg-tab.active,
+.cfg-subtab.active *,
+.cc-tab.active *,
+.cfg-tab.active * {
+    color: #ffffff !important;
+}
+
+.cfg-subtab.active {
+    background: linear-gradient(135deg, #7c3aed, #4c1d95) !important;
+    box-shadow: 0 8px 18px rgba(124,58,237,.24) !important;
+}
+
+.cc-tab.active,
+.cfg-tab.active {
+    background: linear-gradient(135deg, #2563eb, #1e40af) !important;
+    box-shadow: 0 8px 18px rgba(37,99,235,.22) !important;
+}
+
+/* Força textos de abas não ativas visíveis mesmo quando CSS antigo tenta branco */
+.cfg-subtab:not(.active),
+.cc-tab:not(.active),
+.cfg-tab:not(.active),
+.cfg-subtab:not(.active) *,
+.cc-tab:not(.active) *,
+.cfg-tab:not(.active) * {
+    color: #475569 !important;
+}
+
+/* Blocos internos das páginas */
+.rp-header,
+.pf-header,
+.gc-header,
+.cfg-header,
+.rp-table-section,
+.pf-section,
+.gc-section,
+.cfg-section {
+    overflow: hidden;
+}
+
+/* Padronização de títulos dentro dos painéis */
+.rp-section-title,
+.pf-section-title,
+.gc-section-title,
+.cfg-section-header,
+.cc-section-title {
+    min-height: 54px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 16px 20px !important;
+    font-size: 15px !important;
+    font-weight: 900 !important;
+}
+
+/* Padroniza espaçamento vertical entre páginas */
+.rp-container > *,
+.pf-container > *,
+.gc-container > *,
+.cfg-container > * {
+    margin-bottom: 20px;
+}
+
+/* Configurações: formulários mais alinhados */
+.cfg-form-grid,
+.cfg-grid,
+.cc-form-grid {
+    gap: 18px !important;
+}
+
+.cfg-form-group label,
+.cc-form-group label {
+    color: #334155 !important;
+    font-weight: 800 !important;
+    margin-bottom: 8px !important;
+}
+
+.cfg-hint,
+.cc-hint {
+    color: #64748b !important;
+}
+
+/* Botões de configurações */
+.cfg-btn.green,
+.cfg-btn.success {
+    background: linear-gradient(135deg, #16a34a, #15803d) !important;
+    color: #fff !important;
+}
+
+.cfg-btn.purple,
+.cfg-btn.primary,
+.cfg-btn.blue {
+    background: linear-gradient(135deg, #7c3aed, #4c1d95) !important;
+    color: #fff !important;
+}
+
+/* Tabelas e cards com largura consistente */
+.rp-cards,
+.pf-summary-grid,
+.gc-stats-grid {
+    gap: 18px !important;
+}
+
+/* Corrige alguns botões cinza apagados */
+.gc-action-btn.gray,
+.pf-btn.gray,
+.rp-btn.gray,
+.cfg-btn.gray {
+    background: #64748b !important;
+    color: #fff !important;
+}
+
+/* Reduz diferença visual entre cards de resumo */
+.rp-card-value,
+.pf-sum-value,
+.gc-stat-value {
+    color: #1e293b !important;
+    font-weight: 900 !important;
+}
+
+.rp-card-label,
+.pf-sum-label,
+.gc-stat-label {
+    color: #64748b !important;
+    font-weight: 800 !important;
+}
+
+/* Responsivo fino */
+@media (max-width: 768px) {
+    .cfg-subtabs,
+    .cc-tabs,
+    .cfg-tabs {
+        flex-wrap: wrap !important;
+    }
+    .cfg-subtab,
+    .cc-tab,
+    .cfg-tab {
+        flex: 1 1 45%;
+        justify-content: center;
+        text-align: center;
+    }
+}
+
+
+/* ============================================================
+   Ajuste visual v3 - Clientes igual padrão Planilha Financeira
+   ============================================================ */
+
+/* Área marcada na aba Clientes: deixa mais organizada e parecida com a Planilha */
+.gc-tabs,
+.gc-client-tabs,
+.gc-status-tabs {
+    background: #ffffff !important;
+    border: 1px solid var(--rp-border) !important;
+    border-radius: 18px !important;
+    padding: 8px !important;
+    box-shadow: var(--rp-shadow-soft) !important;
+    overflow: hidden !important;
+}
+
+.gc-tab,
+.gc-client-tab,
+.gc-status-tab {
+    border: 0 !important;
+    border-radius: 13px !important;
+    background: transparent !important;
+    color: #64748b !important;
+    font-weight: 900 !important;
+    padding: 14px 18px !important;
+    transition: all .18s ease !important;
+}
+
+.gc-tab:hover,
+.gc-client-tab:hover,
+.gc-status-tab:hover {
+    background: #f1f5f9 !important;
+    color: #1e293b !important;
+}
+
+.gc-tab.active,
+.gc-client-tab.active,
+.gc-status-tab.active {
+    background: linear-gradient(135deg, #2563eb, #1e40af) !important;
+    color: #ffffff !important;
+    box-shadow: 0 8px 18px rgba(37,99,235,.20) !important;
+}
+
+.gc-tab.active *,
+.gc-client-tab.active *,
+.gc-status-tab.active * {
+    color: #ffffff !important;
+}
+
+/* Grade dos cards principais de clientes */
+.gc-stats-grid,
+.gc-metrics-grid,
+.gc-dashboard-grid {
+    display: grid !important;
+    grid-template-columns: repeat(4, minmax(220px, 1fr)) !important;
+    gap: 18px !important;
+    margin-top: 18px !important;
+    margin-bottom: 18px !important;
+}
+
+/* Cards de topo: Receita, Ticket, Inadimplência e Atraso */
+.gc-stat-card,
+.gc-metric-card {
+    min-height: 116px !important;
+    padding: 22px 24px !important;
+    border-radius: 18px !important;
+    background: #ffffff !important;
+    border: 1px solid var(--rp-border) !important;
+    box-shadow: var(--rp-shadow-soft) !important;
+    position: relative !important;
+    overflow: hidden !important;
+}
+
+/* Barrinha superior, igual a Planilha */
+.gc-stat-card::before,
+.gc-metric-card::before {
+    content: "";
+    position: absolute;
+    inset: 0 0 auto 0;
+    height: 4px;
+    background: var(--rp-primary);
+}
+
+/* Cores por ordem para ficar semelhante aos cards da Planilha */
+.gc-stats-grid .gc-stat-card:nth-child(1)::before,
+.gc-metrics-grid .gc-stat-card:nth-child(1)::before,
+.gc-dashboard-grid .gc-stat-card:nth-child(1)::before { background: #2563eb; }
+
+.gc-stats-grid .gc-stat-card:nth-child(2)::before,
+.gc-metrics-grid .gc-stat-card:nth-child(2)::before,
+.gc-dashboard-grid .gc-stat-card:nth-child(2)::before { background: #16a34a; }
+
+.gc-stats-grid .gc-stat-card:nth-child(3)::before,
+.gc-metrics-grid .gc-stat-card:nth-child(3)::before,
+.gc-dashboard-grid .gc-stat-card:nth-child(3)::before { background: #ef4444; }
+
+.gc-stats-grid .gc-stat-card:nth-child(4)::before,
+.gc-metrics-grid .gc-stat-card:nth-child(4)::before,
+.gc-dashboard-grid .gc-stat-card:nth-child(4)::before { background: #f59e0b; }
+
+/* Alinha cards resumo como cards da Planilha */
+.gc-stat-card .gc-stat-content,
+.gc-stat-card .gc-card-content,
+.gc-metric-card .gc-stat-content {
+    display: flex !important;
+    align-items: center !important;
+    gap: 18px !important;
+}
+
+.gc-stat-icon,
+.gc-card-icon,
+.gc-metric-icon {
+    width: 52px !important;
+    height: 52px !important;
+    min-width: 52px !important;
+    border-radius: 14px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    font-size: 22px !important;
+    background: #eff6ff !important;
+}
+
+.gc-stat-value,
+.gc-card-value,
+.gc-metric-value {
+    font-size: 26px !important;
+    line-height: 1.1 !important;
+    color: #1e293b !important;
+    font-weight: 900 !important;
+    letter-spacing: -.3px !important;
+}
+
+.gc-stat-label,
+.gc-card-label,
+.gc-metric-label {
+    color: #64748b !important;
+    font-size: 13px !important;
+    font-weight: 700 !important;
+    margin-top: 6px !important;
+}
+
+.gc-stat-sub,
+.gc-card-sub,
+.gc-metric-sub,
+.gc-stat-desc,
+.gc-card-desc {
+    color: #94a3b8 !important;
+    font-size: 12px !important;
+    margin-top: 4px !important;
+}
+
+/* Área com cards numéricos de Total/Ativos/Bloqueados/Online */
+.gc-info-grid,
+.gc-summary-grid {
+    display: grid !important;
+    grid-template-columns: repeat(4, minmax(220px, 1fr)) !important;
+    gap: 18px !important;
+    margin-bottom: 18px !important;
+}
+
+.gc-info-card,
+.gc-summary-card {
+    border-radius: 18px !important;
+    border: 1px solid var(--rp-border) !important;
+    background: #ffffff !important;
+    box-shadow: var(--rp-shadow-soft) !important;
+    padding: 22px 24px !important;
+    transition: transform .18s ease, box-shadow .18s ease !important;
+}
+
+.gc-info-card:hover,
+.gc-summary-card:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: var(--rp-shadow) !important;
+}
+
+/* Filtros mais parecidos com seções da Planilha */
+.gc-filter-section,
+.gc-filters,
+.gc-section.gc-filters {
+    border-radius: 18px !important;
+    border: 1px solid var(--rp-border) !important;
+    background: #ffffff !important;
+    box-shadow: var(--rp-shadow-soft) !important;
+    overflow: hidden !important;
+}
+
+.gc-filter-section .gc-section-title,
+.gc-filters .gc-section-title {
+    background: linear-gradient(135deg, #ffffff, #f8fafc) !important;
+}
+
+/* Botões do header Clientes com altura igual à Planilha */
+.gc-header-actions .gc-btn,
+.gc-header-actions button,
+.gc-header .gc-btn,
+.gc-header button {
+    min-height: 46px !important;
+    padding: 0 18px !important;
+    border-radius: 12px !important;
+    font-weight: 900 !important;
+}
+
+/* Responsivo */
+@media (max-width: 1100px) {
+    .gc-stats-grid,
+    .gc-metrics-grid,
+    .gc-dashboard-grid,
+    .gc-info-grid,
+    .gc-summary-grid {
+        grid-template-columns: repeat(2, minmax(220px, 1fr)) !important;
+    }
+}
+
+@media (max-width: 640px) {
+    .gc-stats-grid,
+    .gc-metrics-grid,
+    .gc-dashboard-grid,
+    .gc-info-grid,
+    .gc-summary-grid {
+        grid-template-columns: 1fr !important;
+    }
+
+    .gc-stat-card,
+    .gc-metric-card,
+    .gc-info-card,
+    .gc-summary-card {
+        padding: 18px !important;
+    }
+}
+
+
+
+/* ============================================================
+   FIX ESPAÇO RESUMO TIPOS (PIX / DINHEIRO / ETC)
+   ============================================================ */
+
+.resumo-tipos {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 10px !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    margin-top: 8px !important;
+}
+
+.resumo-tipos > * {
+    margin: 0 !important;
+    white-space: nowrap !important;
+}
+
+/* Estilo visual melhorado */
+.resumo-tipos span,
+.resumo-tipos div {
+    background: #f1f5f9;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    padding: 5px 10px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #334155;
+}

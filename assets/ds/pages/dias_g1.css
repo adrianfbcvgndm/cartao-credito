@@ -1,0 +1,34 @@
+/* Dias de Pagamento · modelo G1 (09/10/2026) */
+.g1-card { background: #fff; border: 1px solid #dee2e6; border-radius: 12px; padding: 18px 20px; color: #1f2328; }
+.g1-hero { display: flex; align-items: flex-end; flex-wrap: wrap; gap: 10px 24px; }
+.g1-hero small { font-size: 13px; color: #59636e; }
+.g1-big { display: block; font-size: 36px; font-weight: 700; line-height: 1.05; font-variant-numeric: tabular-nums; }
+.g1-de b { font-size: 16px; font-variant-numeric: tabular-nums; }
+.g1-esp { flex: 1; }
+.g1-tog { display: inline-flex; gap: 4px; }
+.g1-tog button { font: inherit; font-size: 13px; border: 1px solid #e4e7eb; background: #fff; color: #343a40; border-radius: 999px; padding: 5px 14px; cursor: pointer; }
+.g1-tog button.on { background: #0d6efd; border-color: #0d6efd; color: #fff; font-weight: 600; }
+.g1-nav { display: inline-flex; align-items: center; gap: 6px; border: 1px solid #dee2e6; border-radius: 999px; padding: 3px 6px; }
+.g1-nav b { font-size: 14px; padding: 0 6px; }
+.g1-nav a { width: 28px; height: 28px; border-radius: 50%; display: grid; place-items: center; color: #343a40; text-decoration: none; }
+.g1-nav a:hover { background: #f1f3f5; } .g1-nav svg { width: 16px; height: 16px; }
+.g1-cal { display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px; margin-top: 16px; }
+.g1-h { font-size: 12px; color: #59636e; font-weight: 600; text-align: center; padding-bottom: 2px; }
+.g1-d { border-radius: 10px; padding: 8px 10px; min-height: 76px; }
+.g1-d.vz { background: transparent !important; }
+.g1-d b { font-size: 12.5px; } .g1-d .q { display: block; font-size: 19px; font-weight: 700; font-variant-numeric: tabular-nums; }
+.g1-d small { font-size: 11px; opacity: .85; white-space: nowrap; }
+.g1-leg { display: flex; align-items: center; gap: 4px; font-size: 12px; color: #59636e; margin: 10px 0 0; }
+.g1-leg i { width: 14px; height: 10px; border-radius: 3px; background: #1baf7a; display: inline-block; }
+.g1-tit { font-size: 13.5px; font-weight: 600; margin: 18px 0 8px; }
+.g1-top { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; }
+.g1-m { border: 1px solid #e9ecef; border-radius: 10px; padding: 10px 12px; }
+.g1-m h5 { margin: 0 0 4px; font-size: 13px; font-weight: 600; display: flex; justify-content: space-between; }
+.g1-m h5 span { font-size: 11px; font-weight: 600; color: #59636e; background: #f1f3f5; border-radius: 999px; padding: 1px 8px; }
+.g1-m b { display: block; font-size: 18px; font-variant-numeric: tabular-nums; } .g1-m small { font-size: 12px; color: #59636e; }
+.g1-ins { margin-top: 12px; font-size: 13px; color: #59636e; background: #f6f8fa; border-radius: 10px; padding: 9px 12px; }
+.g1-ins b { color: #1f2328; }
+.g1-vazio { padding: 24px 4px; color: #8c959f; font-size: 13.5px; }
+.g1-rod { margin-top: 12px; text-align: right; font-size: 11.5px; color: #8c959f; }
+@media (max-width: 900px) { .g1-top { grid-template-columns: repeat(2, 1fr); } .g1-esp { display: none; } .g1-big { font-size: 30px; } }
+@media (max-width: 560px) { .g1-cal { gap: 3px; } .g1-d { padding: 4px; min-height: 52px; } .g1-d .q { font-size: 14px; } .g1-d small { display: none; } }

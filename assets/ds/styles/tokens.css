@@ -1,0 +1,151 @@
+/* ============================================================
+   RP ENTERPRISE DESIGN SYSTEM · TOKENS · paleta RxMax Speed (grafite) desde 25/09/2026
+   ------------------------------------------------------------
+   Fonte única de verdade para cores, espaçamento, raio, sombra,
+   tipografia e movimento. Tudo escopado em .tn-scope para não
+   interferir no frame do MK-AUTH.
+   Aliases --tn-* mantidos para retrocompatibilidade total.
+   ============================================================ */
+
+/* ---------- FONTES (locais, sem CDN) ---------- */
+@font-face{font-family:'Inter';font-style:normal;font-weight:300;font-display:swap;src:url('../../vendor/fonts/inter-latin-300-normal.woff2') format('woff2')}
+@font-face{font-family:'Inter';font-style:normal;font-weight:400;font-display:swap;src:url('../../vendor/fonts/inter-latin-400-normal.woff2') format('woff2')}
+@font-face{font-family:'Inter';font-style:normal;font-weight:500;font-display:swap;src:url('../../vendor/fonts/inter-latin-500-normal.woff2') format('woff2')}
+@font-face{font-family:'Inter';font-style:normal;font-weight:600;font-display:swap;src:url('../../vendor/fonts/inter-latin-600-normal.woff2') format('woff2')}
+@font-face{font-family:'Inter';font-style:normal;font-weight:700;font-display:swap;src:url('../../vendor/fonts/inter-latin-700-normal.woff2') format('woff2')}
+
+/* ---------- TEMA CLARO (padrão) ---------- */
+.tn-scope{
+  /* Marca */
+  --ds-primary:#0f172a;
+  --ds-primary-hover:#1e293b;
+  --ds-primary-soft:#f1f5f9;
+  --ds-primary-ring:rgba(15,23,42,.28);
+
+  /* Semânticas */
+  --ds-success:#1f9d57;      --ds-success-soft:#E8F5EE;               --ds-success-text:#0F7A43;
+  --ds-warning:#eb6834;      --ds-warning-soft:#FBF1E3;               --ds-warning-text:#9A5B00;
+  --ds-danger:#e5484d;       --ds-danger-soft:#FBEBEA;                --ds-danger-text:#C02B21;
+  --ds-info:#2a78d6;         --ds-info-soft:#e7f0fb;                  --ds-info-text:#1a5fc4;
+  --ds-purple:#4a3aa7;       --ds-purple-soft:#ecebf7;                --ds-purple-text:#4a3aa7;
+  --ds-teal:#1baf7a;         --ds-teal-soft:#e6f6ef;                  --ds-teal-text:#0F7A43;
+  --ds-pink:#DB2777;         --ds-pink-soft:rgba(219,39,119,.10);     --ds-pink-text:#BE185D;
+
+  /* Superfícies */
+  --ds-bg:#F6F7F9;
+  --ds-surface:#FFFFFF;
+  --ds-surface-2:#f6f7f9;
+  --ds-surface-3:#ECEEF2;
+  --ds-border:#ECEEF2;
+  --ds-border-strong:#D9DDE4;
+
+  /* Sidebar (sempre escura, marca do produto) */
+  --ds-sidebar-bg:#0F172A;
+  --ds-sidebar-hover:#1E293B;
+  --ds-sidebar-active:rgba(255,255,255,.14);
+  --ds-sidebar-text:#94A3B8;
+  --ds-sidebar-text-hover:#E2E8F0;
+  --ds-sidebar-border:rgba(148,163,184,.10);
+
+  /* Texto */
+  --ds-text:#171A1F;
+  --ds-text-2:#697280;
+  --ds-text-3:#8a8f98;
+
+  /* Elevação */
+  --ds-shadow-xs:0 1px 2px rgba(15,23,42,.05);
+  --ds-shadow-sm:0 1px 3px rgba(15,23,42,.07),0 1px 2px rgba(15,23,42,.04);
+  --ds-shadow-md:0 4px 12px rgba(15,23,42,.08),0 2px 4px rgba(15,23,42,.04);
+  --ds-shadow-lg:0 12px 32px rgba(15,23,42,.12),0 4px 8px rgba(15,23,42,.05);
+  --ds-shadow-xl:0 24px 64px rgba(15,23,42,.18);
+
+  /* Geometria */
+  --ds-radius-sm:8px;
+  --ds-radius:12px;
+  --ds-radius-lg:16px;
+  --ds-radius-full:999px;
+  --ds-sidebar-w:270px;
+  --ds-sidebar-w-collapsed:76px;
+  --ds-header-h:60px;
+
+  /* Movimento */
+  --ds-ease:cubic-bezier(.4,0,.2,1);
+  --ds-fast:.15s;
+  --ds-normal:.25s;
+  --ds-slow:.4s;
+
+  /* Tipografia */
+  --ds-font:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+  --ds-mono:'JetBrains Mono',ui-monospace,'SFMono-Regular',Consolas,monospace;
+
+  /* Gráficos */
+  --ds-chart-grid:#e8eaee;
+  --ds-chart-tick:#8a8f98;
+
+  /* ---------- ALIASES LEGADOS (--tn-*) ---------- */
+  --tn-bg:var(--ds-bg);
+  --tn-bg2:var(--ds-surface);
+  --tn-bg3:var(--ds-surface-2);
+  --tn-bg4:var(--ds-surface-3);
+  --tn-card:var(--ds-surface);
+  --tn-card-sub:var(--ds-surface-2);
+  --tn-border:var(--ds-border);
+  --tn-border2:var(--ds-border-strong);
+  --tn-text:var(--ds-text);
+  --tn-muted:var(--ds-text-3);
+  --tn-muted2:var(--ds-text-2);
+  --tn-accent:var(--ds-primary);
+  --tn-accent2:var(--ds-primary-hover);
+  --tn-green:var(--ds-success);
+  --tn-amber:var(--ds-warning);
+  --tn-red:var(--ds-danger);
+  --tn-purple:var(--ds-purple);
+  --tn-teal:var(--ds-teal);
+  --tn-pink:var(--ds-pink);
+  --tn-shadow:var(--ds-shadow-sm);
+  --tn-shadow-lg:var(--ds-shadow-lg);
+  --tn-chart-grid:var(--ds-chart-grid);
+  --tn-chart-tick:var(--ds-chart-tick);
+  --tn-chart-label:var(--ds-text-2);
+  --tn-donut-border:var(--ds-surface);
+}
+
+/* ---------- TEMA ESCURO ---------- */
+html[data-rp-theme="dark"] .tn-scope{
+  --ds-primary:#e2e8f0;
+  --ds-primary-hover:#f1f5f9;
+  --ds-primary-soft:rgba(226,232,240,.12);
+  --ds-primary-ring:rgba(226,232,240,.35);
+
+  --ds-success:#4ADE80;      --ds-success-soft:rgba(74,222,128,.12);  --ds-success-text:#4ADE80;
+  --ds-warning:#FBBF24;      --ds-warning-soft:rgba(251,191,36,.13);  --ds-warning-text:#FBBF24;
+  --ds-danger:#F87171;       --ds-danger-soft:rgba(248,113,113,.13);  --ds-danger-text:#F87171;
+  --ds-info:#5b9bf0;         --ds-info-soft:rgba(91,155,240,.14);     --ds-info-text:#8ab8f5;
+  --ds-purple:#A78BFA;       --ds-purple-soft:rgba(167,139,250,.13);  --ds-purple-text:#A78BFA;
+  --ds-teal:#2DD4BF;         --ds-teal-soft:rgba(45,212,191,.13);     --ds-teal-text:#2DD4BF;
+  --ds-pink:#F472B6;         --ds-pink-soft:rgba(244,114,182,.13);    --ds-pink-text:#F472B6;
+
+  --ds-bg:#0B1120;
+  --ds-surface:#111827;
+  --ds-surface-2:#161F31;
+  --ds-surface-3:#1E293B;
+  --ds-border:rgba(148,163,184,.13);
+  --ds-border-strong:rgba(148,163,184,.24);
+
+  --ds-sidebar-bg:#0A0F1C;
+  --ds-sidebar-hover:#151E31;
+  --ds-sidebar-active:rgba(255,255,255,.14);
+
+  --ds-text:#F1F5F9;
+  --ds-text-2:#94A3B8;
+  --ds-text-3:#64748B;
+
+  --ds-shadow-xs:0 1px 2px rgba(0,0,0,.25);
+  --ds-shadow-sm:0 1px 3px rgba(0,0,0,.3);
+  --ds-shadow-md:0 4px 12px rgba(0,0,0,.35);
+  --ds-shadow-lg:0 12px 32px rgba(0,0,0,.45);
+  --ds-shadow-xl:0 24px 64px rgba(0,0,0,.55);
+
+  --ds-chart-grid:rgba(148,163,184,.08);
+  --ds-chart-tick:#64748B;
+}

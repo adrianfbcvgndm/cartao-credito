@@ -1,0 +1,47 @@
+/* Menu do Resumo de Pagamentos em pílulas — mesmo visual do Dashboard RxMax (09/10/2026) */
+.tn-scope.rp-topmode .rp-tm { background: transparent; border: 0; box-shadow: none; padding: 12px clamp(14px, 3vw, 34px) 0; }
+.tn-scope.rp-topmode .rp-tm-in { background: #fff; border: 1px solid #dee2e6; border-radius: 12px; padding: 8px 10px; gap: 10px; }
+.tn-scope.rp-topmode .rp-tm-logo { border-radius: 10px; width: 36px; height: 36px; }
+.tn-scope.rp-topmode .rp-tm-nav { gap: 6px; }
+.tn-scope.rp-topmode .rp-tm-gbtn { gap: 7px; padding: 4px 11px 4px 4px; border: 1px solid #e4e7eb; border-radius: 999px; background: #fff; color: #343a40; font-weight: 500; font-size: 13.5px; }
+.tn-scope.rp-topmode .rp-tm-gic { width: 26px; height: 26px; border-radius: 50%; display: inline-grid; place-items: center; color: #fff; flex: none; }
+.tn-scope.rp-topmode .rp-tm-gic i, .tn-scope.rp-topmode .rp-tm-gic svg { width: 14px !important; height: 14px !important; color: #fff; }
+.tn-scope.rp-topmode .rp-tm-grp:hover .rp-tm-gbtn, .tn-scope.rp-topmode .rp-tm-grp:focus-within .rp-tm-gbtn { background: #f3f8ff; border-color: #b6d4fe; color: #1f2328; }
+.tn-scope.rp-topmode .rp-tm-grp.on .rp-tm-gbtn { background: #0d6efd; border-color: #0d6efd; color: #fff; font-weight: 600; }
+.tn-scope.rp-topmode .rp-tm-grp.on .rp-tm-gic { background: #fff !important; }
+.tn-scope.rp-topmode .rp-tm-grp.on .rp-tm-gic svg { color: #0d6efd !important; }
+.tn-scope.rp-topmode .rp-tm-drop { border-radius: 12px; border: 1px solid #dee2e6; box-shadow: 0 12px 28px rgba(31,35,40,.14); padding: 6px; }
+.tn-scope.rp-topmode .rp-tm-i { border-radius: 8px; }
+.tn-scope.rp-topmode .rp-tm-i.active { background: #e7f0ff; color: #0d6efd; }
+.tn-scope.rp-topmode .rp-tm-i.active i, .tn-scope.rp-topmode .rp-tm-i.active svg { color: #0d6efd; }
+.tn-scope.rp-topmode .rp-tm-act .ds-icon-btn { border: 1px solid #e4e7eb; border-radius: 999px; width: 34px; height: 34px; background: #fff; }
+.tn-scope.rp-topmode .rp-tm-act .ds-avatar-btn { border: 1px solid #e4e7eb; border-radius: 999px; padding: 2px 8px 2px 2px; background: #fff; }
+.tn-scope.rp-topmode .rp-tm-sub { border: 0; background: transparent; padding-top: 10px; padding-bottom: 2px; }
+.tn-scope.rp-topmode .rp-tm-cur i, .tn-scope.rp-topmode .rp-tm-cur svg { color: #0d6efd; }
+html[data-rp-theme="dark"] .tn-scope.rp-topmode .rp-tm-in,
+html[data-rp-theme="dark"] .tn-scope.rp-topmode .rp-tm-gbtn { background: var(--ds-surface); border-color: var(--ds-border); color: var(--ds-text); }
+html[data-rp-theme="dark"] .tn-scope.rp-topmode .rp-tm-grp.on .rp-tm-gbtn { background: #0d6efd; color: #fff; }
+@media (max-width: 900px) {
+  .tn-scope.rp-topmode .rp-tm-nav { border-radius: 12px; border: 1px solid #dee2e6; padding: 8px; gap: 4px; top: calc(100% + 4px); }
+  .tn-scope.rp-topmode .rp-tm-nav { left: clamp(14px, 3vw, 34px); right: clamp(14px, 3vw, 34px); box-sizing: border-box; }
+  .tn-scope.rp-topmode .rp-tm-gbtn { border-radius: 10px; justify-content: flex-start; }
+  .tn-scope.rp-topmode .rp-tm-gbtn > svg:last-child { margin-left: auto; }
+}
+
+/* 09/10: largura total da tela, igual ao Dashboard RxMax */
+.tn-scope.rp-topmode .ds-content { max-width: none !important; padding: 14px 14px 40px; }
+.tn-scope.rp-topmode .rp-tm { padding: 12px 14px 0; }
+.tn-scope.rp-topmode .rp-tm-in, .tn-scope.rp-topmode .rp-tm-sub { max-width: none !important; }
+.tn-scope.rp-topmode .rp-tm-sub { padding-left: 16px; padding-right: 16px; }
+
+/* 09/10: submenu no mesmo visual (bolinha colorida + nome + descrição) */
+.tn-scope.rp-topmode .rp-tm-drop { min-width: 290px; padding: 6px; gap: 2px; }
+.tn-scope.rp-topmode .rp-tm-i { display: flex; align-items: center; gap: 10px; padding: 7px 10px 7px 7px; border-radius: 10px; }
+.tn-scope.rp-topmode .rp-tm-iic { width: 32px; height: 32px; border-radius: 50%; display: inline-grid; place-items: center; flex: none; }
+.tn-scope.rp-topmode .rp-tm-iic svg, .tn-scope.rp-topmode .rp-tm-iic i { width: 16px !important; height: 16px !important; color: #fff !important; stroke: #fff !important; }
+.tn-scope.rp-topmode .rp-tm-itx { display: flex; flex-direction: column; min-width: 0; line-height: 1.25; }
+.tn-scope.rp-topmode .rp-tm-itx b { font-size: 13.5px; font-weight: 600; color: #1f2328; }
+.tn-scope.rp-topmode .rp-tm-itx small { font-size: 11.5px; color: #8c959f; white-space: normal; }
+.tn-scope.rp-topmode .rp-tm-i:hover { background: #f3f8ff; }
+.tn-scope.rp-topmode .rp-tm-i.active { background: #e7f0ff; }
+.tn-scope.rp-topmode .rp-tm-i.active .rp-tm-itx b { color: #0d6efd; }

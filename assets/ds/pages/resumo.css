@@ -1,0 +1,217 @@
+/* ============================================================
+   RP ENTERPRISE · PÁGINA: RESUMO DE PAGAMENTOS
+   Seções colapsáveis, mini-cards de inadimplentes críticos,
+   tabs/busca de clientes e utilidades da tabela.
+   Escopado em .tn-scope.
+   ============================================================ */
+
+/* ---------- CABEÇALHO / FORM DE CONSULTA ---------- */
+.tn-scope .rp-consulta-form{display:flex;gap:9px;align-items:flex-end;flex-wrap:wrap}
+.tn-scope .rp-consulta-form .tn-fg{margin-bottom:0}
+.tn-scope .rp-consulta-form .tn-input{min-width:160px}
+
+/* ---------- TOOLBAR DE ENVIO WHATSAPP ---------- */
+.tn-scope .rp-wa-toolbar{padding:10px 14px}
+.tn-scope .rp-toolbar-label{
+  display:inline-flex;align-items:center;gap:7px;
+  font-size:12px;font-weight:600;color:var(--ds-text-2);white-space:nowrap;
+}
+.tn-scope .rp-toolbar-label svg.lucide{width:14px;height:14px;color:var(--ds-primary)}
+.tn-scope .rp-select-sm{width:auto;height:32px;font-size:12.5px;padding:0 30px 0 11px}
+
+/* ---------- SEÇÕES COLAPSÁVEIS ---------- */
+.tn-scope .rp-collapsible{cursor:pointer;user-select:none}
+.tn-scope .rp-collapsible:hover{background:var(--ds-surface-2)}
+.tn-scope .tn-section-toggle{
+  display:inline-flex;align-items:center;justify-content:center;
+  width:26px;height:26px;border-radius:7px;color:var(--ds-text-3);
+  transition:transform var(--ds-normal) var(--ds-ease);
+}
+.tn-scope .tn-section-toggle svg.lucide{width:16px;height:16px}
+.tn-scope .tn-section.collapsed .tn-section-toggle{transform:rotate(-90deg)}
+.tn-scope .tn-section.collapsed .tn-section-body{display:none}
+.tn-scope .tn-section.collapsed .tn-section-header{border-bottom-color:transparent}
+
+/* ---------- LINHA DE GRÁFICOS ---------- */
+.tn-scope .rp-chart-row{
+  display:grid;gap:16px;margin-bottom:18px;
+  grid-template-columns:repeat(auto-fit,minmax(340px,1fr));
+}
+.tn-scope .rp-chart-row .tn-section{margin-bottom:0}
+.tn-scope .rp-chart-row .chart-wrap{position:relative;height:280px;max-height:280px}
+
+/* ---------- TABELA: utilidades ---------- */
+.tn-scope .tn-table td.c,.tn-scope .tn-table th.c{text-align:center}
+.tn-scope .tn-money.pos{color:var(--ds-success-text)}
+.tn-scope .tn-money.neg{color:var(--ds-danger-text)}
+.tn-scope .rp-td-ico{width:13px;height:13px;color:var(--ds-text-3);vertical-align:-2px;margin-right:5px}
+.tn-scope tr.hl-red td:first-child{box-shadow:inset 3px 0 0 var(--ds-danger)}
+.tn-scope tr.hl-amber td:first-child{box-shadow:inset 3px 0 0 var(--ds-warning)}
+.tn-scope tr.hl-green td:first-child{box-shadow:inset 3px 0 0 var(--ds-success)}
+
+/* ---------- BARRA DE FILTROS DOS INADIMPLENTES ---------- */
+.tn-scope .rp-inad-bar{
+  padding:14px 20px;border-bottom:1px solid var(--ds-border);
+  display:flex;gap:16px;flex-wrap:wrap;align-items:center;justify-content:space-between;
+}
+.tn-scope .rp-inad-meta{flex:1;min-width:240px}
+.tn-scope .rp-inad-meta-top{
+  display:flex;justify-content:space-between;align-items:center;
+  font-size:12px;color:var(--ds-text-2);margin-bottom:7px;
+}
+.tn-scope .rp-inad-meta-top strong{color:var(--ds-text);font-variant-numeric:tabular-nums}
+.tn-scope .rp-inad-meta .ds-progress{max-width:280px}
+.tn-scope .rp-inad-filtros{display:flex;gap:6px;flex-wrap:wrap}
+.tn-scope a.ds-chip,.tn-scope a.ds-chip:hover{text-decoration:none}
+.tn-scope .ds-chip svg.lucide{width:13px;height:13px}
+.tn-scope .rp-legend{
+  padding:10px 20px;display:flex;gap:8px;flex-wrap:wrap;
+  border-bottom:1px solid var(--ds-border);
+}
+.tn-scope .rp-ver-mais{text-align:center;padding:14px;border-top:1px solid var(--ds-border)}
+.tn-scope .rp-empty-ok{background:var(--ds-success-soft)!important;color:var(--ds-success-text)!important}
+
+/* ---------- MINI CARDS: TOP INADIMPLENTES CRÍTICOS ---------- */
+.tn-scope .rp-mini-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(195px,1fr));
+  gap:10px;padding:16px 20px;
+}
+.tn-scope .rp-mini{
+  background:var(--ds-surface);
+  border:1px solid var(--ds-border);
+  border-left:3px solid var(--ds-danger);
+  border-radius:10px;
+  padding:10px 12px;
+  box-shadow:var(--ds-shadow-xs);
+  transition:transform var(--ds-fast) var(--ds-ease),box-shadow var(--ds-fast) var(--ds-ease);
+}
+.tn-scope .rp-mini:hover{transform:translateY(-2px);box-shadow:var(--ds-shadow-md)}
+.tn-scope .rp-mini.amber{border-left-color:var(--ds-warning)}
+.tn-scope .rp-mini.green{border-left-color:var(--ds-success)}
+.tn-scope .rp-mini.red{border-left-color:var(--ds-danger)}
+
+.tn-scope .rp-mini-top{display:flex;align-items:center;gap:6px;margin-bottom:4px}
+.tn-scope .rp-mini-rank{
+  flex-shrink:0;font-size:10px;font-weight:700;
+  color:var(--ds-text-3);font-family:var(--ds-mono);
+}
+.tn-scope .rp-mini-name{
+  flex:1;font-size:12px;font-weight:600;color:var(--ds-text);
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+}
+.tn-scope .rp-mini-value{
+  font-family:var(--ds-mono);font-size:15px;font-weight:600;
+  color:var(--ds-danger-text);line-height:1.2;margin-bottom:3px;
+  font-variant-numeric:tabular-nums;
+}
+.tn-scope .rp-mini.amber .rp-mini-value{color:var(--ds-warning-text)}
+.tn-scope .rp-mini.green .rp-mini-value{color:var(--ds-success-text)}
+.tn-scope .rp-mini-info{
+  display:flex;align-items:center;gap:5px;
+  font-size:10.5px;color:var(--ds-text-2);font-family:var(--ds-mono);
+}
+.tn-scope .rp-mini-info svg.lucide{width:11px;height:11px;color:var(--ds-text-3)}
+.tn-scope .rp-mini-dot{color:var(--ds-text-3);opacity:.5}
+.tn-scope .rp-mini-date{margin-left:auto;color:var(--ds-text-3)}
+
+.tn-scope .rp-mini-hidden{display:none}
+.tn-scope .rp-mini-grid.expanded .rp-mini-hidden{display:block;animation:ds-fade-up var(--ds-normal) var(--ds-ease) both}
+.tn-scope .rp-mini-toggle-wrap{text-align:center;padding:0 20px 16px}
+
+/* ---------- PESQUISA DE CLIENTES: TABS ---------- */
+.tn-scope .rpc-tabs{
+  display:flex;gap:4px;flex-wrap:wrap;
+  background:var(--ds-surface-2);
+  border:1px solid var(--ds-border);
+  border-radius:11px;padding:4px;margin:16px 20px;
+}
+.tn-scope .rpc-tab{
+  flex:1;min-width:130px;
+  display:inline-flex;align-items:center;justify-content:center;gap:7px;
+  padding:8px 14px;border-radius:8px;
+  color:var(--ds-text-2);text-decoration:none;
+  font-size:12.5px;font-weight:500;
+  transition:all var(--ds-fast) var(--ds-ease);
+}
+.tn-scope .rpc-tab svg.lucide{width:14px;height:14px}
+.tn-scope .rpc-tab:hover{color:var(--ds-text);text-decoration:none;background:var(--ds-surface)}
+.tn-scope .rpc-tab.active{background:var(--ds-surface);box-shadow:var(--ds-shadow-sm);font-weight:600}
+.tn-scope .rpc-tab.green.active{color:var(--ds-success-text)}
+.tn-scope .rpc-tab.red.active{color:var(--ds-danger-text)}
+.tn-scope .rpc-tab.amber.active{color:var(--ds-warning-text)}
+.tn-scope .rpc-tab.blue.active{color:var(--ds-primary)}
+.tn-scope .rpc-tab-badge{
+  font-family:var(--ds-mono);font-size:11px;font-weight:600;
+  padding:1px 7px;border-radius:var(--ds-radius-full);
+  background:var(--ds-surface-3);color:var(--ds-text-2);
+}
+.tn-scope .rpc-tab.active .rpc-tab-badge{background:var(--ds-primary);color:#fff}
+
+/* ---------- PESQUISA DE CLIENTES: BUSCA ---------- */
+.tn-scope .rpc-filter{
+  display:flex;gap:10px;padding:0 20px 16px;
+  flex-wrap:wrap;align-items:flex-end;
+  border-bottom:1px solid var(--ds-border);
+}
+.tn-scope .rpc-filter .tn-fg{margin-bottom:0}
+.tn-scope .rpc-filter .tn-fg.grow{flex:1;min-width:240px}
+.tn-scope .rpc-search-spinner{
+  position:absolute;right:13px;top:50%;
+  width:14px;height:14px;margin-top:-7px;
+  border:2px solid var(--ds-border-strong);
+  border-top-color:var(--ds-primary);
+  border-radius:50%;
+  opacity:0;pointer-events:none;
+  transition:opacity var(--ds-fast);
+  animation:rpcSpin .8s linear infinite;
+}
+.tn-scope .rpc-search-spinner.active{opacity:1}
+@keyframes rpcSpin{from{transform:rotate(0)}to{transform:rotate(360deg)}}
+
+.tn-scope #rpcTbody.loading{opacity:.4;transition:opacity var(--ds-fast)}
+.tn-scope .rpc-search-info{
+  padding:8px 20px;background:var(--ds-surface-2);
+  border-bottom:1px solid var(--ds-border);
+  font-size:11.5px;color:var(--ds-text-2);text-align:center;
+}
+.tn-scope .rp-cli-nome{font-weight:600;font-size:13px}
+.tn-scope .rp-cli-id{font-size:10.5px;color:var(--ds-text-3);font-family:var(--ds-mono)}
+
+/* ---------- PESQUISA DE CLIENTES: AÇÕES DE LINHA ---------- */
+.tn-scope .rp-cli-actions{display:inline-flex;gap:5px;flex-wrap:wrap;justify-content:center}
+.tn-scope .rpc-act-btn{
+  display:inline-flex;align-items:center;gap:5px;
+  height:28px;padding:0 10px;border-radius:8px;
+  border:1px solid var(--ds-border);
+  background:var(--ds-surface);color:var(--ds-text-2);
+  font-family:var(--ds-font);font-size:11.5px;font-weight:600;
+  cursor:pointer;text-decoration:none;white-space:nowrap;
+  transition:all var(--ds-fast) var(--ds-ease);
+}
+.tn-scope .rpc-act-btn svg.lucide{width:13px;height:13px}
+.tn-scope .rpc-act-btn:hover{text-decoration:none;transform:translateY(-1px);box-shadow:var(--ds-shadow-sm)}
+.tn-scope .rpc-act-btn.blue{color:var(--ds-primary)}
+.tn-scope .rpc-act-btn.blue:hover{background:var(--ds-primary-soft);border-color:var(--ds-primary)}
+.tn-scope .rpc-act-btn.green{color:var(--ds-success-text)}
+.tn-scope .rpc-act-btn.green:hover{background:var(--ds-success-soft);border-color:var(--ds-success)}
+.tn-scope .rpc-btn-wpp .i-wpp{display:inline-flex;align-items:center}
+.tn-scope .rpc-btn-wpp .i-load{
+  display:none;width:12px;height:12px;
+  border:2px solid var(--ds-border-strong);
+  border-top-color:var(--ds-success);border-radius:50%;
+  animation:rpcSpin .8s linear infinite;
+}
+.tn-scope .rpc-btn-wpp.sending{opacity:.7;cursor:wait}
+.tn-scope .rpc-btn-wpp.sending .i-wpp{display:none}
+.tn-scope .rpc-btn-wpp.sending .i-load{display:inline-block}
+
+/* ---------- PESQUISA DE CLIENTES: RODAPÉ / PAGINAÇÃO ---------- */
+.tn-scope .rpc-foot{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:12px 20px;border-top:1px solid var(--ds-border);
+  flex-wrap:wrap;gap:10px;
+}
+.tn-scope .rpc-foot-info{font-size:12.5px;color:var(--ds-text-2)}
+.tn-scope .rpc-foot-pager{display:flex;gap:4px;flex-wrap:wrap;align-items:center}
+.tn-scope .rpc-foot-pager .ellip{color:var(--ds-text-3);padding:0 4px}

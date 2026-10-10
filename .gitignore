@@ -1,0 +1,6 @@
+# segredos de cada servidor (nunca vão para o GitHub)
+rp_config_local.php
+.rp_autokey
+logs/*
+!logs/.gitkeep
+*.bak*

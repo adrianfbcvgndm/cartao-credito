@@ -1,0 +1,151 @@
+/* ============================================================
+   RP ENTERPRISE · WIDGETS
+   Empty states, skeleton loading, barras de progresso,
+   listas de atividade, chips de filtro.
+   Legado: tn-empty-text.
+   ============================================================ */
+
+/* ---------- EMPTY STATE ---------- */
+.tn-scope .ds-empty{
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:8px;padding:48px 24px;text-align:center;
+  color:var(--ds-text-2);
+  animation:ds-fade-up var(--ds-normal) var(--ds-ease) both;
+}
+.tn-scope .ds-empty .ds-empty-ico{
+  width:64px;height:64px;border-radius:18px;
+  background:var(--ds-surface-3);color:var(--ds-text-3);
+  display:flex;align-items:center;justify-content:center;
+  margin-bottom:6px;
+}
+.tn-scope .ds-empty .ds-empty-ico svg.lucide{width:28px;height:28px;stroke-width:1.6}
+.tn-scope .ds-empty b{font-size:14.5px;font-weight:600;color:var(--ds-text)}
+.tn-scope .ds-empty p,.tn-scope .tn-empty-text{font-size:12.5px;color:var(--ds-text-3);max-width:360px;margin:0}
+.tn-scope .ds-empty .tn-btn,.tn-scope .ds-empty .ds-btn{margin-top:10px}
+
+/* ---------- SKELETON LOADING ---------- */
+.tn-scope .ds-skeleton{
+  position:relative;overflow:hidden;
+  background:var(--ds-surface-3);
+  border-radius:8px;
+  min-height:12px;
+}
+.tn-scope .ds-skeleton::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.55),transparent);
+  transform:translateX(-100%);
+  animation:ds-shimmer 1.4s ease-in-out infinite;
+}
+html[data-rp-theme="dark"] .tn-scope .ds-skeleton::after{
+  background:linear-gradient(90deg,transparent,rgba(148,163,184,.13),transparent);
+}
+.tn-scope .ds-skeleton.text{height:12px;margin:6px 0}
+.tn-scope .ds-skeleton.title{height:20px;width:40%;margin:8px 0}
+.tn-scope .ds-skeleton.circle{border-radius:50%}
+.tn-scope .ds-skeleton.card{height:110px;border-radius:var(--ds-radius)}
+.tn-scope .ds-skeleton-row{display:flex;gap:12px;align-items:center;padding:10px 0}
+
+/* ---------- BARRA DE PROGRESSO ---------- */
+.tn-scope .ds-progress{
+  height:8px;border-radius:var(--ds-radius-full);
+  background:var(--ds-surface-3);overflow:hidden;
+}
+.tn-scope .ds-progress>span{
+  display:block;height:100%;border-radius:inherit;
+  background:linear-gradient(90deg,var(--ds-primary),#1e293b);
+  transition:width var(--ds-slow) var(--ds-ease);
+}
+.tn-scope .ds-progress.green>span{background:var(--ds-success)}
+.tn-scope .ds-progress.amber>span{background:var(--ds-warning)}
+.tn-scope .ds-progress.red>span{background:var(--ds-danger)}
+.tn-scope .ds-progress.thin{height:5px}
+
+/* ---------- LISTA DE ATIVIDADE / TIMELINE ---------- */
+.tn-scope .ds-activity{list-style:none;margin:0;padding:0}
+.tn-scope .ds-activity li{
+  display:flex;gap:12px;padding:11px 0;
+  border-bottom:1px solid var(--ds-border);
+}
+.tn-scope .ds-activity li:last-child{border-bottom:0}
+.tn-scope .ds-activity .ds-act-ico{
+  width:32px;height:32px;flex-shrink:0;border-radius:9px;
+  background:var(--ds-primary-soft);color:var(--ds-primary);
+  display:flex;align-items:center;justify-content:center;
+}
+.tn-scope .ds-activity .ds-act-ico svg.lucide{width:15px;height:15px}
+.tn-scope .ds-activity .ds-act-ico.green{background:var(--ds-success-soft);color:var(--ds-success-text)}
+.tn-scope .ds-activity .ds-act-ico.amber{background:var(--ds-warning-soft);color:var(--ds-warning-text)}
+.tn-scope .ds-activity .ds-act-ico.red{background:var(--ds-danger-soft);color:var(--ds-danger-text)}
+.tn-scope .ds-activity .ds-act-body{flex:1;min-width:0;font-size:13px}
+.tn-scope .ds-activity .ds-act-body b{font-weight:600}
+.tn-scope .ds-activity .ds-act-body small{display:block;color:var(--ds-text-3);font-size:11.5px;margin-top:1px}
+.tn-scope .ds-activity .ds-act-time{font-size:11.5px;color:var(--ds-text-3);white-space:nowrap}
+
+/* ---------- CHIPS DE FILTRO ---------- */
+.tn-scope .ds-chip{
+  display:inline-flex;align-items:center;gap:6px;
+  height:28px;padding:0 12px;
+  border-radius:var(--ds-radius-full);
+  border:1px solid var(--ds-border);
+  background:var(--ds-surface);
+  color:var(--ds-text-2);
+  font-size:12px;font-weight:500;cursor:pointer;
+  transition:all var(--ds-fast) var(--ds-ease);
+}
+.tn-scope .ds-chip:hover{border-color:var(--ds-primary);color:var(--ds-primary)}
+.tn-scope .ds-chip.active{
+  background:var(--ds-primary-soft);border-color:var(--ds-primary);
+  color:var(--ds-primary);font-weight:600;
+}
+
+/* ---------- KBD ---------- */
+.tn-scope kbd.ds-kbd{
+  font-family:var(--ds-font);font-size:11px;font-weight:600;
+  color:var(--ds-text-2);background:var(--ds-surface-2);
+  border:1px solid var(--ds-border);border-bottom-width:2px;
+  border-radius:5px;padding:1px 6px;
+}
+
+/* ---------- MÉTRICAS UNIFICADAS (régua estilo Stripe) ---------- */
+.tn-scope .ds-metrics{
+  display:grid;grid-template-columns:repeat(4,1fr);
+  background:var(--ds-surface);
+  border:1px solid var(--ds-border);
+  border-radius:var(--ds-radius-lg);
+  box-shadow:var(--ds-shadow-xs);
+  overflow:hidden;margin-bottom:20px;
+}
+.tn-scope .ds-metric-cell{
+  padding:18px 22px;
+  border-right:1px solid var(--ds-surface-3);
+  border-bottom:1px solid var(--ds-surface-3);
+  min-width:0;
+}
+.tn-scope .ds-metric-cell:nth-child(4n){border-right:0}
+.tn-scope .ds-metric-cell .lbl{
+  font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.05em;
+  color:var(--ds-text-3);
+  display:flex;align-items:center;gap:7px;
+}
+.tn-scope .ds-metric-cell .lbl::before{
+  content:'';width:8px;height:8px;border-radius:3px;flex-shrink:0;
+  background:var(--ac,var(--ds-primary));
+}
+.tn-scope .ds-metric-cell .val{
+  font-size:23px;font-weight:700;letter-spacing:-.02em;color:var(--ds-text);
+  margin:4px 0 1px;font-variant-numeric:tabular-nums;
+}
+.tn-scope .ds-metric-cell .val.rp-neg{color:var(--ds-danger-text)}
+.tn-scope .ds-metric-cell .sub{font-size:11.5px;color:var(--ds-text-2)}
+.tn-scope .ds-metric-cell .sub .up{color:var(--ds-success-text);font-weight:600}
+.tn-scope .ds-metric-cell .sub .down{color:var(--ds-danger-text);font-weight:600}
+.tn-scope .ds-metric-wide{grid-column:1 / -1;border-right:0}
+@media (max-width:1100px){
+  .tn-scope .ds-metrics{grid-template-columns:repeat(2,1fr)}
+  .tn-scope .ds-metric-cell:nth-child(4n){border-right:1px solid var(--ds-surface-3)}
+  .tn-scope .ds-metric-cell:nth-child(2n){border-right:0}
+}
+@media (max-width:560px){
+  .tn-scope .ds-metrics{grid-template-columns:1fr}
+  .tn-scope .ds-metric-cell{border-right:0!important}
+}

@@ -1,0 +1,6 @@
+Addon cartao_credito (separado do Resumo_Pagamentos em 09/10/2026)
+1. Copiar esta pasta (menos instalar/) para /opt/mk-auth/admin/addons/cartao_credito
+2. Copiar rp_config_local.php e .rp_autokey do Resumo_Pagamentos do servidor; chown www-data; chmod 777 logs
+3. Copiar instalar/* para /tmp/cc_deploy e rodar: PHPB=<php> bash /tmp/cc_deploy/aplica.sh
+   (faz backup em /root/bk_separa_cartao_<data>, troca pagamento/webhook/autopay_publico do Resumo por atalhos,
+    tira Recuperar/Auditoria/Cartão do Resumo, ajusta /var/www/cartao, crontab do autopay e o menu)

@@ -1,0 +1,42 @@
+/* Dashboard Financeiro · modelo D1 (09/10/2026) — mesmo visual do Faturamento do Dashboard RxMax */
+.d1-card { background: #fff; border: 1px solid #dee2e6; border-radius: 12px; padding: 18px 20px; color: #1f2328; }
+.d1-card a { color: #0d6efd; }
+.d1-hero { display: flex; align-items: flex-end; flex-wrap: wrap; gap: 10px 28px; }
+.d1-hero small { font-size: 13px; color: #59636e; }
+.d1-big { display: block; font-size: 36px; font-weight: 700; line-height: 1.05; font-variant-numeric: tabular-nums; }
+.d1-sub { display: block; font-size: 12px; color: #8c959f; margin-top: 2px; }
+.d1-de b { font-size: 16px; font-variant-numeric: tabular-nums; }
+.d1-pc { font-size: 12px; font-weight: 700; color: #0f7a53; background: #e3f6ee; border-radius: 999px; padding: 1px 8px; margin-left: 4px; }
+.d1-pc.neg { color: #b42318; background: #fde8e8; }
+.d1-esp { flex: 1; }
+.d1-kv { text-align: right; } .d1-kv b { display: block; font-size: 19px; font-variant-numeric: tabular-nums; } .d1-kv em { display: block; font-style: normal; font-size: 11.5px; color: #8c959f; }
+.d1-card .pos { color: #0f7a53; } .d1-card .neg { color: #b42318; }
+.d1-var { font-size: 11.5px; font-weight: 700; color: #59636e; } .d1-var.pos { color: #0f7a53; } .d1-var.neg { color: #b42318; }
+.d1-pb { display: flex; height: 14px; border-radius: 7px; overflow: hidden; background: #eef0f2; margin: 14px 0 6px; } .d1-pb span { height: 100%; }
+.d1-lg { display: flex; flex-wrap: wrap; gap: 4px 20px; font-size: 12.5px; color: #59636e; margin-bottom: 16px; }
+.d1-lg i { display: inline-block; width: 10px; height: 10px; border-radius: 3px; margin-right: 5px; vertical-align: -1px; }
+.d1-meses { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 10px; }
+.d1-m { border: 1px solid #e9ecef; border-radius: 10px; padding: 10px 12px; } .d1-m.sel { border-color: #0d6efd; background: #f8fbff; }
+.d1-m h5 { margin: 0 0 6px; font-size: 13px; font-weight: 600; display: flex; justify-content: space-between; align-items: center; }
+.d1-and { font-size: 10.5px; font-weight: 600; color: #59636e; background: #f1f3f5; border-radius: 999px; padding: 1px 7px; }
+.d1-r { display: grid; grid-template-columns: 60px 1fr 66px; gap: 6px; align-items: center; font-size: 12px; margin: 4px 0; }
+.d1-r em { font-style: normal; text-align: right; font-weight: 600; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.d1-b { display: block; height: 7px; border-radius: 4px; background: #f1f3f5; overflow: hidden; } .d1-b span { display: block; height: 100%; border-radius: 4px; }
+.d1-ft { display: flex; justify-content: space-between; border-top: 1px dashed #dee2e6; margin-top: 6px; padding-top: 6px; font-size: 12.5px; font-weight: 600; } .d1-ft b { font-variant-numeric: tabular-nums; }
+.d1-dois { display: grid; grid-template-columns: 3fr 2fr; gap: 26px; margin-top: 18px; }
+.d1-tit { font-size: 13.5px; font-weight: 600; margin: 0 0 8px; }
+.d1-g { position: relative; height: 260px; }
+.d1-tab { width: 100%; border-collapse: collapse; font-size: 13px; }
+.d1-tab th { text-align: left; font-size: 12px; color: #59636e; font-weight: 600; padding: 6px 8px; border-bottom: 1px solid #e4e7eb; }
+.d1-tab td { padding: 7px 8px; border-bottom: 1px solid #f1f3f5; } .d1-tab .r { text-align: right; }
+.d1-q { color: #8c959f; } .d1-v { font-weight: 700; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.d1-tg { font-size: 11.5px; font-weight: 600; border-radius: 999px; padding: 2px 9px; background: #fff3d6; color: #8a5a00; } .d1-tg.fx { background: #e7f0ff; color: #0b5ed7; }
+.d1-cat { display: grid; grid-template-columns: 130px 1fr 150px; gap: 10px; align-items: center; font-size: 13px; margin: 8px 0; }
+.d1-cat > span:first-child { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.d1-cat em { font-style: normal; text-align: right; color: #8c959f; white-space: nowrap; } .d1-cat em b { color: #1f2328; }
+.d1-vazio { color: #8c959f; font-size: 13px; padding: 8px 0; }
+.d1-rod { display: flex; justify-content: flex-end; align-items: center; gap: 12px; margin-top: 12px; font-size: 11.5px; color: #8c959f; }
+.d1-mesf { display: flex; align-items: center; gap: 6px; margin: 0; } .d1-mesf label { margin: 0; }
+.d1-mesf input { height: 30px; border: 1px solid #ced4da; border-radius: 999px; padding: 0 12px; font-size: 12.5px; color: #1f2328; background: #fff; }
+@media (max-width: 900px) { .d1-dois { grid-template-columns: 1fr; } .d1-esp { display: none; } .d1-kv { text-align: left; } .d1-big { font-size: 30px; } }
+@media (max-width: 560px) { .d1-rod { flex-wrap: wrap; justify-content: flex-start; } .d1-cat { grid-template-columns: 100px 1fr 120px; } }

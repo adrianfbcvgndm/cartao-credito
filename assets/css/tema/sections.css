@@ -1,0 +1,34 @@
+/* ============================================================
+   SECTION (cards retraitil)
+   ============================================================ */
+.tn-scope .tn-section{
+  background:var(--tn-bg2);
+  border:1px solid var(--tn-border);
+  border-radius:8px;
+  margin-bottom:14px;overflow:hidden;
+}
+.tn-scope .tn-section-header{
+  padding:14px 18px;
+  display:flex;align-items:center;justify-content:space-between;
+  border-bottom:1px solid var(--tn-border);
+  cursor:pointer;user-select:none;
+  transition:background .1s;
+}
+.tn-scope .tn-section-header:hover{background:var(--tn-bg3)}
+.tn-scope .tn-section.collapsed .tn-section-header{border-bottom-color:transparent}
+.tn-scope .tn-section-title{
+  display:flex;align-items:center;gap:10px;
+  color:var(--tn-text);font-size:14px;font-weight:600;
+}
+.tn-scope .tn-section-title .tn-ico{font-size:16px}
+.tn-scope .tn-section-actions{display:flex;align-items:center;gap:10px}
+.tn-scope .tn-section-toggle{
+  color:var(--tn-muted);font-size:12px;
+  transition:transform .25s ease;
+}
+.tn-scope .tn-section.collapsed .tn-section-toggle{transform:rotate(-90deg)}
+.tn-scope .tn-section-body{
+  max-height:5000px;overflow:hidden;
+  transition:max-height .35s ease;
+}
+.tn-scope .tn-section.collapsed .tn-section-body{max-height:0}

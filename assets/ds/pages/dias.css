@@ -1,0 +1,51 @@
+/* ============================================================
+   RP ENTERPRISE · DIAS DE PAGAMENTO
+   Calendário de intensidade + ranking dos dias campeões.
+   ============================================================ */
+.tn-scope .dp-wrap{display:grid;grid-template-columns:1.35fr 1fr;gap:18px;align-items:start}
+@media (max-width:1000px){.tn-scope .dp-wrap{grid-template-columns:1fr}}
+.tn-scope .dp-toggle{margin:0 6px 0 0}
+.tn-scope .dp-mes-label{pointer-events:none;font-weight:600;min-width:130px;justify-content:center}
+
+.tn-scope .dp-cal{display:grid;grid-template-columns:repeat(7,1fr);gap:5px}
+.tn-scope .dp-cal .wd{font-size:10px;font-weight:600;color:var(--ds-text-3);text-align:center;text-transform:uppercase;padding:3px 0}
+.tn-scope .dp-cal .d{
+  aspect-ratio:1.15;border-radius:8px;background:var(--ds-surface-2);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;
+  transition:transform var(--ds-fast),box-shadow var(--ds-fast);
+}
+.tn-scope .dp-cal .d:hover{transform:scale(1.06);box-shadow:var(--ds-shadow-sm);z-index:2}
+.tn-scope .dp-cal .d.off{background:transparent;pointer-events:none}
+.tn-scope .dp-cal .d b{font-size:11.5px;font-weight:600;color:var(--ds-text)}
+.tn-scope .dp-cal .d span{font-size:9.5px;color:var(--ds-text-2)}
+.tn-scope .dp-cal .d.n1{background:#EFF3F8}
+.tn-scope .dp-cal .d.n2{background:#dbe8f8}
+.tn-scope .dp-cal .d.n3{background:#a9c8ef}
+.tn-scope .dp-cal .d.n4{background:#2a78d6}
+.tn-scope .dp-cal .d.n5{background:#1b4f8f}
+.tn-scope .dp-cal .d.n4 b,.tn-scope .dp-cal .d.n5 b{color:#fff}
+.tn-scope .dp-cal .d.n4 span,.tn-scope .dp-cal .d.n5 span{color:rgba(255,255,255,.82)}
+html[data-rp-theme="dark"] .tn-scope .dp-cal .d.n1{background:#1E293B}
+html[data-rp-theme="dark"] .tn-scope .dp-cal .d.n2{background:#173a63}
+html[data-rp-theme="dark"] .tn-scope .dp-cal .d.n2 b{color:#dbe8f8}
+
+.tn-scope .dp-legenda{display:flex;align-items:center;gap:5px;margin-top:12px;font-size:10.5px;color:var(--ds-text-3);justify-content:flex-end}
+.tn-scope .dp-legenda i{width:12px;height:12px;border-radius:3px;display:inline-block}
+.tn-scope .dp-legenda .l1{background:#EFF3F8}
+.tn-scope .dp-legenda .l2{background:#dbe8f8}
+.tn-scope .dp-legenda .l3{background:#a9c8ef}
+.tn-scope .dp-legenda .l4{background:#2a78d6}
+.tn-scope .dp-legenda .l5{background:#1b4f8f}
+
+.tn-scope .dp-rank{list-style:none;margin:0;padding:0}
+.tn-scope .dp-rank li{display:flex;align-items:center;gap:10px;padding:9px 0;border-bottom:1px solid var(--ds-border);font-size:12.5px}
+.tn-scope .dp-rank li:last-child{border-bottom:0}
+.tn-scope .dp-rank .pos{width:22px;height:22px;flex-shrink:0;border-radius:6px;background:var(--ds-primary-soft);color:var(--ds-primary);font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center}
+.tn-scope .dp-rank li:first-child .pos{background:var(--ds-primary);color:#fff}
+.tn-scope .dp-rank .dl{font-weight:600;color:var(--ds-text);width:56px}
+.tn-scope .dp-rank .bar{height:5px;border-radius:99px;background:var(--ds-primary-soft);position:relative;flex:1}
+.tn-scope .dp-rank .bar i{position:absolute;top:0;bottom:0;left:0;background:var(--ds-primary);border-radius:99px}
+.tn-scope .dp-rank .dv{color:var(--ds-text-2);font-variant-numeric:tabular-nums;white-space:nowrap}
+.tn-scope .dp-rank .dv .up{color:var(--ds-success-text)}
+.tn-scope .dp-rank .dv .down{color:var(--ds-danger-text)}
+.tn-scope .dp-rank .dv .ig{color:var(--ds-text-3)}

@@ -1,0 +1,98 @@
+/* ============================================================
+   RP · PELE P3 (09/10/2026) — o addon inteiro com o visual do Dashboard RxMax
+   e da aba Resumo do dia: fundo claro, cartões brancos com borda fina e raio 12,
+   número grande sem filete, abas e botões em pílula azul, tabelas leves,
+   etiquetas arredondadas. Carregada por último; só CSS, nada de lógica.
+   ============================================================ */
+.tn-scope.rp-topmode { --p3-azul: #0d6efd; --p3-borda: #dee2e6; --p3-linha: #f1f3f5; --p3-txt: #1f2328; --p3-txt2: #59636e; --p3-txt3: #8c959f; }
+
+/* cabeçalho da página: sem o quadrado preto; título limpo e menor */
+.tn-scope .ds-page-head { margin: 0 0 14px; align-items: flex-end; }
+.tn-scope .ds-page-title { font-size: 20px; font-weight: 700; gap: 10px; color: var(--p3-txt); }
+.tn-scope .ds-page-head .ds-page-title svg.lucide, .tn-scope .ds-page-head .ds-page-title i {
+  width: 34px; height: 34px; flex: 0 0 34px; padding: 8px; border-radius: 50%; background: #e7f0ff; color: var(--p3-azul); stroke: var(--p3-azul); }
+.tn-scope .ds-page-desc { margin: 2px 0 0 44px; font-size: 13px; color: var(--p3-txt2); }
+
+/* cartões e seções: branco, borda fina, raio 12, sem sombra */
+.tn-scope .tn-card, .tn-scope .tn-section, .tn-scope .ds-panel, .tn-scope .ds-form-section, .tn-scope .ds-toolbar {
+  background: #fff; border: 1px solid var(--p3-borda) !important; border-radius: 12px !important; box-shadow: none !important; }
+.tn-scope .tn-section-header, .tn-scope .ds-panel-head, .tn-scope .ds-form-section-head { border-bottom: 1px solid var(--p3-linha) !important; background: transparent !important; }
+.tn-scope .tn-section-title, .tn-scope .ds-form-section-head h3, .tn-scope .ds-panel-title { font-size: 14px; font-weight: 600; color: var(--p3-txt); }
+.tn-scope .tn-section-title .tn-ico { background: #e7f0ff; border-radius: 50%; }
+.tn-scope .tn-section-title .tn-ico svg.lucide { color: var(--p3-azul); stroke: var(--p3-azul); }
+
+/* cartões de número (KPI): sem filete; rótulo em frase, número grande, barrinha embaixo */
+.tn-scope.rp-topmode .ds-metric-cell, .tn-scope .tn-stat, .tn-scope .ds-stat {
+  background: #fff; border: 1px solid var(--p3-borda) !important; border-left: 1px solid var(--p3-borda) !important; border-top: 1px solid var(--p3-borda) !important;
+  border-radius: 12px !important; box-shadow: none !important; padding: 14px 16px !important; }
+.tn-scope.rp-topmode .ds-metric-cell::before, .tn-scope .tn-stat::before, .tn-scope .ds-stat::before { display: none !important; }
+.tn-scope.rp-topmode .ds-metric-cell .lbl, .tn-scope .tn-stat-label, .tn-scope .ds-stat-label {
+  text-transform: none !important; letter-spacing: 0 !important; font-size: 13px !important; font-weight: 400; color: var(--p3-txt2) !important; }
+.tn-scope.rp-topmode .ds-metric-cell .val, .tn-scope .tn-stat-value, .tn-scope .ds-stat-value {
+  font-size: 28px !important; font-weight: 700 !important; color: var(--p3-txt); letter-spacing: -.01em; font-variant-numeric: tabular-nums; }
+.tn-scope.rp-topmode .ds-metric-cell .sub, .tn-scope .tn-stat-sub, .tn-scope .ds-stat-sub { font-size: 12px; color: var(--p3-txt3) !important; }
+.tn-scope.rp-topmode .ds-metric-cell .rp-mini-bar { height: 6px; border-radius: 3px; background: var(--p3-linha); }
+.tn-scope.rp-topmode .ds-metric-cell .rp-mini-bar i { border-radius: 3px; }
+.tn-scope .ds-stat-icon { border-radius: 50% !important; }
+.tn-scope.rp-topmode .ds-metrics, .tn-scope .tn-stats-grid, .tn-scope .ds-stats-grid { gap: 10px !important; }
+
+/* abas internas: pílulas soltas, ativa em azul */
+.tn-scope .ds-tabs:not(.ds-tabs-pill), .tn-scope .cfg-subtabs, .tn-scope .pf-tabs-bar, .tn-scope .ds-tabs-pill {
+  background: transparent !important; padding: 0 !important; gap: 6px !important; flex-wrap: wrap; }
+.tn-scope .ds-tab, .tn-scope .cfg-subtab, .tn-scope .pf-tab-btn {
+  border: 1px solid #e4e7eb !important; border-radius: 999px !important; background: #fff !important; color: #343a40 !important; font-weight: 500 !important; padding: 6px 14px !important; }
+.tn-scope .ds-tab:hover, .tn-scope .cfg-subtab:hover, .tn-scope .pf-tab-btn:hover { border-color: #b6d4fe !important; background: #f3f8ff !important; }
+.tn-scope .ds-tab.active, .tn-scope .cfg-subtab.active, .tn-scope .pf-tab-btn.active, .tn-scope .ds-tabs-pill .ds-tab.active {
+  background: var(--p3-azul) !important; border-color: var(--p3-azul) !important; color: #fff !important; font-weight: 600 !important; box-shadow: none !important; }
+.tn-scope .ds-tab.active .lbl, .tn-scope .pf-tab-btn.active .lbl { color: #fff !important; }
+
+/* botões em pílula: principal azul, contorno branco */
+.tn-scope .tn-btn, .tn-scope .ds-btn, .tn-scope .tn-btn-outline, .tn-scope .tn-btn-ghost, .tn-scope .pf-icon-btn { border-radius: 999px !important; }
+.tn-scope .tn-btn-primary, .tn-scope .ds-btn-primary { background: var(--p3-azul) !important; border-color: var(--p3-azul) !important; color: #fff !important; box-shadow: none !important; }
+.tn-scope .tn-btn-primary:hover, .tn-scope .ds-btn-primary:hover { background: #0b5ed7 !important; border-color: #0b5ed7 !important; }
+.tn-scope .tn-btn-green { background: #1baf7a !important; border-color: #1baf7a !important; color: #fff !important; }
+.tn-scope .tn-btn-red { border-radius: 999px !important; }
+.tn-scope .tn-btn-outline, .tn-scope .tn-btn-ghost { background: #fff !important; border: 1px solid var(--p3-borda) !important; color: #343a40 !important; }
+.tn-scope .tn-btn-outline:hover, .tn-scope .tn-btn-ghost:hover { border-color: #86b7fe !important; background: #f3f8ff !important; color: var(--p3-azul) !important; }
+
+/* campos: arredondados, foco azul */
+.tn-scope .tn-input, .tn-scope select.tn-input, .tn-scope .cfg-textarea { border-radius: 10px !important; border-color: #ced4da !important; box-shadow: none !important; }
+.tn-scope .tn-input:focus, .tn-scope .cfg-textarea:focus { border-color: #86b7fe !important; box-shadow: 0 0 0 3px rgba(13,110,253,.15) !important; }
+.tn-scope .tn-fl { text-transform: none !important; letter-spacing: 0 !important; font-size: 12.5px !important; font-weight: 600; color: var(--p3-txt2) !important; }
+
+/* tabelas: cabeçalho em frase, linhas leves (estilo Atividades) */
+.tn-scope .tn-table th, .tn-scope table.pf-table th, .tn-scope .ds-table th {
+  text-transform: none !important; letter-spacing: 0 !important; font-size: 12px !important; font-weight: 600 !important; color: var(--p3-txt2) !important;
+  background: #fff !important; border-bottom: 1px solid #e4e7eb !important; }
+.tn-scope .tn-table td, .tn-scope table.pf-table td, .tn-scope .ds-table td { border-bottom: 1px solid var(--p3-linha) !important; font-size: 13px; }
+.tn-scope .tn-table tbody tr:hover td, .tn-scope table.pf-table tbody tr:hover td { background: #f8fafc !important; }
+.tn-scope .tn-table tbody tr:nth-child(even) td { background: transparent; }
+
+/* etiquetas: pílulas suaves */
+.tn-scope .tn-badge, .tn-scope .ds-badge, .tn-scope .ds-chip { border-radius: 999px !important; font-weight: 600; text-transform: none !important; letter-spacing: 0 !important; }
+.tn-scope .tn-badge-green { background: #e3f6ee !important; color: #0f7a53 !important; }
+.tn-scope .tn-badge-red { background: #fde8e8 !important; color: #b42318 !important; }
+.tn-scope .tn-badge-amber { background: #fff3d6 !important; color: #8a5a00 !important; }
+.tn-scope .tn-badge-blue { background: #e7f0ff !important; color: #0b5ed7 !important; }
+.tn-scope .tn-badge-muted { background: #eef0f2 !important; color: #59636e !important; }
+
+/* avisos: cartão claro com borda colorida fina */
+.tn-scope .ds-alert, .tn-scope .tn-alert { border-radius: 12px !important; border-width: 1px !important; border-left-width: 1px !important; box-shadow: none !important; }
+
+/* vazio */
+.tn-scope .ds-empty-ico { border-radius: 50% !important; background: #f1f3f5 !important; }
+
+/* números monetários alinhados */
+.tn-scope .tn-money, .tn-scope .mono { font-variant-numeric: tabular-nums; }
+
+/* escuro: devolve as superfícies do tema */
+html[data-rp-theme="dark"] .tn-scope .tn-card, html[data-rp-theme="dark"] .tn-scope .tn-section, html[data-rp-theme="dark"] .tn-scope .ds-panel,
+html[data-rp-theme="dark"] .tn-scope .ds-form-section, html[data-rp-theme="dark"] .tn-scope .ds-toolbar, html[data-rp-theme="dark"] .tn-scope.rp-topmode .ds-metric-cell,
+html[data-rp-theme="dark"] .tn-scope .tn-stat, html[data-rp-theme="dark"] .tn-scope .ds-stat, html[data-rp-theme="dark"] .tn-scope .tn-table th,
+html[data-rp-theme="dark"] .tn-scope .ds-tab, html[data-rp-theme="dark"] .tn-scope .cfg-subtab, html[data-rp-theme="dark"] .tn-scope .pf-tab-btn {
+  background: var(--ds-surface) !important; border-color: var(--ds-border) !important; color: var(--ds-text) !important; }
+
+/* corpo das seções sempre com respiro (algumas telas vinham coladas na borda) */
+.tn-scope .ds-form-section-body { padding: 16px 20px !important; }
+.tn-scope .ds-form-section-foot { padding: 12px 20px !important; background: #fafbfc; border-top: 1px solid var(--p3-linha); border-radius: 0 0 12px 12px; }
+.tn-scope .em-filters .em-filter-row { gap: 12px; }

@@ -1,0 +1,63 @@
+/* ============================================================
+   MINI CARDS (top 10 inadimplentes etc)
+   ============================================================ */
+.tn-scope .tn-cards-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  gap:12px;padding:16px 18px;
+}
+.tn-scope .tn-mini-card{
+  background:var(--tn-bg);
+  border:1px solid var(--tn-border);
+  border-left:3px solid var(--tn-red);
+  border-radius:8px;padding:14px;
+  transition:transform .15s, box-shadow .15s;
+}
+.tn-scope .tn-mini-card:hover{transform:translateY(-1px);box-shadow:var(--tn-shadow-lg)}
+.tn-scope .tn-mini-card.amber{border-left-color:var(--tn-amber)}
+.tn-scope .tn-mini-card.green{border-left-color:var(--tn-green)}
+.tn-scope .tn-mini-card.blue{border-left-color:var(--tn-accent)}
+.tn-scope .tn-mini-rank{
+  font-size:10px;font-weight:500;
+  color:var(--tn-muted);
+  text-transform:uppercase;letter-spacing:.7px;
+  margin-bottom:8px;
+}
+.tn-scope .tn-mini-name{
+  font-size:13px;font-weight:600;color:var(--tn-text);
+  margin-bottom:8px;word-break:break-word;
+}
+.tn-scope .tn-mini-meta{
+  display:flex;justify-content:space-between;
+  font-size:11px;color:var(--tn-muted2);
+  margin-bottom:4px;
+}
+.tn-scope .tn-mini-value{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:18px;font-weight:600;color:var(--tn-red);
+  margin-top:8px;
+}
+.tn-scope .tn-mini-card.amber .tn-mini-value{color:var(--tn-amber)}
+.tn-scope .tn-mini-card.green .tn-mini-value{color:var(--tn-green)}
+.tn-scope .tn-mini-card.blue .tn-mini-value{color:var(--tn-accent)}
+.tn-scope .tn-mini-foot{
+  font-size:10px;color:var(--tn-muted);
+  margin-top:4px;font-family:'IBM Plex Mono',monospace;
+}
+
+/* ============================================================
+   PROGRESS BAR
+   ============================================================ */
+.tn-scope .tn-progress{
+  width:100%;height:6px;
+  background:var(--tn-bg4);
+  border-radius:3px;overflow:hidden;
+}
+.tn-scope .tn-progress-fill{
+  height:100%;border-radius:3px;
+  transition:width .6s ease;
+  background:var(--tn-accent);
+}
+.tn-scope .tn-progress-fill.green{background:var(--tn-green)}
+.tn-scope .tn-progress-fill.amber{background:var(--tn-amber)}
+.tn-scope .tn-progress-fill.red{background:var(--tn-red)}

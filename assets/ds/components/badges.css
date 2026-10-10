@@ -1,0 +1,55 @@
+/* ============================================================
+   RP ENTERPRISE · BADGES & PÍLULAS DE STATUS
+   Padrão: fundo suave + texto forte + ponto de status opcional.
+   Legado: tn-badge, tn-badge-green/amber/red/blue/muted.
+   ============================================================ */
+
+.tn-scope .tn-badge,.tn-scope .ds-badge{
+  display:inline-flex;align-items:center;gap:5px;
+  height:22px;padding:0 9px;
+  border-radius:var(--ds-radius-full);
+  font-size:11px;font-weight:600;letter-spacing:.02em;
+  background:var(--ds-surface-3);color:var(--ds-text-2);
+  border:1px solid transparent;
+  white-space:nowrap;vertical-align:middle;
+  font-variant-numeric:tabular-nums;
+}
+.tn-scope .tn-badge svg.lucide,.tn-scope .ds-badge svg.lucide{width:11px;height:11px}
+
+/* ponto de status */
+.tn-scope .ds-badge-dot::before,.tn-scope .tn-badge.dot::before{
+  content:'';width:6px;height:6px;border-radius:50%;background:currentColor;flex-shrink:0;
+}
+
+/* Variantes semânticas */
+.tn-scope .tn-badge-green,.tn-scope .ds-badge-success{background:var(--ds-success-soft);color:var(--ds-success-text)}
+.tn-scope .tn-badge-amber,.tn-scope .ds-badge-warning{background:var(--ds-warning-soft);color:var(--ds-warning-text)}
+.tn-scope .tn-badge-red,.tn-scope .ds-badge-danger{background:var(--ds-danger-soft);color:var(--ds-danger-text)}
+.tn-scope .tn-badge-blue,.tn-scope .ds-badge-info{background:var(--ds-info-soft);color:var(--ds-info-text)}
+.tn-scope .tn-badge-purple,.tn-scope .ds-badge-purple{background:var(--ds-purple-soft);color:var(--ds-purple-text)}
+.tn-scope .tn-badge-teal,.tn-scope .ds-badge-teal{background:var(--ds-teal-soft);color:var(--ds-teal-text)}
+.tn-scope .tn-badge-pink,.tn-scope .ds-badge-pink{background:var(--ds-pink-soft);color:var(--ds-pink-text)}
+.tn-scope .tn-badge-muted,.tn-scope .ds-badge-muted{background:var(--ds-surface-3);color:var(--ds-text-3)}
+.tn-scope .ds-badge-primary{background:var(--ds-primary-soft);color:var(--ds-primary)}
+
+/* Contornadas */
+.tn-scope .ds-badge-outline{background:transparent;border-color:var(--ds-border-strong);color:var(--ds-text-2)}
+
+/* Estados de produto (Instalado, Ativo, Beta, Premium...) */
+.tn-scope .ds-badge-installed{background:var(--ds-success-soft);color:var(--ds-success-text)}
+.tn-scope .ds-badge-active{background:var(--ds-primary-soft);color:var(--ds-primary)}
+.tn-scope .ds-badge-disabled{background:var(--ds-surface-3);color:var(--ds-text-3)}
+.tn-scope .ds-badge-error{background:var(--ds-danger-soft);color:var(--ds-danger-text)}
+.tn-scope .ds-badge-update{background:var(--ds-info-soft);color:var(--ds-info-text)}
+.tn-scope .ds-badge-beta{background:var(--ds-purple-soft);color:var(--ds-purple-text)}
+.tn-scope .ds-badge-premium{
+  background:linear-gradient(135deg,rgba(245,158,11,.16),rgba(219,39,119,.14));
+  color:#B45309;border-color:rgba(245,158,11,.35);
+}
+.tn-scope .ds-badge-experimental{background:var(--ds-teal-soft);color:var(--ds-teal-text);border-style:dashed;border-color:var(--ds-teal)}
+
+/* Contador numérico */
+.tn-scope .ds-badge-count{
+  min-width:20px;height:20px;padding:0 6px;justify-content:center;
+  background:var(--ds-primary);color:#fff;font-size:10.5px;font-weight:700;
+}

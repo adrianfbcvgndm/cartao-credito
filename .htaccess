@@ -1,0 +1,39 @@
+# =================================================================
+# .htaccess do addon cartao_credito
+# =================================================================
+# O RewriteRule anterior (^.*$ -> index.php) estava REDIRECIONANDO
+# TUDO pra index.php - bug grave que quebrava URLs diretas tipo
+# pagamento.php, webhook_mp.php, api_*.php
+#
+# Esse novo .htaccess apenas BLOQUEIA acesso direto a arquivos
+# sensiveis (logs, .bak, .sql, configuracoes locais).
+# =================================================================
+
+# Index padrao
+DirectoryIndex index.php
+
+# Bloqueia acesso a arquivos sensiveis
+<FilesMatch "\.(log|bak|sql|sql\.gz|env|ini|md|lock|json5|inc|backup)$">
+    Require all denied
+</FilesMatch>
+
+# Bloqueia o config local especificamente
+<Files "rp_config_local.php">
+    Require all denied
+</Files>
+
+# Bloqueia o autokey
+<Files ".rp_autokey">
+    Require all denied
+</Files>
+
+# Bloqueia arquivos de versao
+<FilesMatch "\.(orig|rej|swp|swo)$">
+    Require all denied
+</FilesMatch>
+
+# Diretorios sensiveis
+RedirectMatch 403 ^/.*/(backups_origem|logs)/.*\.(php|bak|log)$
+
+# Desativa listing
+Options -Indexes

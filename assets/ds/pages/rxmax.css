@@ -1,0 +1,104 @@
+/* ============================================================
+   RP · PELE "RxMax Speed" · 25/09/2026
+   Carregada por último (depois de ds.css e topmenu.css).
+   Deixa o addon com a mesma cara do painel RxMax: barra branca
+   com pílula grafite no item ativo, cards brancos com filete
+   colorido, cabeçalho de página com ícone em quadrado grafite,
+   abas em pílula, botões grafite. Só CSS — nada de lógica.
+   ============================================================ */
+
+/* ---- menu do topo: item ativo vira pílula grafite (igual .rxh-lk.on) ---- */
+.tn-scope.rp-topmode .rp-tm-gbtn{padding:8px 12px;border-radius:8px;font-weight:600;color:#475569}
+.tn-scope.rp-topmode .rp-tm-grp:hover .rp-tm-gbtn,.tn-scope.rp-topmode .rp-tm-grp:focus-within .rp-tm-gbtn{background:var(--ds-surface-2);color:var(--ds-text)}
+.tn-scope.rp-topmode .rp-tm-grp.on .rp-tm-gbtn{background:#0f172a;color:#fff}
+.tn-scope.rp-topmode .rp-tm-grp.on .rp-tm-gbtn::after{display:none}
+.tn-scope.rp-topmode .rp-tm-i.active{background:#0f172a;color:#fff}
+.tn-scope.rp-topmode .rp-tm-i.active i{color:#fff}
+.tn-scope.rp-topmode .rp-tm-logo{background:#0f172a;border-radius:9px}
+.tn-scope.rp-topmode .rp-tm-cur i{color:#0f172a}
+.tn-scope.rp-topmode .ds-avatar{background:#0f172a;color:#fff}
+html[data-rp-theme="dark"] .tn-scope.rp-topmode .rp-tm-grp.on .rp-tm-gbtn,
+html[data-rp-theme="dark"] .tn-scope.rp-topmode .rp-tm-i.active{background:#f1f5f9;color:#0f172a}
+html[data-rp-theme="dark"] .tn-scope.rp-topmode .rp-tm-i.active i{color:#0f172a}
+
+/* ---- cabeçalho da página: ícone num quadrado grafite + título + descrição (lib/pagehead do painel) ---- */
+.tn-scope .ds-page-head{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;flex-wrap:wrap;margin:2px 0 18px}
+.tn-scope .ds-page-title{display:flex;align-items:center;gap:14px;font-size:24px;font-weight:600;letter-spacing:-.3px;color:var(--ds-text)}
+.tn-scope .ds-page-head .ds-page-title svg.lucide,.tn-scope .ds-page-head .ds-page-title i{width:46px;height:46px;flex:0 0 46px;padding:12px;border-radius:14px;background:#0f172a;color:#fff;stroke:#fff}
+.tn-scope .ds-page-desc{margin:4px 0 0 60px;font-size:14px;color:var(--ds-text-2)}
+html[data-rp-theme="dark"] .tn-scope .ds-page-head .ds-page-title svg.lucide{background:#f1f5f9;color:#0f172a;stroke:#0f172a}
+@media (max-width:640px){.tn-scope .ds-page-title{font-size:20px;gap:10px}.tn-scope .ds-page-head .ds-page-title svg.lucide{width:38px;height:38px;flex-basis:38px;padding:9px}.tn-scope .ds-page-desc{margin-left:0}}
+
+/* ---- cards de números (KPI): brancos, filete colorido à esquerda, número grande (cards do dashboard do painel) ---- */
+.tn-scope.rp-topmode .ds-metrics{gap:14px}
+.tn-scope.rp-topmode .ds-metric-cell{
+  --_ac:var(--ac,#0f172a);
+  background:var(--ds-surface);border:1px solid var(--ds-border)!important;border-left:4px solid var(--_ac)!important;
+  border-radius:12px;box-shadow:0 1px 2px rgba(15,23,42,.04);padding:14px 16px 15px;
+}
+.tn-scope.rp-topmode .ds-metric-cell:hover{transform:none;box-shadow:0 4px 14px rgba(15,23,42,.07)}
+.tn-scope.rp-topmode .ds-metric-cell .lbl{color:var(--ds-text-2);font-size:11px;letter-spacing:.05em}
+.tn-scope.rp-topmode .ds-metric-cell .val{color:var(--ds-text);font-size:26px;font-weight:600;letter-spacing:-.02em;margin-top:6px;font-variant-numeric:tabular-nums}
+.tn-scope.rp-topmode .ds-metric-cell .val.rp-neg{color:var(--ds-danger-text)}
+.tn-scope.rp-topmode .ds-metric-cell .sub{color:var(--ds-text-2)}
+.tn-scope.rp-topmode .rp-mini-bar{background:var(--ds-surface-3)}
+.tn-scope.rp-topmode .rp-mini-bar i{background:var(--_ac)}
+
+/* ---- seções: ícone do título em quadrado suave, badge à direita ---- */
+.tn-scope .tn-section-title .tn-ico{width:30px;height:30px;border-radius:9px;background:#f1f5f9;color:#0f172a;display:inline-flex;align-items:center;justify-content:center}
+.tn-scope .tn-section-title .tn-ico svg.lucide{width:16px;height:16px;color:#0f172a;stroke:#0f172a}
+.tn-scope .tn-section-header,.tn-scope .ds-panel-head{padding:13px 18px}
+html[data-rp-theme="dark"] .tn-scope .tn-section-title .tn-ico{background:rgba(241,245,249,.12);color:#f1f5f9}
+html[data-rp-theme="dark"] .tn-scope .tn-section-title .tn-ico svg.lucide{color:#f1f5f9;stroke:#f1f5f9}
+
+/* ---- abas: pílulas com a ativa em grafite (aba da lista de ONUs do painel) ---- */
+.tn-scope .ds-tabs:not(.ds-tabs-pill),.tn-scope .cfg-subtabs,.tn-scope .pf-tabs-bar{
+  display:inline-flex;gap:2px;align-items:center;padding:3px;border:0;border-bottom:0;
+  background:#e2e9f2;border-radius:11px;margin-bottom:16px;max-width:100%;overflow-x:auto;scrollbar-width:none;
+}
+.tn-scope .ds-tab,.tn-scope .cfg-subtab,.tn-scope .pf-tab-btn{
+  border:0;margin:0;border-radius:9px;padding:7px 13px;font-size:13.5px;font-weight:600;color:#64748b;background:transparent;white-space:nowrap;
+}
+.tn-scope .ds-tab:hover,.tn-scope .cfg-subtab:hover,.tn-scope .pf-tab-btn:hover{color:#0f172a;background:rgba(15,23,42,.06)}
+.tn-scope .ds-tab.active,.tn-scope .cfg-subtab.active,.tn-scope .pf-tab-btn.active{background:#0f172a;color:#fff;border:0;box-shadow:0 1px 2px rgba(15,23,42,.18)}
+.tn-scope .ds-tab.active svg.lucide,.tn-scope .cfg-subtab.active svg.lucide,.tn-scope .pf-tab-btn.active svg.lucide{color:#fff;stroke:#fff}
+.tn-scope .ds-tabs-pill{background:#e2e9f2;border-radius:11px}
+.tn-scope .ds-tabs-pill .ds-tab.active{background:#0f172a;color:#fff}
+html[data-rp-theme="dark"] .tn-scope .ds-tabs:not(.ds-tabs-pill),html[data-rp-theme="dark"] .tn-scope .cfg-subtabs,html[data-rp-theme="dark"] .tn-scope .pf-tabs-bar,html[data-rp-theme="dark"] .tn-scope .ds-tabs-pill{background:var(--ds-surface-3)}
+html[data-rp-theme="dark"] .tn-scope .ds-tab.active,html[data-rp-theme="dark"] .tn-scope .cfg-subtab.active,html[data-rp-theme="dark"] .tn-scope .pf-tab-btn.active,html[data-rp-theme="dark"] .tn-scope .ds-tabs-pill .ds-tab.active{background:#f1f5f9;color:#0f172a}
+
+/* ---- botões: principal grafite, sem sombra colorida ---- */
+.tn-scope .tn-btn-primary,.tn-scope .ds-btn-primary{box-shadow:0 1px 2px rgba(15,23,42,.18)}
+.tn-scope .tn-btn-primary:hover,.tn-scope .ds-btn-primary:hover{box-shadow:0 4px 12px rgba(15,23,42,.22)}
+html[data-rp-theme="dark"] .tn-scope .tn-btn-primary,html[data-rp-theme="dark"] .tn-scope .ds-btn-primary{--btn-color:#0f172a;color:#0f172a}
+html[data-rp-theme="dark"] .tn-scope .tn-btn-primary:hover,html[data-rp-theme="dark"] .tn-scope .ds-btn-primary:hover{color:#0f172a}
+.tn-scope .ds-btn-primary svg.lucide,.tn-scope .tn-btn-primary svg.lucide{color:currentColor;stroke:currentColor}
+
+/* ---- links em texto: azul de "dá pra editar" do painel; links de cartão/botão continuam como estão ---- */
+.tn-scope .tn-table a:not(.tn-btn):not(.ds-btn),.tn-scope p a:not(.tn-btn):not(.ds-btn){color:#2b7de9}
+.tn-scope .tn-table a:not(.tn-btn):not(.ds-btn):hover,.tn-scope p a:not(.tn-btn):not(.ds-btn):hover{color:#1a5fc4;text-decoration:underline}
+
+/* ---- tabelas: cabeçalho em caixa alta miúda, linhas limpas (lista do painel) ---- */
+.tn-scope .tn-table th{font-size:11px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--ds-text-2);background:transparent;border-bottom:1px solid var(--ds-border)}
+.tn-scope .tn-table td{border-bottom:1px solid var(--ds-border)}
+.tn-scope .tn-table tbody tr:hover td{background:var(--ds-surface-2)}
+
+/* ---- toggles/chips: cor grafite ---- */
+.tn-scope .ds-switch input:checked+.ds-switch-slider,.tn-scope .ds-switch input:checked~.ds-switch-slider,.tn-scope .tn-switch input:checked+span{background:#0f172a}
+.tn-scope .cfg-vars code,.tn-scope .cfg-vars span{background:#f1f5f9;color:#0f172a}
+
+/* ---- dias de pagamento: "Clientes | Valor" em pílula grafite; ranking em azul ---- */
+.tn-scope .dp-toggle .ds-tab.active{background:#0f172a;color:#fff}
+.tn-scope .dp-rank .pos{background:#e7f0fb;color:#1a5fc4}
+.tn-scope .dp-rank li:first-child .pos{background:#2a78d6;color:#fff}
+.tn-scope .dp-rank .bar{background:#e7f0fb}
+.tn-scope .dp-rank .bar i{background:#2a78d6}
+
+/* ---- foco e seleção ---- */
+.tn-scope :focus-visible{outline:2px solid #0f172a}
+.tn-scope ::selection{background:#e7f0fb}
+
+/* ---- abas das Configurações: o rótulo da aba ativa fica branco (o span tinha cor própria) ---- */
+.tn-scope .cfg-subtab.active,.tn-scope .cfg-subtab.active span,.tn-scope .cfg-subtab.active b{color:#fff}
+.tn-scope .cfg-subtab.active .cfg-dot,.tn-scope .cfg-subtab.active i.dot,.tn-scope .cfg-subtab.active .dot{color:inherit}
+html[data-rp-theme="dark"] .tn-scope .cfg-subtab.active,html[data-rp-theme="dark"] .tn-scope .cfg-subtab.active span{color:#0f172a}

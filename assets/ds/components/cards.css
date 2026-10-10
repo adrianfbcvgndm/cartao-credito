@@ -1,0 +1,154 @@
+/* ============================================================
+   RP ENTERPRISE · CARDS & SEÇÕES
+   Card base (12px, sombra suave, hover elevando), seções com
+   header/body, stat cards, metric cards, info/feature cards.
+   Legado: tn-card, tn-section*, tn-stat*, dash-kpi, kpi-*.
+   ============================================================ */
+
+/* ---------- CARD BASE ---------- */
+.tn-scope .tn-card,.tn-scope .ds-card{
+  background:var(--ds-surface);
+  border:1px solid var(--ds-border);
+  border-radius:var(--ds-radius);
+  box-shadow:var(--ds-shadow-xs);
+  padding:20px;
+  transition:box-shadow var(--ds-normal) var(--ds-ease),
+             transform var(--ds-normal) var(--ds-ease),
+             border-color var(--ds-normal) var(--ds-ease);
+}
+.tn-scope .ds-card-hover:hover,.tn-scope .tn-card.ds-card-hover:hover{
+  transform:translateY(-3px);
+  box-shadow:var(--ds-shadow-md);
+  border-color:var(--ds-border-strong);
+}
+.tn-scope .ds-card-accent{border-left:3px solid var(--ds-primary)}
+.tn-scope .ds-card-accent.green{border-left-color:var(--ds-success)}
+.tn-scope .ds-card-accent.amber{border-left-color:var(--ds-warning)}
+.tn-scope .ds-card-accent.red{border-left-color:var(--ds-danger)}
+
+/* ---------- SEÇÃO (painel com cabeçalho) ---------- */
+.tn-scope .tn-section,.tn-scope .ds-panel{
+  background:var(--ds-surface);
+  border:1px solid var(--ds-border);
+  border-radius:var(--ds-radius);
+  box-shadow:var(--ds-shadow-xs);
+  margin-bottom:18px;
+  overflow:hidden;
+}
+.tn-scope .tn-section-header,.tn-scope .ds-panel-head{
+  display:flex;align-items:center;gap:10px;
+  padding:14px 20px;
+  border-bottom:1px solid var(--ds-border);
+  background:transparent;
+}
+.tn-scope .tn-section-title,.tn-scope .ds-panel-title{
+  font-size:14px;font-weight:600;color:var(--ds-text);letter-spacing:-.01em;
+  display:flex;align-items:center;gap:9px;flex:1;
+}
+.tn-scope .tn-section-title .tn-ico,.tn-scope .ds-panel-title svg.lucide{color:var(--ds-primary)}
+.tn-scope .tn-section-body,.tn-scope .ds-panel-body{padding:20px}
+.tn-scope .tn-section-body.flush,.tn-scope .ds-panel-body.flush{padding:0}
+.tn-scope .ds-panel-actions{display:flex;align-items:center;gap:8px}
+
+/* ---------- STAT CARD (KPI) ---------- */
+.tn-scope .tn-stats-grid,.tn-scope .ds-stats-grid{
+  display:grid;gap:14px;
+  grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
+  margin-bottom:20px;
+}
+.tn-scope .tn-stat,.tn-scope .tn-stat-card,.tn-scope .ds-stat,.tn-scope .dash-kpi{
+  background:var(--ds-surface);
+  border:1px solid var(--ds-border);
+  border-radius:var(--ds-radius);
+  box-shadow:var(--ds-shadow-xs);
+  padding:18px 20px;
+  position:relative;overflow:hidden;
+  display:flex;flex-direction:column;gap:4px;
+  transition:box-shadow var(--ds-normal) var(--ds-ease),transform var(--ds-normal) var(--ds-ease);
+}
+.tn-scope .tn-stat:hover,.tn-scope .tn-stat-card:hover,.tn-scope .ds-stat:hover,.tn-scope .dash-kpi:hover{
+  transform:translateY(-2px);box-shadow:var(--ds-shadow-md);
+}
+/* fio superior colorido */
+.tn-scope .ds-stat::before,.tn-scope .tn-stat::before,.tn-scope .tn-stat-card::before,.tn-scope .dash-kpi::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:3px;
+  background:var(--stat-accent,var(--ds-primary));
+  opacity:.9;
+}
+.tn-scope .ds-stat.green,.tn-scope .tn-stat.green,.tn-scope .dash-kpi.green{--stat-accent:var(--ds-success)}
+.tn-scope .ds-stat.amber,.tn-scope .tn-stat.amber,.tn-scope .dash-kpi.amber{--stat-accent:var(--ds-warning)}
+.tn-scope .ds-stat.red,.tn-scope .tn-stat.red,.tn-scope .dash-kpi.red{--stat-accent:var(--ds-danger)}
+.tn-scope .ds-stat.purple,.tn-scope .tn-stat.purple,.tn-scope .dash-kpi.purple{--stat-accent:var(--ds-purple)}
+.tn-scope .ds-stat.teal,.tn-scope .tn-stat.teal,.tn-scope .dash-kpi.teal{--stat-accent:var(--ds-teal)}
+.tn-scope .ds-stat.blue,.tn-scope .tn-stat.blue,.tn-scope .dash-kpi.blue{--stat-accent:var(--ds-info)}
+
+.tn-scope .tn-stat-label,.tn-scope .ds-stat-label,.tn-scope .kpi-label{
+  font-size:11.5px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;
+  color:var(--ds-text-2);
+  display:flex;align-items:center;gap:7px;
+}
+.tn-scope .tn-stat-value,.tn-scope .ds-stat-value,.tn-scope .kpi-value{
+  font-size:24px;font-weight:700;letter-spacing:-.025em;color:var(--ds-text);
+  font-variant-numeric:tabular-nums;line-height:1.2;
+}
+.tn-scope .tn-stat-sub,.tn-scope .ds-stat-sub,.tn-scope .kpi-var{
+  font-size:12px;color:var(--ds-text-2);
+  display:flex;align-items:center;gap:5px;
+}
+.tn-scope .ds-stat-sub .up,.tn-scope .tn-stat-sub .up,.tn-scope .kpi-var.up{color:var(--ds-success-text);font-weight:600}
+.tn-scope .ds-stat-sub .down,.tn-scope .tn-stat-sub .down,.tn-scope .kpi-var.down{color:var(--ds-danger-text);font-weight:600}
+.tn-scope .kpi-icon,.tn-scope .ds-stat-icon{
+  position:absolute;right:16px;top:16px;
+  width:38px;height:38px;border-radius:10px;
+  display:flex;align-items:center;justify-content:center;
+  background:var(--ds-primary-soft);color:var(--ds-primary);font-size:17px;
+}
+.tn-scope .ds-stat.green .ds-stat-icon,.tn-scope .dash-kpi.green .kpi-icon{background:var(--ds-success-soft);color:var(--ds-success-text)}
+.tn-scope .ds-stat.amber .ds-stat-icon,.tn-scope .dash-kpi.amber .kpi-icon{background:var(--ds-warning-soft);color:var(--ds-warning-text)}
+.tn-scope .ds-stat.red .ds-stat-icon,.tn-scope .dash-kpi.red .kpi-icon{background:var(--ds-danger-soft);color:var(--ds-danger-text)}
+.tn-scope .ds-stat.purple .ds-stat-icon,.tn-scope .dash-kpi.purple .kpi-icon{background:var(--ds-purple-soft);color:var(--ds-purple-text)}
+.tn-scope .ds-stat.teal .ds-stat-icon,.tn-scope .dash-kpi.teal .kpi-icon{background:var(--ds-teal-soft);color:var(--ds-teal-text)}
+
+/* ---------- INFO CARD (linha ícone + conteúdo) ---------- */
+.tn-scope .ds-info-card{
+  display:flex;gap:14px;align-items:flex-start;
+  background:var(--ds-surface);
+  border:1px solid var(--ds-border);
+  border-radius:var(--ds-radius);
+  padding:16px 18px;box-shadow:var(--ds-shadow-xs);
+}
+.tn-scope .ds-info-card .ds-info-ico{
+  width:40px;height:40px;flex-shrink:0;border-radius:10px;
+  background:var(--ds-primary-soft);color:var(--ds-primary);
+  display:flex;align-items:center;justify-content:center;
+}
+.tn-scope .ds-info-card b{display:block;font-size:13.5px;font-weight:600}
+.tn-scope .ds-info-card p{margin:2px 0 0;font-size:12.5px;color:var(--ds-text-2)}
+
+/* ---------- FEATURE CARD (galeria de módulos/apps) ---------- */
+.tn-scope .ds-feature-card{
+  background:var(--ds-surface);
+  border:1px solid var(--ds-border);
+  border-radius:var(--ds-radius);
+  padding:20px;box-shadow:var(--ds-shadow-xs);
+  display:flex;flex-direction:column;gap:12px;
+  transition:box-shadow var(--ds-normal),transform var(--ds-normal),border-color var(--ds-normal);
+}
+.tn-scope .ds-feature-card:hover{
+  transform:translateY(-3px);box-shadow:var(--ds-shadow-md);border-color:var(--ds-primary-ring);
+}
+.tn-scope .ds-feature-card .ds-feature-head{display:flex;align-items:center;gap:12px}
+.tn-scope .ds-feature-card .ds-feature-logo{
+  width:44px;height:44px;border-radius:11px;flex-shrink:0;
+  background:linear-gradient(135deg,var(--ds-primary-soft),var(--ds-purple-soft));
+  color:var(--ds-primary);
+  display:flex;align-items:center;justify-content:center;
+}
+.tn-scope .ds-feature-card .ds-feature-logo svg.lucide{width:22px;height:22px}
+.tn-scope .ds-feature-card .ds-feature-title b{display:block;font-size:14px;font-weight:600}
+.tn-scope .ds-feature-card .ds-feature-title small{color:var(--ds-text-3);font-size:11.5px}
+.tn-scope .ds-feature-card .ds-feature-desc{font-size:12.5px;color:var(--ds-text-2);flex:1;line-height:1.5}
+.tn-scope .ds-feature-card .ds-feature-foot{
+  display:flex;align-items:center;justify-content:space-between;gap:8px;
+  padding-top:12px;border-top:1px solid var(--ds-border);
+}

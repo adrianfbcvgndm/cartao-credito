@@ -1,0 +1,10 @@
+/* ============================================================
+   SHIM DE COMPATIBILIDADE
+   ------------------------------------------------------------
+   O tema antigo foi substituído pelo RP Enterprise Design
+   System. Este arquivo existe apenas para que páginas legadas
+   (standalone) que ainda linkam tema-novo.css recebam o novo
+   visual automaticamente. Não adicione estilos aqui — o DS
+   vive em assets/ds/.
+   ============================================================ */
+@import '../ds/ds.css';

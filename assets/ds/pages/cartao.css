@@ -1,0 +1,10 @@
+/* Cartão de Crédito · visão geral (09/10/2026) — complementa resumo_p3.css */
+.cc-meses { margin-top: 16px; display: grid; grid-template-columns: repeat(6, 1fr); gap: 8px; }
+.cc-st { border: 1px solid #e9ecef; border-radius: 10px; overflow: hidden; margin-bottom: 12px; }
+.cc-st-i { display: flex; align-items: center; gap: 10px; padding: 10px 12px; font-size: 13px; border-bottom: 1px solid #f1f3f5; }
+.cc-st-i:last-child { border-bottom: 0; }
+.cc-st-i > span:nth-child(2) { flex: 1; }
+.cc-st-i a { font-size: 12.5px; color: #0d6efd; text-decoration: none; }
+.cc-st-i .rp3-tg { min-width: 86px; justify-content: center; }
+@media (max-width: 900px) { .cc-meses { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 560px) { .cc-meses { grid-template-columns: repeat(2, 1fr); } }

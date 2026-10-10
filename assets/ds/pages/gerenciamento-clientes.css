@@ -1,0 +1,88 @@
+/* ============================================================
+   RP ENTERPRISE · PÁGINA: GERENCIAMENTO DE CLIENTES
+   Abas de status, grade de ações rápidas, identificação do
+   cliente na tabela, pill "online" e busca destacada.
+   ============================================================ */
+
+/* ---------- ABAS DE STATUS (Ativos / Bloqueados / Cancelados) ---------- */
+.tn-scope .gc-status-tabs{display:flex;gap:10px;margin-bottom:20px;flex-wrap:wrap}
+.tn-scope .gc-status-tab{
+  flex:1;min-width:200px;
+  display:flex;align-items:center;gap:11px;
+  background:var(--ds-surface);border:1px solid var(--ds-border);
+  border-radius:var(--ds-radius);padding:14px 16px;
+  text-decoration:none;color:var(--ds-text);
+  box-shadow:var(--ds-shadow-xs);
+  position:relative;overflow:hidden;
+  transition:transform var(--ds-normal) var(--ds-ease),
+             box-shadow var(--ds-normal) var(--ds-ease),
+             border-color var(--ds-normal) var(--ds-ease);
+}
+.tn-scope .gc-status-tab:hover{
+  transform:translateY(-2px);box-shadow:var(--ds-shadow-md);text-decoration:none;
+}
+.tn-scope .gc-status-tab::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:3px;
+  background:var(--gc-accent,var(--ds-primary));opacity:.9;
+}
+.tn-scope .gc-status-tab.green{--gc-accent:var(--ds-success)}
+.tn-scope .gc-status-tab.red{--gc-accent:var(--ds-danger)}
+.tn-scope .gc-status-tab.amber{--gc-accent:var(--ds-warning)}
+.tn-scope .gc-status-tab.active{border-color:var(--gc-accent);background:var(--ds-surface-2)}
+.tn-scope .gc-status-tab .ico{
+  width:36px;height:36px;flex-shrink:0;border-radius:10px;
+  display:flex;align-items:center;justify-content:center;
+  background:var(--ds-surface-3);color:var(--ds-text-2);
+}
+.tn-scope .gc-status-tab.green .ico{background:var(--ds-success-soft);color:var(--ds-success-text)}
+.tn-scope .gc-status-tab.red .ico{background:var(--ds-danger-soft);color:var(--ds-danger-text)}
+.tn-scope .gc-status-tab.amber .ico{background:var(--ds-warning-soft);color:var(--ds-warning-text)}
+.tn-scope .gc-status-tab .ico svg.lucide{width:17px;height:17px}
+.tn-scope .gc-status-tab .lbl{
+  flex:1;font-size:12px;font-weight:600;
+  text-transform:uppercase;letter-spacing:.05em;color:var(--ds-text-2);
+}
+.tn-scope .gc-status-tab.active .lbl{color:var(--ds-text)}
+.tn-scope .gc-status-tab .badge{
+  font-family:var(--ds-mono);font-size:14px;font-weight:700;
+  padding:3px 11px;border-radius:var(--ds-radius-full);
+  background:var(--ds-surface-3);color:var(--ds-text);
+}
+.tn-scope .gc-status-tab.active .badge{background:var(--gc-accent);color:#fff}
+
+/* ---------- GRADE DE AÇÕES RÁPIDAS ---------- */
+.tn-scope .gc-actions-grid{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px;
+}
+.tn-scope .gc-action-card{text-decoration:none}
+.tn-scope .gc-action-card:hover{text-decoration:none}
+.tn-scope .gc-action-card.green .gc-action-ico{background:var(--ds-success-soft);color:var(--ds-success-text)}
+.tn-scope .gc-action-card.purple .gc-action-ico{background:var(--ds-purple-soft);color:var(--ds-purple-text)}
+.tn-scope .gc-action-card.amber .gc-action-ico{background:var(--ds-warning-soft);color:var(--ds-warning-text)}
+.tn-scope .gc-action-ico svg.lucide{width:19px;height:19px}
+
+/* ---------- BUSCA DESTACADA ---------- */
+.tn-scope .gc-search-bar{align-items:center}
+.tn-scope .gc-search{flex:1;min-width:260px}
+.tn-scope .gc-search .tn-input{height:44px;font-size:14px;border-radius:11px}
+.tn-scope .gc-search>svg.lucide{width:17px;height:17px}
+
+/* ---------- CÉLULAS DA TABELA ---------- */
+.tn-scope .tn-table th.c,.tn-scope .tn-table td.c{text-align:center}
+.tn-scope .gc-client-name{font-weight:600;color:var(--ds-text);font-size:13px}
+.tn-scope .gc-client-id{
+  font-size:10.5px;color:var(--ds-text-3);
+  font-family:var(--ds-mono);margin-top:2px;
+}
+.tn-scope .gc-online-pill{
+  display:inline-flex;align-items:center;gap:4px;
+  margin-left:6px;padding:2px 8px;border-radius:var(--ds-radius-full);
+  background:var(--ds-success-soft);color:var(--ds-success-text);
+  font-size:10px;font-weight:600;
+}
+.tn-scope .gc-online-dot{
+  width:7px;height:7px;border-radius:50%;
+  background:var(--ds-success);display:inline-block;
+  animation:ds-pulse 2s infinite;
+  vertical-align:middle;
+}

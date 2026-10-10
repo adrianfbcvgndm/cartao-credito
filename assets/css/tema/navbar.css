@@ -1,0 +1,60 @@
+/* ============================================================
+   NAVEGACAO PRINCIPAL DO ADDON (substitui as abas vermelhas)
+   ============================================================ */
+.tn-nav-bar{
+  display:flex;align-items:center;justify-content:space-between;
+  background:var(--tn-bg2);
+  border:1px solid var(--tn-border);
+  border-radius:10px;
+  padding:6px;
+  margin-bottom:18px;
+  gap:8px;flex-wrap:wrap;
+  box-shadow:var(--tn-shadow);
+}
+.tn-nav-tabs{
+  display:flex;gap:2px;flex-wrap:wrap;
+  flex:1;min-width:280px;
+}
+.tn-nav-link{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:9px 16px;border-radius:7px;
+  font-size:13px;font-weight:500;
+  color:var(--tn-muted2);
+  text-decoration:none;
+  transition:all .15s;
+  white-space:nowrap;
+  border:1px solid transparent;
+}
+.tn-nav-link:hover{color:var(--tn-text);background:var(--tn-bg3);text-decoration:none}
+.tn-nav-link.active{
+  color:#fff;
+  background:linear-gradient(135deg,var(--tn-accent),var(--tn-accent2));
+  border-color:var(--tn-accent2);
+  box-shadow:0 2px 6px rgba(37,99,235,.25);
+}
+.tn-nav-link .ico{font-size:15px;line-height:1}
+
+.tn-nav-actions{display:flex;align-items:center;gap:6px;padding:0 4px}
+
+/* TOGGLE DE TEMA inline na navegacao */
+.tn-theme-tog{
+  display:inline-flex;
+  background:var(--tn-bg3);
+  border:1px solid var(--tn-border2);
+  border-radius:7px;
+  padding:2px;gap:1px;
+}
+.tn-theme-btn{
+  width:30px;height:28px;
+  border:none;background:transparent;
+  color:var(--tn-muted2);
+  cursor:pointer;border-radius:5px;
+  font-size:13px;
+  display:flex;align-items:center;justify-content:center;
+  transition:all .15s;padding:0;
+}
+.tn-theme-btn:hover{color:var(--tn-text)}
+.tn-theme-btn.active{
+  background:var(--tn-bg2);color:var(--tn-accent);
+  box-shadow:var(--tn-shadow);
+}

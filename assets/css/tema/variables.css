@@ -1,0 +1,108 @@
+/* ============================================================
+   TEMA NOVO - Resumo Pagamentos (v3 - INTEGRADO MK-AUTH)
+   ============================================================
+   Tudo aqui esta escopado em .tn-scope, exceto o botao de tema
+   que e global porque o atributo data-theme fica no <html>.
+   O frame do MK-AUTH (topo, baixo, menu) fica intacto.
+   ============================================================ */
+
+
+/* ---- TEMA CLARO (default) ---- */
+.tn-scope{
+  --tn-bg:#f7f8fa;
+  --tn-bg2:#ffffff;
+  --tn-bg3:#f1f3f7;
+  --tn-bg4:#e7eaf0;
+  --tn-card:#ffffff;      /* superfície de cartão  (== bg2) */
+  --tn-card-sub:#f1f3f7;  /* superfície secundária (== bg3) */
+  --tn-border:rgba(15,23,42,0.07);
+  --tn-border2:rgba(15,23,42,0.13);
+  --tn-text:#1e293b;
+  --tn-muted:#94a3b8;
+  --tn-muted2:#64748b;
+  --tn-accent:#2563eb;
+  --tn-accent2:#1d4ed8;
+  --tn-green:#16a34a;
+  --tn-amber:#d97706;
+  --tn-red:#dc2626;
+  --tn-purple:#8b5cf6;
+  --tn-teal:#0d9488;
+  --tn-pink:#db2777;
+  --tn-shadow:0 1px 3px rgba(15,23,42,.08);
+  --tn-shadow-lg:0 8px 24px rgba(15,23,42,.12);
+  --tn-chart-grid:rgba(15,23,42,0.05);
+  --tn-chart-tick:#94a3b8;
+  --tn-chart-label:#64748b;
+  --tn-donut-border:#ffffff;
+
+  font-family:'IBM Plex Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+  font-size:14px;
+  line-height:1.5;
+  color:var(--tn-text);
+  background:var(--tn-bg);
+  padding:18px 22px 30px;
+  margin:14px auto 0;
+  max-width:1500px;
+  border-radius:12px;
+  box-sizing:border-box;
+}
+
+/* TEMA ESCURO via atributo no html */
+:root[data-rp-theme="dark"] .tn-scope{
+  --tn-bg:#0b0d12;
+  --tn-bg2:#111318;
+  --tn-bg3:#181b22;
+  --tn-bg4:#1e222d;
+  --tn-card:#111318;      /* superfície de cartão  (== bg2) */
+  --tn-card-sub:#181b22;  /* superfície secundária (== bg3) */
+  --tn-border:rgba(255,255,255,0.06);
+  --tn-border2:rgba(255,255,255,0.11);
+  --tn-text:#e2e5ef;
+  --tn-muted:#5c6478;
+  --tn-muted2:#8892a4;
+  --tn-accent:#3b82f6;
+  --tn-accent2:#2563eb;
+  --tn-green:#22c55e;
+  --tn-amber:#f59e0b;
+  --tn-red:#ef4444;
+  --tn-purple:#a78bfa;
+  --tn-teal:#14b8a6;
+  --tn-pink:#ec4899;
+  --tn-shadow:0 1px 3px rgba(0,0,0,.4);
+  --tn-shadow-lg:0 8px 24px rgba(0,0,0,.5);
+  --tn-chart-grid:rgba(255,255,255,0.04);
+  --tn-chart-tick:#5c6478;
+  --tn-chart-label:#8892a4;
+  --tn-donut-border:#111318;
+}
+
+/* TEMA AUTO: segue sistema quando nao tem data-theme */
+@media (prefers-color-scheme: dark){
+  :root:not([data-rp-theme]) .tn-scope{
+    --tn-bg:#0b0d12;
+    --tn-bg2:#111318;
+    --tn-bg3:#181b22;
+    --tn-bg4:#1e222d;
+  --tn-card:#111318;      /* superfície de cartão  (== bg2) */
+  --tn-card-sub:#181b22;  /* superfície secundária (== bg3) */
+    --tn-border:rgba(255,255,255,0.06);
+    --tn-border2:rgba(255,255,255,0.11);
+    --tn-text:#e2e5ef;
+    --tn-muted:#5c6478;
+    --tn-muted2:#8892a4;
+    --tn-accent:#3b82f6;
+    --tn-accent2:#2563eb;
+    --tn-green:#22c55e;
+    --tn-amber:#f59e0b;
+    --tn-red:#ef4444;
+    --tn-purple:#a78bfa;
+    --tn-teal:#14b8a6;
+    --tn-pink:#ec4899;
+    --tn-shadow:0 1px 3px rgba(0,0,0,.4);
+    --tn-shadow-lg:0 8px 24px rgba(0,0,0,.5);
+    --tn-chart-grid:rgba(255,255,255,0.04);
+    --tn-chart-tick:#5c6478;
+    --tn-chart-label:#8892a4;
+    --tn-donut-border:#111318;
+  }
+}

@@ -1,0 +1,86 @@
+/* ============================================================
+   PAGE TITLE
+   ============================================================ */
+.tn-scope .tn-page-title{
+  display:flex;align-items:flex-start;justify-content:space-between;
+  margin-bottom:18px;flex-wrap:wrap;gap:14px;
+}
+.tn-scope .tn-page-title h1{
+  font-size:20px;font-weight:600;color:var(--tn-text);
+  margin:0;letter-spacing:-.3px;
+}
+.tn-scope .tn-page-title .tn-page-sub{
+  color:var(--tn-muted2);font-size:13px;margin-top:3px;
+}
+
+/* ============================================================
+   STATS GRID
+   ============================================================ */
+.tn-scope .tn-stats-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+  gap:12px;margin-bottom:20px;
+}
+.tn-scope .tn-stat{
+  background:var(--tn-bg2);
+  border:1px solid var(--tn-border);
+  border-radius:8px;padding:16px;
+  position:relative;overflow:hidden;
+  transition:transform .15s, box-shadow .15s;
+}
+.tn-scope .tn-stat:hover{transform:translateY(-1px);box-shadow:var(--tn-shadow-lg)}
+.tn-scope .tn-stat::before{content:'';position:absolute;top:0;left:0;right:0;height:2px}
+.tn-scope .tn-stat.blue::before{background:var(--tn-accent)}
+.tn-scope .tn-stat.green::before{background:var(--tn-green)}
+.tn-scope .tn-stat.amber::before{background:var(--tn-amber)}
+.tn-scope .tn-stat.red::before{background:var(--tn-red)}
+.tn-scope .tn-stat.purple::before{background:var(--tn-purple)}
+.tn-scope .tn-stat.teal::before{background:var(--tn-teal)}
+.tn-scope .tn-stat.pink::before{background:var(--tn-pink)}
+.tn-scope .tn-stat-label{
+  font-size:10px;color:var(--tn-muted);
+  text-transform:uppercase;letter-spacing:.7px;
+  margin-bottom:6px;font-weight:500;
+}
+.tn-scope .tn-stat-value{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:18px;font-weight:500;line-height:1.2;
+}
+.tn-scope .tn-stat.blue .tn-stat-value{color:var(--tn-accent)}
+.tn-scope .tn-stat.green .tn-stat-value{color:var(--tn-green)}
+.tn-scope .tn-stat.amber .tn-stat-value{color:var(--tn-amber)}
+.tn-scope .tn-stat.red .tn-stat-value{color:var(--tn-red)}
+.tn-scope .tn-stat.purple .tn-stat-value{color:var(--tn-purple)}
+.tn-scope .tn-stat.teal .tn-stat-value{color:var(--tn-teal)}
+.tn-scope .tn-stat.pink .tn-stat-value{color:var(--tn-pink)}
+.tn-scope .tn-stat-sub{font-size:11px;color:var(--tn-muted);margin-top:4px}
+
+/* ============================================================
+   CHART CARDS
+   ============================================================ */
+.tn-scope .tn-chart-grid{
+  display:grid;
+  grid-template-columns:repeat(3, 1fr);
+  gap:14px;margin-bottom:20px;
+}
+@media(max-width:1100px){.tn-scope .tn-chart-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:700px){.tn-scope .tn-chart-grid{grid-template-columns:1fr}}
+.tn-scope .tn-chart-card{
+  background:var(--tn-bg2);
+  border:1px solid var(--tn-border);
+  border-radius:8px;padding:16px;
+}
+.tn-scope .tn-chart-card.wide{grid-column:span 2}
+@media(max-width:1100px){.tn-scope .tn-chart-card.wide{grid-column:span 1}}
+.tn-scope .tn-chart-card.full{grid-column:1/-1}
+.tn-scope .tn-chart-title{
+  font-size:11px;font-weight:500;
+  color:var(--tn-muted2);
+  text-transform:uppercase;letter-spacing:.5px;
+  margin-bottom:14px;
+}
+.tn-scope .tn-chart-wrap{
+  position:relative;height:240px;
+  display:flex;align-items:center;justify-content:center;
+}
+.tn-scope .tn-chart-wrap canvas{max-height:240px}

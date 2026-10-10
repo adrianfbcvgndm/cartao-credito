@@ -1,0 +1,38 @@
+/* ============================================================
+   RP ENTERPRISE · PÁGINA: AUDITORIA MERCADO PAGO
+   Destaques de linha (órfão / avulso), células centralizadas
+   e ajustes da toolbar de filtro.
+   ============================================================ */
+
+/* Página standalone: respiro em volta do conteúdo */
+.tn-scope.amp-wrap{display:block;max-width:1200px;margin:0 auto;padding:28px 24px}
+
+/* Toolbar: campo de mês alinhado aos botões */
+.tn-scope .amp-toolbar .tn-fg{margin-bottom:0;min-width:180px}
+.tn-scope .amp-toolbar .tn-fl{font-size:11.5px;color:var(--ds-text-2);text-transform:uppercase;letter-spacing:.05em}
+
+/* Células centralizadas */
+.tn-scope .tn-table th.c,.tn-scope .tn-table td.c{text-align:center}
+
+/* Destaque de linhas na conciliação */
+.tn-scope .tn-table tbody tr.row-avulso td{background:var(--ds-purple-soft)}
+.tn-scope .tn-table tbody tr.row-orfao td{background:var(--ds-warning-soft)}
+.tn-scope .tn-table tbody tr.row-avulso:hover td,
+.tn-scope .tn-table tbody tr.row-orfao:hover td{filter:brightness(.98)}
+
+/* Divergência de valores */
+.tn-scope .amp-diff-ok{color:var(--ds-success-text);font-weight:600}
+.tn-scope .amp-diff-warn{color:var(--ds-warning-text);font-weight:600}
+
+/* Legenda abaixo da tabela */
+.tn-scope .amp-legend{
+  display:flex;align-items:center;gap:16px;flex-wrap:wrap;
+  padding:11px 20px;border-top:1px solid var(--ds-border);
+  font-size:11.5px;color:var(--ds-text-2);
+}
+.tn-scope .amp-legend .swatch{
+  width:12px;height:12px;border-radius:4px;display:inline-block;
+  vertical-align:-1px;margin-right:5px;border:1px solid var(--ds-border);
+}
+.tn-scope .amp-legend .swatch.orfao{background:var(--ds-warning-soft)}
+.tn-scope .amp-legend .swatch.avulso{background:var(--ds-purple-soft)}

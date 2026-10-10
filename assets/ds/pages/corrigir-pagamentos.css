@@ -1,0 +1,36 @@
+/* ============================================================
+   RP ENTERPRISE · PÁGINA: CORRIGIR PAGAMENTOS (manutenção)
+   Layout standalone, formulário embutido na tabela e lista
+   de instruções.
+   ============================================================ */
+
+.tn-scope.cp-wrap{display:block;max-width:1200px;margin:0 auto;padding:28px 24px}
+
+.tn-scope .tn-table th.c,.tn-scope .tn-table td.c{text-align:center}
+
+/* Formulário de correção dentro da célula */
+.tn-scope .cp-fix-form{
+  display:flex;flex-direction:column;gap:7px;align-items:flex-start;
+  min-width:230px;
+}
+.tn-scope .cp-fix-form .cp-fix-opts{
+  display:flex;align-items:center;gap:7px;flex-wrap:wrap;
+  font-size:11.5px;color:var(--ds-text-2);
+}
+.tn-scope .cp-fix-form input[type=number]{
+  width:88px;height:30px;padding:0 9px;
+  border:1px solid var(--ds-border);border-radius:8px;
+  background:var(--ds-surface);color:var(--ds-text);
+  font-family:var(--ds-mono);font-size:12px;
+}
+.tn-scope .cp-fix-form input[type=number]:focus{
+  border-color:var(--ds-primary);box-shadow:0 0 0 3px var(--ds-primary-ring);outline:none;
+}
+
+/* Nota abaixo da tabela (o corpo da seção é "flush") */
+.tn-scope .cp-note{margin:14px 20px}
+
+/* Lista de instruções */
+.tn-scope .cp-steps{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:8px}
+.tn-scope .cp-steps li{font-size:13px;color:var(--ds-text-2);line-height:1.55}
+.tn-scope .cp-steps li strong,.tn-scope .cp-steps li b{color:var(--ds-text)}

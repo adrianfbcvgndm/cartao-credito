@@ -1,0 +1,171 @@
+/* ============================================================
+   RP ENTERPRISE · PÁGINA: CONFIGURAÇÕES
+   Estilos específicos de configuracoes.php, cfg_evolution.php
+   e cfg_autopay.php. Componentes genéricos vivem em ds.css.
+   ============================================================ */
+
+/* ---------- SUBTABS (barra principal de Configurações) ---------- */
+.tn-scope .cfg-subtabs{
+  display:flex;gap:2px;align-items:center;
+  border-bottom:1px solid var(--ds-border);
+  margin-bottom:20px;overflow-x:auto;
+  scrollbar-width:none;
+}
+.tn-scope .cfg-subtabs::-webkit-scrollbar{display:none}
+.tn-scope .cfg-subtab .status-dot{
+  width:7px;height:7px;border-radius:50%;flex-shrink:0;
+  background:var(--ds-success);
+  box-shadow:0 0 0 3px var(--ds-success-soft);
+  animation:cfg-pulse 2s infinite;
+}
+@keyframes cfg-pulse{0%,100%{opacity:1}50%{opacity:.45}}
+
+/* Badge alinhado à direita no cabeçalho da seção */
+.tn-scope .ds-form-section>.ds-form-section-head>.tn-badge{margin-left:auto;flex-shrink:0}
+
+/* Campo que ocupa a linha inteira dentro de cfg-grid */
+.tn-scope .cfg-grid .cfg-span-full{grid-column:1/-1}
+
+/* Corpo de seção sem padding (tabelas coladas nas bordas) */
+.tn-scope .ds-form-section>.ds-form-section-body.flush{padding:0}
+
+/* Ações alinhadas dentro de uma linha de formulário */
+.tn-scope .ds-form-row .cfg-actions{margin-top:0}
+
+/* ---------- BLOCO DE AJUDA CONTEXTUAL ---------- */
+.tn-scope .cfg-help{
+  margin-top:4px;padding:13px 16px;
+  background:var(--ds-info-soft,rgba(14,165,233,.07));
+  border:1px solid var(--ds-border);
+  border-left:3px solid var(--ds-info,#0EA5E9);
+  border-radius:10px;
+  font-size:12.5px;color:var(--ds-text-2);line-height:1.6;
+}
+.tn-scope .cfg-help strong,.tn-scope .cfg-help b{color:var(--ds-text)}
+.tn-scope .cfg-help code{
+  background:var(--ds-surface-3);padding:1px 6px;border-radius:5px;
+  font-size:11.5px;color:var(--ds-primary);font-family:var(--ds-mono);
+}
+.tn-scope .cfg-help ol{margin:6px 0 0 18px;padding:0}
+.tn-scope .cfg-help ol li{margin-bottom:3px}
+.tn-scope .cfg-help a{color:var(--ds-primary)}
+
+/* ---------- SELETOR DE COR (layout da página de pagamento) ---------- */
+.tn-scope .cfg-color-row{display:flex;gap:8px;align-items:center}
+.tn-scope .cfg-color-row input[type=color]{
+  width:46px;height:40px;padding:3px;flex-shrink:0;
+  border:1px solid var(--ds-border);border-radius:10px;
+  background:var(--ds-surface);cursor:pointer;
+}
+.tn-scope .cfg-color-row .tn-input{flex:1}
+
+/* ---------- LOGS ---------- */
+.tn-scope .cfg-log-time{font-family:var(--ds-mono);font-size:11px;color:var(--ds-text-3);white-space:nowrap}
+.tn-scope .cfg-log-msg{font-family:var(--ds-mono);font-size:11px;word-break:break-word}
+
+/* ---------- EVOLUTION · FORM DE NOVA INSTÂNCIA ---------- */
+.tn-scope .cfg-inst-form{
+  display:grid;grid-template-columns:2fr 1fr 2fr 110px auto;
+  gap:10px;align-items:end;
+}
+.tn-scope .cfg-inst-form .tn-fg{margin-bottom:0}
+.tn-scope .cfg-inst-form .tn-btn{height:40px}
+@media (max-width:900px){.tn-scope .cfg-inst-form{grid-template-columns:1fr 1fr}}
+@media (max-width:560px){.tn-scope .cfg-inst-form{grid-template-columns:1fr}}
+
+.tn-scope .cfg-test-btn{margin-top:4px}
+.tn-scope td.cfg-nowrap{white-space:nowrap}
+
+/* ---------- EVOLUTION · TEMPLATES ---------- */
+.tn-scope .cfg-tpl-layout{display:grid;grid-template-columns:1fr 320px;gap:16px;align-items:start}
+@media (max-width:980px){.tn-scope .cfg-tpl-layout{grid-template-columns:1fr}}
+
+.tn-scope .cfg-var-btn{
+  display:block;width:100%;text-align:left;
+  padding:7px 10px;margin-bottom:4px;
+  background:var(--ds-surface-2);
+  border:1px solid var(--ds-border);border-radius:8px;
+  cursor:pointer;font-size:11.5px;font-family:var(--ds-mono);
+  color:var(--ds-text);
+  transition:border-color var(--ds-fast),background var(--ds-fast);
+}
+.tn-scope .cfg-var-btn:hover{border-color:var(--ds-primary);background:var(--ds-primary-soft)}
+.tn-scope .cfg-var-btn b{color:var(--ds-primary);font-weight:600}
+.tn-scope .cfg-var-btn span{
+  display:block;font-family:var(--ds-font);
+  color:var(--ds-text-3);font-size:10.5px;margin-top:1px;
+}
+
+.tn-scope .cfg-tpl-cat{margin-bottom:14px}
+.tn-scope .cfg-tpl-cat-head{
+  display:flex;align-items:center;justify-content:space-between;
+  font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;
+  padding:4px 0 6px;margin-bottom:6px;
+  border-bottom:2px solid var(--cat-color,var(--ds-border));
+  color:var(--cat-color,var(--ds-text-2));
+}
+.tn-scope .cfg-tpl-cat-head .count{color:var(--ds-text-3);font-weight:600}
+.tn-scope .cfg-tpl-cat.cat-cobranca{--cat-color:var(--ds-danger)}
+.tn-scope .cfg-tpl-cat.cat-aviso{--cat-color:var(--ds-info)}
+.tn-scope .cfg-tpl-cat.cat-marketing{--cat-color:var(--ds-purple)}
+.tn-scope .cfg-tpl-cat.cat-suporte{--cat-color:var(--ds-warning)}
+.tn-scope .cfg-tpl-cat.cat-outros{--cat-color:var(--ds-primary)}
+
+.tn-scope .cfg-tpl-item{
+  display:flex;justify-content:space-between;align-items:center;gap:6px;
+  padding:7px 9px;border-radius:8px;font-size:12.5px;margin-bottom:3px;
+  background:var(--ds-surface-2);
+  border-left:3px solid var(--cat-color,var(--ds-border));
+  transition:background var(--ds-fast);
+}
+.tn-scope .cfg-tpl-item:hover{background:var(--ds-surface-3)}
+.tn-scope .cfg-tpl-item>a{
+  color:var(--ds-text);text-decoration:none;flex:1;min-width:0;
+  display:inline-flex;align-items:center;gap:6px;
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap;
+}
+.tn-scope .cfg-tpl-item>a svg.lucide{width:12px;height:12px;flex-shrink:0;color:var(--ds-text-3)}
+.tn-scope .cfg-tpl-del{
+  background:transparent;border:0;cursor:pointer;padding:3px;
+  color:var(--ds-danger-text);border-radius:6px;line-height:0;
+  transition:background var(--ds-fast);
+}
+.tn-scope .cfg-tpl-del:hover{background:var(--ds-danger-soft)}
+.tn-scope .cfg-tpl-del svg.lucide{width:13px;height:13px}
+
+/* ---------- AUTOPAY ---------- */
+.tn-scope .ap-head{margin-bottom:18px}
+.tn-scope .ap-head h3{
+  margin:0 0 4px;font-size:17px;font-weight:700;color:var(--ds-text);
+  display:flex;align-items:center;gap:8px;letter-spacing:-.01em;
+}
+.tn-scope .ap-head h3 svg.lucide{width:19px;height:19px;color:var(--ds-primary)}
+.tn-scope .ap-head p{margin:0;color:var(--ds-text-2);font-size:13px}
+
+.tn-scope .ap-chips{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:16px}
+.tn-scope .ap-chip{
+  display:inline-flex;align-items:center;gap:6px;
+  padding:6px 13px;border-radius:var(--ds-radius-full);
+  text-decoration:none;font-size:12.5px;font-weight:600;
+  border:1px solid var(--ds-border);
+  background:var(--ds-surface);color:var(--ds-text-2);
+  transition:border-color var(--ds-fast),background var(--ds-fast),color var(--ds-fast);
+}
+.tn-scope .ap-chip:hover{border-color:var(--chip-color,var(--ds-primary));color:var(--ds-text)}
+.tn-scope .ap-chip.active{
+  background:var(--chip-color,var(--ds-primary));
+  border-color:var(--chip-color,var(--ds-primary));
+  color:#fff;
+}
+.tn-scope .ap-chip.green{--chip-color:var(--ds-success)}
+.tn-scope .ap-chip.amber{--chip-color:var(--ds-warning)}
+.tn-scope .ap-chip.red{--chip-color:var(--ds-danger)}
+.tn-scope .ap-chip.muted{--chip-color:var(--ds-text-3)}
+.tn-scope .ap-chip.purple{--chip-color:var(--ds-purple)}
+.tn-scope .ap-chip.blue{--chip-color:var(--ds-info)}
+
+.tn-scope .ap-mini-progress{
+  background:var(--ds-surface-3);height:4px;border-radius:2px;
+  margin-top:4px;overflow:hidden;
+}
+.tn-scope .ap-mini-progress>span{display:block;height:100%;background:var(--ds-purple);border-radius:inherit}

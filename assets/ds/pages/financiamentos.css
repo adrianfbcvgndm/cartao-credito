@@ -1,0 +1,13 @@
+/* ============================================================
+   RP ENTERPRISE · PÁGINA: FINANCIAMENTOS & CONTRATOS
+   Complementos específicos — escopado em .tn-scope.
+   ============================================================ */
+
+.tn-scope .pf-inline-form{display:inline}
+.tn-scope .pf-icon-btn svg.lucide{width:14px;height:14px}
+.tn-scope .pf-icon-btn.green{background:var(--ds-success-soft);color:var(--ds-success-text);border-color:transparent}
+.tn-scope .pf-icon-btn.green:hover{background:var(--ds-success);color:#fff}
+.tn-scope .pf-icon-btn.red{color:var(--ds-danger-text)}
+.tn-scope .pf-icon-btn.red:hover{background:var(--ds-danger);color:#fff;border-color:var(--ds-danger)}
+.tn-scope .ds-chip svg.lucide{width:13px;height:13px}
+.tn-scope .ds-chip{text-decoration:none}

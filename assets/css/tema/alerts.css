@@ -1,0 +1,21 @@
+/* ============================================================
+   ESTADOS / ALERTS
+   ============================================================ */
+.tn-scope .tn-empty{
+  text-align:center;padding:48px 20px;
+  color:var(--tn-muted);
+}
+.tn-scope .tn-empty-icon{font-size:36px;margin-bottom:12px;opacity:.5}
+.tn-scope .tn-empty-text{font-size:14px;margin:4px 0}
+.tn-scope .tn-empty-text strong{color:var(--tn-text)}
+.tn-scope .tn-alert{
+  background:rgba(239,68,68,.08);
+  border:1px solid rgba(239,68,68,.25);
+  border-radius:8px;padding:13px 18px;
+  color:var(--tn-red);
+  margin-bottom:16px;
+  display:flex;align-items:center;gap:10px;
+  font-size:13px;
+}
+.tn-scope .tn-alert.warn{background:rgba(245,158,11,.08);border-color:rgba(245,158,11,.25);color:var(--tn-amber)}
+.tn-scope .tn-alert.info{background:rgba(59,130,246,.08);border-color:rgba(59,130,246,.25);color:var(--tn-accent)}

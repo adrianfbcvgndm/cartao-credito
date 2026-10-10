@@ -1,0 +1,38 @@
+/* ============================================================
+   RP ENTERPRISE · RESPONSIVIDADE GLOBAL
+   Ultrawide → desktop → notebook → tablet → celular.
+   ============================================================ */
+
+/* Ultrawide: conteúdo não estica demais */
+@media (min-width:1900px){
+  .tn-scope .ds-content{max-width:1720px}
+}
+
+/* Notebook */
+@media (max-width:1280px){
+  .tn-scope .ds-content{padding:20px 20px 40px}
+  .tn-scope .ds-grid-4{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+
+/* Tablet */
+@media (max-width:900px){
+  .tn-scope .ds-main{margin-left:0}
+  .tn-scope .ds-grid-3{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .tn-scope .ds-global-search{max-width:none}
+  .tn-scope .ds-breadcrumb .crumb-root{display:none}
+}
+
+/* Celular */
+@media (max-width:640px){
+  .tn-scope .ds-content{padding:14px 12px 32px}
+  .tn-scope .ds-grid-2,.tn-scope .ds-grid-3,.tn-scope .ds-grid-4{grid-template-columns:1fr}
+  .tn-scope .tn-stats-grid,.tn-scope .ds-stats-grid,.tn-scope .dash-grid{grid-template-columns:repeat(auto-fit,minmax(150px,1fr))}
+  .tn-scope .ds-page-head{flex-direction:column;align-items:stretch}
+  .tn-scope .ds-page-actions{justify-content:flex-start}
+  .tn-scope .ds-header{padding:0 12px;gap:8px}
+  .tn-scope .ds-global-search kbd{display:none}
+  .tn-scope .ds-toolbar{padding:10px}
+  .tn-scope .tn-section-body,.tn-scope .ds-panel-body{padding:14px}
+  .tn-scope .ds-modal-foot{flex-direction:column-reverse}
+  .tn-scope .ds-modal-foot .tn-btn,.tn-scope .ds-modal-foot .ds-btn{width:100%}
+}
