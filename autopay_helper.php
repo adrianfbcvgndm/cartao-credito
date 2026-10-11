@@ -135,9 +135,9 @@ if (!function_exists('autopay_cobrar_cartao')) {
             'capture' => true,
             'binary_mode' => false,
             'installments' => 1,
-            'statement_descriptor' => 'RXMAX SPEED',
+            'statement_descriptor' => cc_descritor($conn),   // 11/10/2026: nome do provedor na fatura do cartão (era RXMAX SPEED fixo)
             // 02/10/2026: sem notification_url o MP não chama o webhook -> fatura não baixava (cobrava de novo no mês seguinte)
-            'notification_url' => 'https://rxmaxspeed.com.br/cartao/webhook_mp.php',
+            'notification_url' => 'https://' . cc_dominio($conn) . '/cartao/webhook_mp.php',
         ];
 
         // MP API exige token de cartao mesmo pra cartao salvo
@@ -206,7 +206,7 @@ if (!function_exists('autopay_url_gerenciar')) {
         // URL pública pra cliente gerenciar autopay
         // 02/10/2026: no cron (CLI) não há HTTP_HOST -> o link ia como http://localhost no WhatsApp
         $h = $_SERVER['HTTP_HOST'] ?? '';
-        $base = ($h === '' || stripos($h, 'localhost') !== false || filter_var($h, FILTER_VALIDATE_IP)) ? 'rxmaxspeed.com.br' : rtrim($h, '/');
+        $base = function_exists('cc_dominio') ? cc_dominio() : rtrim($h, '/');   // 11/10/2026: no cron usa a URL do servidor da tela Credenciais
         $scheme = 'https';
         return "$scheme://$base/admin/addons/cartao_credito/autopay_publico.php?t=$token";
     }

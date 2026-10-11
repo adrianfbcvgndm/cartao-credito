@@ -6,10 +6,10 @@
  * /var/www/cartao/index.php
  *
  * Links aceitos:
- * https://ipsectelecom.com.br/cartao?id=22617
- * https://ipsectelecom.com.br/cartao/?id=22617
- * https://ipsectelecom.com.br/cartao?uuid=UUID
- * https://ipsectelecom.com.br/cartao/?cartao=22617
+ * https://SEU-DOMINIO/cartao?id=22617
+ * https://SEU-DOMINIO/cartao/?id=22617
+ * https://SEU-DOMINIO/cartao?uuid=UUID
+ * https://SEU-DOMINIO/cartao/?cartao=22617
  */
 
 $id = '';
@@ -63,7 +63,7 @@ if ($id_safe === '') {
 }
 
 $scheme = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? 'https' : 'https';
-$host = $_SERVER['HTTP_HOST'] ?? 'ipsectelecom.com.br';
+$host = $_SERVER['HTTP_HOST'] ?? 'localhost';
 
 $destino = $scheme . '://' . $host . '/admin/addons/cartao_credito/pagamento.php?id=' . urlencode($id_safe);
 

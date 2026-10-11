@@ -30,6 +30,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && ($_POST['cfg_acao'] ?? '') === 'sal
     $cc_set = function ($k, $v) use ($conn) { $st = $conn->prepare("INSERT INTO addon_msg_config (chave, valor) VALUES (?, ?) ON DUPLICATE KEY UPDATE valor = VALUES(valor)"); $st->bind_param('ss', $k, $v); $st->execute(); $st->close(); };
     if (trim($_POST['mp_webhook_secret'] ?? '') !== '') $cc_set('mp_webhook_secret', trim($_POST['mp_webhook_secret']));   // vazio = mantém a atual
     if (isset($_POST['tg_bot_token'])) $cc_set('tg_bot_token', trim($_POST['tg_bot_token']));
+    if (isset($_POST['cartao_nome'])) $cc_set('cartao_nome', trim($_POST['cartao_nome']));
+    if (isset($_POST['taxa_1x_percent'])) $cc_set('taxa_1x_percent', str_replace(',', '.', trim($_POST['taxa_1x_percent'])));
     if (isset($_POST['tg_chat_id'])) $cc_set('tg_chat_id', trim($_POST['tg_chat_id']));
     $cc_msg = 'Credenciais do Mercado Pago salvas.'; $cc_msg_tipo = 'success';
 }
@@ -41,7 +43,8 @@ $url_servidor = '';
 $rc = $conn->query("SELECT valor FROM addon_msg_config WHERE chave='url_servidor' LIMIT 1");
 if ($rc && ($x = $rc->fetch_assoc())) $url_servidor = (string)$x['valor'];
 $cc_cfg = [];
-$rc = $conn->query("SELECT chave, valor FROM addon_msg_config WHERE chave IN ('mp_webhook_secret','tg_bot_token','tg_chat_id')");
+$rc = $conn->query("SELECT chave, valor FROM addon_msg_config WHERE chave IN ('mp_webhook_secret','tg_bot_token','tg_chat_id','cartao_nome','taxa_1x_percent')");
+$cc_nome_mk = ''; $rp9 = $conn->query("SELECT nome FROM sis_provedor ORDER BY id LIMIT 1"); if ($rp9 && ($x9 = $rp9->fetch_assoc())) $cc_nome_mk = trim((string)$x9['nome']);
 if ($rc) while ($x = $rc->fetch_assoc()) $cc_cfg[$x['chave']] = (string)$x['valor'];
 $cc_secret_ok = RP_MP_WEBHOOK_SECRET !== '' || trim($cc_cfg['mp_webhook_secret'] ?? '') !== '';   // conta também o que acabou de ser salvo
 $cc_secret_local = is_file(__DIR__ . '/rp_config_local.php') && ($cc_cfg['mp_webhook_secret'] ?? '') === '' && $cc_secret_ok;
@@ -77,15 +80,26 @@ $cc_webhook_url = 'https://' . ($_SERVER['HTTP_HOST'] ?? 'SEU-DOMINIO') . '/cart
                     <textarea class="cfg-textarea" name="public_key" rows="3"><?php echo htmlspecialchars($cartao['public_key'] ?? ''); ?></textarea>
                 </div>
                 <div class="tn-fg">
-                    <label class="tn-fl">Acréscimo % (3x cartão)</label>
+                    <label class="tn-fl">Acréscimo no parcelado (%)</label>
                     <input type="text" class="tn-input" name="acrescimo" value="<?php echo htmlspecialchars($cartao['acrescimo'] ?? '0'); ?>" placeholder="5.00">
-                    <span class="ds-help">Percentual aplicado sobre o valor no parcelamento em 3x.</span>
+                    <span class="ds-help">Somado no <b>2x</b>; no <b>3x</b> é o dobro. Ex.: 5 → 2x com +5%, 3x com +10%. Use 0 para parcelar sem acréscimo.</span>
+                </div>
+                <div class="tn-fg">
+                    <label class="tn-fl">Taxa no cartão à vista, 1x (%)</label>
+                    <input type="text" class="tn-input" name="taxa_1x_percent" value="<?php echo htmlspecialchars($cc_cfg['taxa_1x_percent'] ?? ''); ?>" placeholder="5 (padrão)">
+                    <span class="ds-help">Somada quando o cliente paga 1x no cartão (aparece como "Taxa do cartão"). Vazio = 5%. Use 0 para não cobrar.</span>
                 </div>
                 <div class="tn-fg">
                     <label class="tn-fl">URL do servidor (callback)</label>
                     <div class="ds-input-icon"><i data-lucide="globe"></i>
                         <input type="text" class="tn-input" name="url_servidor" value="<?php echo htmlspecialchars($url_servidor); ?>" placeholder="https://seudominio.com.br">
                     </div>
+                    <span class="ds-help">Endereço https do seu MK-Auth. O débito automático usa para o aviso de pagamento e o link de gerenciar.</span>
+                </div>
+                <div class="tn-fg">
+                    <label class="tn-fl">Nome que o cliente vê</label>
+                    <input type="text" class="tn-input" name="cartao_nome" value="<?php echo htmlspecialchars($cc_cfg['cartao_nome'] ?? ''); ?>" placeholder="<?php echo htmlspecialchars($cc_nome_mk ?: 'nome do provedor'); ?>" maxlength="60">
+                    <span class="ds-help">Aparece no topo da página de pagamento e na fatura do cartão (cobrança automática). Vazio = nome do provedor no MK-Auth.</span>
                 </div>
             </div>
             <div class="tn-fg" style="margin-top:12px">

@@ -66,7 +66,7 @@ $ok('Banco do MK-Auth acessado.');
 if ($atualizar) { exec('tar czf ' . escapeshellarg("$BK/cartao_credito_antes_$ts.tgz") . ' -C ' . escapeshellarg($ADD) . ' cartao_credito'); $ok("Versão anterior guardada em $BK/cartao_credito_antes_$ts.tgz"); }
 $fora = ['.git', 'instalar', 'publico', 'docs', 'README.md', 'rp_config_local.php', '.rp_autokey', 'logs'];
 $it = new RecursiveIteratorIterator(new RecursiveCallbackFilterIterator(new RecursiveDirectoryIterator($SRC, FilesystemIterator::SKIP_DOTS),
-    fn($f, $k, $i) => !($i->getSubPath() === '' && in_array($f->getFilename(), $fora, true)) && !preg_match('/\.bak/', $f->getFilename())), RecursiveIteratorIterator::SELF_FIRST);
+    fn($f, $k, $i) => !($i->getSubPath() === '' && (in_array($f->getFilename(), $fora, true) || preg_match('/\.pdf$/i', $f->getFilename()))) && !preg_match('/\.bak/', $f->getFilename())), RecursiveIteratorIterator::SELF_FIRST);
 $n = 0;
 foreach ($it as $f) {
     $alvo = $D . substr($f->getPathname(), strlen($SRC));
@@ -100,7 +100,11 @@ if (!is_dir($PUB)) {
     foreach (scandir("$SRC/publico/cartao") as $f) if ($f !== '.' && $f !== '..') copy("$SRC/publico/cartao/$f", "$PUB/$f");
     exec('chown -R www-data:www-data ' . escapeshellarg($PUB));
     $ok("Link curto criado em $PUB (https://SEU-DOMINIO/cartao?id=FATURA).");
-} elseif (strpos((string)@file_get_contents("$PUB/webhook_mp.php"), 'cartao_credito') !== false) $ok("Link curto $PUB já aponta para o addon.");
+} elseif (strpos((string)@file_get_contents("$PUB/webhook_mp.php"), 'cartao_credito') !== false) {
+    foreach (scandir("$SRC/publico/cartao") as $f) if ($f !== '.' && $f !== '..') copy("$SRC/publico/cartao/$f", "$PUB/$f");   // atualiza os atalhos
+    exec('chown -R www-data:www-data ' . escapeshellarg($PUB));
+    $ok("Link curto $PUB já aponta para o addon (atualizado).");
+}
 else $av("$PUB já existe e aponta para outro lugar (Resumo de Pagamentos?). Para migrar um cartão que estava no Resumo, veja o README (\"Migração\").");
 
 /* ---------- menu Financeiro > Cartão de Crédito (em try/catch: nunca quebra os atalhos dos outros addons) ---------- */

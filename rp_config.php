@@ -179,3 +179,33 @@ if (is_file($_alertas_file)) require_once $_alertas_file;
 // Carrega helper unificado de WhatsApp (Evotrix + Evolution)
 $_wa_file = __DIR__ . '/rp_wa_sender.php';
 if (is_file($_wa_file)) require_once $_wa_file;
+
+/* 11/10/2026: nome e domínio do PROVEDOR (o addon roda em qualquer MK-Auth; antes "RxMax Speed" e
+   rxmaxspeed.com.br estavam fixos na página do cliente, no aviso do débito automático e na fatura do cartão).
+   - nome: tela Credenciais (addon_msg_config cartao_nome) ou o nome do provedor no MK-Auth (sis_provedor);
+   - domínio: o endereço por onde o cliente abriu a página; no cron, a "URL do servidor" da tela Credenciais. */
+if (!function_exists('cc_cfg_msg')) {
+    function cc_conn($conn = null) { static $c = null; if ($conn) return $conn; if (!$c && function_exists('rp_db_connect')) { $c = rp_db_connect(); if ($c && $c->connect_errno) $c = null; } return $c; }
+    function cc_cfg_msg($conn, $k) {
+        $c = cc_conn($conn); if (!$c) return '';
+        try { $r = @$c->query("SELECT valor FROM addon_msg_config WHERE chave='" . $c->real_escape_string($k) . "' LIMIT 1"); return ($r && ($x = $r->fetch_assoc())) ? trim((string)$x['valor']) : ''; } catch (\Throwable $e) { return ''; }
+    }
+    function cc_provedor_nome($conn = null) {
+        static $n = null; if ($n !== null) return $n;
+        $n = cc_cfg_msg($conn, 'cartao_nome');
+        if ($n === '' && ($c = cc_conn($conn))) { try { $r = @$c->query("SELECT nome FROM sis_provedor ORDER BY id LIMIT 1"); $n = ($r && ($x = $r->fetch_assoc())) ? trim((string)$x['nome']) : ''; } catch (\Throwable $e) {} }
+        return $n = ($n !== '' ? $n : 'Pagamento da fatura');
+    }
+    function cc_dominio($conn = null) {
+        $h = preg_replace('/:\d+$/', '', (string)($_SERVER['HTTP_HOST'] ?? ''));
+        if ($h !== '' && stripos($h, 'localhost') === false && !filter_var($h, FILTER_VALIDATE_IP)) return $h;
+        $u = cc_cfg_msg($conn, 'url_servidor');
+        $d = $u !== '' ? (string)parse_url((strpos($u, '://') !== false ? '' : 'https://') . $u, PHP_URL_HOST) : '';
+        return $d !== '' ? $d : $h;
+    }
+    /* nome na fatura do cartão do cliente (Mercado Pago: até 22 letras/números, sem acento) */
+    function cc_descritor($conn = null) {
+        $s = function_exists('iconv') ? (string)@iconv('UTF-8', 'ASCII//TRANSLIT//IGNORE', cc_provedor_nome($conn)) : cc_provedor_nome($conn);
+        return substr(trim(preg_replace('/\s+/', ' ', preg_replace('/[^A-Z0-9 ]+/', '', strtoupper($s)))), 0, 22);
+    }
+}

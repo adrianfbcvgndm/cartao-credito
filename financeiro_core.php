@@ -588,8 +588,8 @@ if (!function_exists('rp_buscar_taxas_cartao')) {
         // Permite override via addon_msg_config (chave taxa_1x_percent)
         $r = $conn->query("SELECT valor FROM addon_msg_config WHERE chave = 'taxa_1x_percent' LIMIT 1");
         if ($r && $row = $r->fetch_assoc()) {
-            $val = (float) $row['valor'];
-            if ($val > 0) $taxa_1x_percent = $val;
+            /* 11/10/2026: 0 também vale (provedor que não cobra taxa à vista); vazio = padrão 5% */
+            if (trim((string)$row['valor']) !== '' && is_numeric(str_replace(',', '.', $row['valor']))) $taxa_1x_percent = max(0.0, (float)str_replace(',', '.', $row['valor']));
         }
 
         return [

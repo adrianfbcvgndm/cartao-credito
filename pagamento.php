@@ -276,7 +276,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
                 'identification' => array('type' => $doc_tipo, 'number' => $doc_number)
             ),
             'external_reference' => ($fatura['uuid_lanc'] ?? strval($fatura_id)),
-            'notification_url' => 'https://' . ((!empty($_SERVER['HTTP_HOST']) && stripos($_SERVER['HTTP_HOST'],'localhost')===false && !filter_var($_SERVER['HTTP_HOST'],FILTER_VALIDATE_IP)) ? $_SERVER['HTTP_HOST'] : 'rxmaxspeed.com.br') . '/cartao/webhook_mp.php'
+            'notification_url' => 'https://' . cc_dominio($conn) . '/cartao/webhook_mp.php'   // 11/10/2026: domínio do provedor (era rxmaxspeed.com.br fixo)
         );
 
         $ch = curl_init('https://api.mercadopago.com/v1/payments');
@@ -545,7 +545,7 @@ if ($exibir_pix && empty($pg_bolix['payload']) && !$tem_pix_whats) $exibir_pix =
                 <div class="pg-brand-fallback"><i data-lucide="credit-card"></i></div>
                 <?php endif; ?>
                 <div class="pg-brand-text">
-                    <div class="pg-brand-name">RxMax <b>Speed</b></div>
+                    <div class="pg-brand-name"><?php echo htmlspecialchars(cc_provedor_nome($conn)); ?></div>
                     <div class="pg-brand-host">Fatura #<?php echo $fatura_id; ?></div>
                 </div>
             </div>
