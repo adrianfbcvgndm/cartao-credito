@@ -99,7 +99,7 @@ $ui_iniciais = strtoupper(substr($ui_user, 0, 1) . (strpos($ui_user, ' ') !== fa
     <!-- Pele RxMax Speed (grafite, cards, abas) — 25/09/2026 -->
     <link rel="stylesheet" href="assets/ds/pages/rxmax.css?v=20260925">
     <!-- Menu em pílulas (mesmo visual do Dashboard RxMax) — 09/10/2026 -->
-    <link rel="stylesheet" href="assets/ds/pages/menu_p3.css?v=20261009d">
+    <link rel="stylesheet" href="assets/ds/pages/menu_p3.css?v=20261011s">
     <!-- Pele P3: o addon inteiro no visual do Dashboard RxMax — 09/10/2026 -->
     <link rel="stylesheet" href="assets/ds/pages/pele_p3.css?v=20261009b">
 
