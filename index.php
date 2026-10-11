@@ -155,7 +155,7 @@ $ui_iniciais = strtoupper(substr($ui_user, 0, 1) . (strpos($ui_user, ' ') !== fa
                         <div class="ds-dropdown-menu" role="menu">
                             <div class="ds-dd-head"><?php echo $ui_user; ?> <span class="ds-badge ds-badge-success ds-badge-dot">Online</span></div>
                             <a href="?tab=credenciais"><i data-lucide="key-round"></i> Credenciais</a>
-                            <a href="../Resumo_Pagamentos/"><i data-lucide="receipt"></i> Resumo de Pagamentos</a>
+                            <?php if (is_dir(__DIR__ . '/../Resumo_Pagamentos')): ?><a href="../Resumo_Pagamentos/"><i data-lucide="receipt"></i> Resumo de Pagamentos</a><?php endif; ?>
                             <div class="ds-dd-sep"></div>
                             <a href="<?php echo ADMIN2URL; ?>"><i data-lucide="arrow-left"></i> Voltar ao MK-AUTH</a>
                         </div>
@@ -167,7 +167,7 @@ $ui_iniciais = strtoupper(substr($ui_user, 0, 1) . (strpos($ui_user, ' ') !== fa
             <div class="rp-tm-sub">
                 <span class="rp-tm-cur"><i data-lucide="<?php echo $tab_atual['icon']; ?>"></i> <b><?php echo htmlspecialchars($tab_atual['label']); ?></b></span>
                 <span class="rp-tm-desc"><?php echo htmlspecialchars($tab_atual['desc'] ?? ''); ?></span>
-                <span class="rp-tm-ver"><i data-lucide="package"></i> v<?php echo $addon_ver ?: '—'; ?><?php echo $addon_autor ? ' · ' . $addon_autor : ''; ?></span>
+                <span class="rp-tm-ver"><i data-lucide="package"></i> v<?php echo $addon_ver ?: '—'; ?><?php /* 11/10/2026: nome do provedor do MK-Auth (o addon roda em qualquer provedor) */ $rp_prov = ''; try { $c9 = rp_db_connect(); if ($c9 && !$c9->connect_errno && ($r9 = $c9->query("SELECT nome FROM sis_provedor ORDER BY id LIMIT 1"))) $rp_prov = trim((string)($r9->fetch_assoc()['nome'] ?? '')); } catch (\Throwable $e) {} echo ' · ' . htmlspecialchars($rp_prov ?: $addon_autor); ?></span>
             </div>
         </header>
 

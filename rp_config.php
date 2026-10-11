@@ -20,7 +20,21 @@ if (!defined('RP_DB_HOST')) {
 
     // Segredo do webhook do Mercado Pago. OBRIGATORIO desde v8.0.
     // Pegue em: https://www.mercadopago.com.br/developers/panel/webhooks
-    define('RP_MP_WEBHOOK_SECRET', $cfg['mp_webhook_secret'] ?? '');
+    /* 11/10/2026: a assinatura também pode ser colada na tela Credenciais (addon_msg_config mp_webhook_secret),
+       sem precisar editar arquivo. O rp_config_local.php continua tendo prioridade. */
+    $rp_sec = trim((string)($cfg['mp_webhook_secret'] ?? ''));
+    if ($rp_sec === '' || strpos($rp_sec, 'COLE_AQUI') === 0) {
+        $rp_sec = '';
+        try {
+            $c0 = @new mysqli(RP_DB_HOST, RP_DB_USER, RP_DB_PASS, RP_DB_NAME);
+            if ($c0 && !$c0->connect_errno) {
+                $r0 = @$c0->query("SELECT valor FROM addon_msg_config WHERE chave='mp_webhook_secret' LIMIT 1");
+                if ($r0 && ($x0 = $r0->fetch_assoc())) $rp_sec = trim((string)$x0['valor']);
+                $c0->close();
+            }
+        } catch (\Throwable $e) {}
+    }
+    define('RP_MP_WEBHOOK_SECRET', $rp_sec);
 
     // SOMENTE PARA DEBUG/DEV: pula a checagem de login do MK-AUTH.
     // NUNCA habilite isso em producao - deixa o painel administrativo aberto!

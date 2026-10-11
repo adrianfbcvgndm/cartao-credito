@@ -481,7 +481,7 @@ if ($buscou) {
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Recuperar Pagamentos - Resumo_Pagamentos</title>
+<title>Recuperar Pagamentos - Cartão de Crédito</title>
 <link rel="stylesheet" href="assets/ds/ds.css?v=20260922">
 <script src="assets/vendor/lucide.min.js"></script>
 </head>

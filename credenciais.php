@@ -26,6 +26,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && ($_POST['cfg_acao'] ?? '') === 'sal
     $url_srv = $_POST['url_servidor'] ?? '';
     $stmtU = $conn->prepare("INSERT INTO addon_msg_config (chave, valor) VALUES ('url_servidor', ?) ON DUPLICATE KEY UPDATE valor = VALUES(valor)");
     $stmtU->bind_param('s', $url_srv); $stmtU->execute(); $stmtU->close();
+    /* 11/10/2026: assinatura do webhook e Telegram pela tela (antes só editando rp_config_local.php / pelo Resumo) */
+    $cc_set = function ($k, $v) use ($conn) { $st = $conn->prepare("INSERT INTO addon_msg_config (chave, valor) VALUES (?, ?) ON DUPLICATE KEY UPDATE valor = VALUES(valor)"); $st->bind_param('ss', $k, $v); $st->execute(); $st->close(); };
+    if (trim($_POST['mp_webhook_secret'] ?? '') !== '') $cc_set('mp_webhook_secret', trim($_POST['mp_webhook_secret']));   // vazio = mantém a atual
+    if (isset($_POST['tg_bot_token'])) $cc_set('tg_bot_token', trim($_POST['tg_bot_token']));
+    if (isset($_POST['tg_chat_id'])) $cc_set('tg_chat_id', trim($_POST['tg_chat_id']));
     $cc_msg = 'Credenciais do Mercado Pago salvas.'; $cc_msg_tipo = 'success';
 }
 
@@ -35,6 +40,12 @@ if ($rc && $rc->num_rows > 0) $cartao = $rc->fetch_assoc();
 $url_servidor = '';
 $rc = $conn->query("SELECT valor FROM addon_msg_config WHERE chave='url_servidor' LIMIT 1");
 if ($rc && ($x = $rc->fetch_assoc())) $url_servidor = (string)$x['valor'];
+$cc_cfg = [];
+$rc = $conn->query("SELECT chave, valor FROM addon_msg_config WHERE chave IN ('mp_webhook_secret','tg_bot_token','tg_chat_id')");
+if ($rc) while ($x = $rc->fetch_assoc()) $cc_cfg[$x['chave']] = (string)$x['valor'];
+$cc_secret_ok = RP_MP_WEBHOOK_SECRET !== '' || trim($cc_cfg['mp_webhook_secret'] ?? '') !== '';   // conta também o que acabou de ser salvo
+$cc_secret_local = is_file(__DIR__ . '/rp_config_local.php') && ($cc_cfg['mp_webhook_secret'] ?? '') === '' && $cc_secret_ok;
+$cc_webhook_url = 'https://' . ($_SERVER['HTTP_HOST'] ?? 'SEU-DOMINIO') . '/cartao/webhook_mp.php';
 ?>
 <link rel="stylesheet" href="assets/ds/pages/config.css?v=20260922">
 
@@ -77,11 +88,39 @@ if ($rc && ($x = $rc->fetch_assoc())) $url_servidor = (string)$x['valor'];
                     </div>
                 </div>
             </div>
+            <div class="tn-fg" style="margin-top:12px">
+                <label class="tn-fl">Assinatura secreta do webhook <?php echo $cc_secret_ok ? '<span style="color:#0f7a53">✓ configurada</span>' : '<span style="color:#b42318">✗ falta (a fatura não baixa sozinha)</span>'; ?></label>
+                <input type="password" class="tn-input" name="mp_webhook_secret" value="" autocomplete="new-password" placeholder="<?php echo $cc_secret_ok ? ($cc_secret_local ? 'vem do rp_config_local.php (deixe vazio para manter)' : 'deixe vazio para manter a atual') : 'cole a assinatura secreta do Mercado Pago'; ?>">
+                <span class="ds-help">Mercado Pago &gt; Suas integrações &gt; sua aplicação &gt; <b>Webhooks</b>. URL de produção: <code><?php echo htmlspecialchars($cc_webhook_url); ?></code>, evento <b>Pagamentos</b>. Depois copie a <b>assinatura secreta</b> e cole aqui.</span>
+            </div>
             <div class="cfg-help">
                 <strong>Como obter:</strong>
                 acesse <a href="https://www.mercadopago.com.br/developers/panel/credentials" target="_blank">Mercado Pago Developers</a>
                 e copie o <code>Access Token</code> e a <code>Public Key</code>. Use as credenciais de <strong>produção</strong> para receber pagamentos reais.
             </div>
+        </div>
+    </div>
+
+    <div class="ds-form-section">
+        <div class="ds-form-section-head">
+            <i data-lucide="send"></i>
+            <div>
+                <b>Alertas no Telegram (opcional)</b>
+                <small>Avisa quando o webhook do Mercado Pago recusar um aviso ou algo der errado.</small>
+            </div>
+        </div>
+        <div class="ds-form-section-body">
+            <div class="cfg-grid">
+                <div class="tn-fg">
+                    <label class="tn-fl">Token do bot</label>
+                    <input type="text" class="tn-input" name="tg_bot_token" value="<?php echo htmlspecialchars($cc_cfg['tg_bot_token'] ?? ''); ?>" placeholder="123456789:ABC...">
+                </div>
+                <div class="tn-fg">
+                    <label class="tn-fl">ID do grupo</label>
+                    <input type="text" class="tn-input" name="tg_chat_id" value="<?php echo htmlspecialchars($cc_cfg['tg_chat_id'] ?? ''); ?>" placeholder="-100...">
+                </div>
+            </div>
+            <div class="cfg-help">Crie o bot com o <b>@BotFather</b>, ponha ele num grupo e pegue o ID do grupo em <code>https://api.telegram.org/botSEU_TOKEN/getUpdates</code>. É o mesmo Telegram usado pelo Resumo de Pagamentos, se você tiver.</div>
         </div>
     </div>
 

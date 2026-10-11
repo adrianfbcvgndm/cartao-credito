@@ -209,6 +209,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
     // 03/10/2026: o botão chamava api_enviar_whatsapp.php direto do navegador e o cliente (sem login no
     // MK-Auth) levava 401. Agora passa por aqui: só envia ESTA fatura, ao dono dela, no máx. 1 vez a cada 10 min.
     if ($_POST['action'] === 'enviar_pix_whats') {
+        if (!is_file(__DIR__ . '/../Resumo_Pagamentos/api_enviar_whatsapp.php')) { echo json_encode(['ok' => false, 'erro' => 'Envio pelo WhatsApp indisponível. Use o cartão ou o boleto.']); exit; }
         if (!$fatura) { echo json_encode(['ok' => false, 'erro' => 'Fatura não encontrada.']); exit; }
         if (($fatura['status'] ?? '') === 'pago') { echo json_encode(['ok' => false, 'erro' => 'Esta fatura já foi paga.']); exit; }
         $trava = sys_get_temp_dir() . '/rp_pixwhats_' . (int)$fatura['id'];
@@ -513,6 +514,10 @@ if ($exibir_pix && ($fatura['status'] ?? '') !== 'pago') {
     @include_once __DIR__ . '/rp_bolix.php';
     if (function_exists('rp_bolix_pix')) { try { $pg_bolix = rp_bolix_pix($conn, $fatura); } catch (\Throwable $e) { $pg_bolix = []; } }
 }
+/* 11/10/2026: "Receber PIX no WhatsApp" usa o envio do Resumo de Pagamentos. Sem o Resumo e sem Pix no boleto
+   (Efí), a aba PIX não teria nada que funcione → some, e a página fica com cartão e boleto. */
+$tem_pix_whats = is_file(__DIR__ . '/../Resumo_Pagamentos/api_enviar_whatsapp.php');
+if ($exibir_pix && empty($pg_bolix['payload']) && !$tem_pix_whats) $exibir_pix = false;
 ?>
 <!DOCTYPE html>
 <html lang="pt-BR">

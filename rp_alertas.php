@@ -48,12 +48,13 @@ if (!function_exists('rp_alertar_telegram')) {
             return ['ok' => false, 'erro' => 'addon_msg_config nao existe'];
         }
 
-        $r = $conn->query("SELECT * FROM addon_msg_config LIMIT 1");
-        if (!$r || $r->num_rows === 0) return ['ok' => false, 'erro' => 'sem config'];
-        $cfg = $r->fetch_assoc();
-
-        $token = $cfg['telegram_token'] ?? '';
-        $chat_id = $cfg['telegram_chat_id'] ?? '';
+        /* 11/10/2026: addon_msg_config é chave/valor (tg_bot_token, tg_chat_id); antes lia colunas
+           telegram_token/telegram_chat_id que não existem, e o alerta nunca saía */
+        $cfg = [];
+        $r = $conn->query("SELECT chave, valor FROM addon_msg_config WHERE chave IN ('tg_bot_token','tg_chat_id','telegram_token','telegram_chat_id')");
+        if ($r) while ($x = $r->fetch_assoc()) $cfg[$x['chave']] = trim((string)$x['valor']);
+        $token = ($cfg['tg_bot_token'] ?? '') ?: ($cfg['telegram_token'] ?? '');
+        $chat_id = ($cfg['tg_chat_id'] ?? '') ?: ($cfg['telegram_chat_id'] ?? '');
 
         if (empty($token) || empty($chat_id)) {
             return ['ok' => false, 'erro' => 'telegram nao configurado'];
