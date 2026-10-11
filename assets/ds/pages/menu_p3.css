@@ -45,3 +45,6 @@ html[data-rp-theme="dark"] .tn-scope.rp-topmode .rp-tm-grp.on .rp-tm-gbtn { back
 .tn-scope.rp-topmode .rp-tm-i:hover { background: #f3f8ff; }
 .tn-scope.rp-topmode .rp-tm-i.active { background: #e7f0ff; }
 .tn-scope.rp-topmode .rp-tm-i.active .rp-tm-itx b { color: #0d6efd; }
+
+/* 11/10/2026: a barra do menu ficava "grudada" no topo (sticky do topmenu.css) mas com fundo transparente → o nome da aba, a descrição e a versão passavam por cima do conteúdo ao rolar. Agora rola junto com a página. */
+.tn-scope.rp-topmode .rp-tm { position: static; }
