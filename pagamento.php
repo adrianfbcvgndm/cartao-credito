@@ -202,6 +202,46 @@ function detectarBandeira($numero) {
     return 'visa';
 }
 
+// 25/11/2026: dados extras pro antifraude do Mercado Pago (nome, telefone, endereço do cadastro e o item pago).
+// Só informação que o MP recomenda mandar; não muda valor nem regra. Antes ia só e-mail + CPF e o MP recusava
+// muitos cartões por "análise de risco" (cc_rejected_high_risk).
+function cc_nome_partes($f) {
+    $n = trim(preg_replace('/\s+/', ' ', (string)($f['cliente_nome'] ?? $f['nome'] ?? '')));
+    if ($n === '') return array('Cliente', '');
+    $p = explode(' ', $n, 2);
+    return array($p[0], $p[1] ?? '');
+}
+function cc_info_antifraude($f, $valor, $fatura_id) {
+    $nm = cc_nome_partes($f);
+    $tel = preg_replace('/\D+/', '', (string)($f['celular'] ?? '') ?: (string)($f['fone'] ?? ''));
+    if (strlen($tel) > 11 && substr($tel, 0, 2) === '55') $tel = substr($tel, 2);
+    $payer = array('first_name' => $nm[0], 'last_name' => $nm[1]);
+    if (strlen($tel) >= 10) $payer['phone'] = array('area_code' => substr($tel, 0, 2), 'number' => substr($tel, 2));
+    $cep = preg_replace('/\D+/', '', (string)($f['cep'] ?? ''));
+    $rua = trim((string)($f['endereco'] ?? ''));
+    if ($cep !== '' || $rua !== '') {
+        $payer['address'] = array('zip_code' => $cep, 'street_name' => mb_substr($rua !== '' ? $rua : 'Endereço', 0, 120), 'street_number' => (string)preg_replace('/\D+/', '', (string)($f['numero'] ?? '')) ?: '0');
+    }
+    $cad = (string)($f['cadastro'] ?? '');
+    if (preg_match('#^(\d{2})/(\d{2})/(\d{4})$#', $cad, $m)) $payer['registration_date'] = "$m[3]-$m[2]-$m[1]T00:00:00.000-03:00";
+    $mes = !empty($f['datavenc']) ? date('m/Y', strtotime($f['datavenc'])) : '';
+    $info = array(
+        'items' => array(array(
+            'id' => (string)($f['uuid_lanc'] ?? $fatura_id),
+            'title' => 'Internet fibra óptica' . ($mes ? ' - fatura ' . $mes : ''),
+            'description' => 'Mensalidade do serviço de internet',
+            'category_id' => 'services',
+            'quantity' => 1,
+            'unit_price' => round((float)$valor, 2),
+        )),
+        'payer' => $payer,
+    );
+    $ip = $_SERVER['HTTP_X_FORWARDED_FOR'] ?? $_SERVER['REMOTE_ADDR'] ?? '';
+    $ip = trim(explode(',', $ip)[0]);
+    if (filter_var($ip, FILTER_VALIDATE_IP)) $info['ip_address'] = $ip;
+    return $info;
+}
+
 // Processar pagamento via AJAX
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
     header('Content-Type: application/json; charset=utf-8');
@@ -273,9 +313,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
             'payment_method_id' => $metodo,
             'payer' => array(
                 'email' => $email,
+                'first_name' => cc_nome_partes($fatura)[0],
+                'last_name' => cc_nome_partes($fatura)[1],
                 'identification' => array('type' => $doc_tipo, 'number' => $doc_number)
             ),
             'external_reference' => ($fatura['uuid_lanc'] ?? strval($fatura_id)),
+            'statement_descriptor' => (function_exists('cc_descritor') ? cc_descritor() : 'RXMAX SPEED'),
+            'additional_info' => cc_info_antifraude($fatura, $valor, $fatura_id),
             'notification_url' => 'https://' . cc_dominio($conn) . '/cartao/webhook_mp.php'   // 11/10/2026: domínio do provedor (era rxmaxspeed.com.br fixo)
         );
 
@@ -287,7 +331,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
             'Content-Type: application/json',
             'Authorization: Bearer ' . $access_token,
             'X-Idempotency-Key: ' . uniqid('pay_' . $fatura_id . '_')
-        ));
+        ) + (preg_match('/^[A-Za-z0-9_.\-]{8,512}$/', (string)($_POST['device_id'] ?? '')) ? array('X-meli-session-id: ' . $_POST['device_id']) : array()));
         curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, true);
         curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 2);
         curl_setopt($ch, CURLOPT_TIMEOUT, 30);
@@ -527,6 +571,8 @@ if ($exibir_pix && empty($pg_bolix['payload']) && !$tem_pix_whats) $exibir_pix =
     <meta name="theme-color" content="#0f172a">
     <title>Pagamento • Fatura #<?php echo $fatura_id; ?></title>
     <script src="https://sdk.mercadopago.com/js/v2"></script>
+    <!-- 25/11/2026: identificação do aparelho (device id) exigida pelo antifraude do MP; sem ela vinham muitas recusas "análise de risco" -->
+    <script src="https://www.mercadopago.com/v2/security.js" view="checkout"></script>
     <link rel="stylesheet" href="assets/ds/ds.css?v=20260922">
     <link rel="stylesheet" href="assets/ds/pages/pagamento.css?v=20260922">
     <link rel="stylesheet" href="assets/ds/pages/pagamento_4a.css?v=20261002">
@@ -1199,6 +1245,7 @@ if ($exibir_pix && empty($pg_bolix['payload']) && !$tem_pix_whats) $exibir_pix =
                 formData.append('doc_number', docNumVal);
                 formData.append('amount', total);
                 formData.append('card_number', cardNumber);
+                formData.append('device_id', (window.MP_DEVICE_SESSION_ID || ''));
 
                 // Autopay
                 const autopayCheck = document.getElementById('autopayCheck');
